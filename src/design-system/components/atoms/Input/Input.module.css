@@ -1,0 +1,102 @@
+/* Input Component Styles */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.input {
+  width: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-heading);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  transition: all var(--transition-fast);
+}
+
+.input::placeholder {
+  color: var(--color-placeholder);
+}
+
+.input:focus {
+  outline: none;
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.input:disabled {
+  background-color: var(--color-gray-100);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Sizes */
+.sm {
+  height: 32px;
+  padding: 0 var(--spacing-3);
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  height: 40px;
+  padding: 0 var(--spacing-4);
+}
+
+.lg {
+  height: 48px;
+  padding: 0 var(--spacing-4);
+  font-size: var(--font-size-base);
+}
+
+/* With left element */
+.hasLeftElement {
+  padding-left: var(--spacing-10);
+}
+
+/* With right element */
+.hasRightElement {
+  padding-right: var(--spacing-10);
+}
+
+/* Error state */
+.error {
+  border-color: var(--color-destructive);
+}
+
+.error:focus {
+  border-color: var(--color-destructive);
+  box-shadow: 0 0 0 3px var(--color-destructive-light);
+}
+
+/* Left/Right elements */
+.leftElement {
+  position: absolute;
+  left: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+.rightElement {
+  position: absolute;
+  right: var(--spacing-3);
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+}
+
+/* Error message */
+.errorMessage {
+  margin-top: var(--spacing-1);
+  font-size: var(--font-size-xs);
+  color: var(--color-destructive);
+}

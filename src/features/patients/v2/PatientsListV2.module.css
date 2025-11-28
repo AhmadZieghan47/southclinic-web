@@ -1,0 +1,131 @@
+/**
+ * PatientsListV2 Styles
+ * Main page layout styles using design system tokens
+ */
+
+.container {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* Page Header */
+.pageHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--spacing-6);
+  flex-wrap: wrap;
+  gap: var(--spacing-4);
+}
+
+.headerLeft {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.title {
+  font-size: var(--font-size-3xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin: 0;
+}
+
+.subtitle {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+.headerActions {
+  display: flex;
+  gap: var(--spacing-2);
+  align-items: center;
+}
+
+/* Error Alert */
+.errorContainer {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Table Card */
+.tableCard {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Pagination Footer */
+.paginationContainer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: var(--spacing-4);
+  border-top: 1px solid var(--color-border-light);
+  flex-wrap: wrap;
+  gap: var(--spacing-3);
+}
+
+.paginationInfo {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+}
+
+.paginationText {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+}
+
+.pageSizeSelect {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-2);
+}
+
+.pageSizeLabel {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+}
+
+/* Delete Modal Content */
+.deleteModalContent {
+  text-align: center;
+}
+
+.deleteWarning {
+  color: var(--color-destructive);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-2);
+}
+
+.deletePatientName {
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+}
+
+.deleteNote {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  margin-top: var(--spacing-3);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .pageHeader {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .headerActions {
+    justify-content: flex-end;
+  }
+
+  .paginationContainer {
+    flex-direction: column;
+    align-items: stretch;
+    gap: var(--spacing-4);
+  }
+
+  .paginationInfo {
+    justify-content: center;
+  }
+}

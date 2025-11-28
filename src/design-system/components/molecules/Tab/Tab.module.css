@@ -1,0 +1,122 @@
+/* Tab Component Styles */
+
+.tabs {
+  display: flex;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.fullWidth .tab {
+  flex: 1;
+  justify-content: center;
+}
+
+/* Tab button */
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  font-family: var(--font-family);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.tab:hover:not(:disabled) {
+  color: var(--color-heading);
+}
+
+.tab:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm .tab {
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-xs);
+}
+
+.md .tab {
+  padding: var(--spacing-2) var(--spacing-4);
+  font-size: var(--font-size-sm);
+}
+
+.lg .tab {
+  padding: var(--spacing-3) var(--spacing-5);
+  font-size: var(--font-size-base);
+}
+
+/* Underline variant */
+.underline {
+  border-bottom: 2px solid var(--color-border-light);
+  gap: 0;
+}
+
+.underline .tab {
+  border-bottom: 2px solid transparent;
+  margin-bottom: -2px;
+}
+
+.underline .tabActive {
+  color: var(--color-primary);
+  border-bottom-color: var(--color-primary);
+}
+
+/* Pills variant */
+.pills {
+  gap: var(--spacing-1);
+  background-color: var(--color-gray-100);
+  padding: var(--spacing-1);
+  border-radius: var(--radius);
+}
+
+.pills .tab {
+  border-radius: var(--radius-sm);
+}
+
+.pills .tabActive {
+  background-color: var(--color-surface);
+  color: var(--color-heading);
+  box-shadow: var(--shadow-sm);
+}
+
+/* Boxed variant */
+.boxed {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+  overflow: hidden;
+}
+
+.boxed .tab {
+  border-right: 1px solid var(--color-border-light);
+}
+
+.boxed .tab:last-child {
+  border-right: none;
+}
+
+.boxed .tabActive {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+/* Badge */
+.badge {
+  margin-left: var(--spacing-1);
+}
+
+/* Panel */
+.panel {
+  padding: var(--spacing-4) 0;
+}
+
+.panelHidden {
+  display: none;
+}

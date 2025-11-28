@@ -1,0 +1,94 @@
+/* Select Component Styles */
+
+.wrapper {
+  position: relative;
+  display: inline-flex;
+  width: auto;
+}
+
+.fullWidth {
+  width: 100%;
+}
+
+.select {
+  width: 100%;
+  font-family: var(--font-family);
+  font-size: var(--font-size-sm);
+  color: var(--color-body);
+  background-color: var(--color-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  outline: none;
+  cursor: pointer;
+  appearance: none;
+  transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
+  padding-right: 36px;
+}
+
+.select:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+.select:disabled {
+  background-color: var(--color-gray-100);
+  color: var(--color-muted);
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm {
+  height: 32px;
+  padding: var(--spacing-1) var(--spacing-3);
+  font-size: var(--font-size-xs);
+}
+
+.md {
+  height: 40px;
+  padding: var(--spacing-2) var(--spacing-3);
+  font-size: var(--font-size-sm);
+}
+
+.lg {
+  height: 48px;
+  padding: var(--spacing-3) var(--spacing-4);
+  font-size: var(--font-size-base);
+}
+
+/* With left element */
+.hasLeftElement {
+  padding-left: 40px;
+}
+
+.leftElement {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+/* Chevron icon */
+.chevron {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+  pointer-events: none;
+}
+
+/* Error state */
+.error {
+  border-color: var(--color-destructive);
+}
+
+.error:focus {
+  border-color: var(--color-destructive);
+  box-shadow: 0 0 0 3px var(--color-destructive-light);
+}

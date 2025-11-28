@@ -1,0 +1,175 @@
+/* ProgressBar Component Styles */
+
+.progressWrapper {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.labelRow {
+  display: flex;
+  justify-content: space-between;
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+}
+
+.progress {
+  width: 100%;
+  background-color: var(--color-gray-200);
+  border-radius: var(--radius-full);
+  overflow: hidden;
+}
+
+/* Sizes */
+.sm {
+  height: 4px;
+}
+
+.md {
+  height: 8px;
+}
+
+.lg {
+  height: 12px;
+}
+
+.bar {
+  height: 100%;
+  border-radius: var(--radius-full);
+  transition: width var(--transition-base);
+}
+
+/* Variants */
+.default .bar {
+  background-color: var(--color-gray-500);
+}
+
+.primary .bar {
+  background-color: var(--color-primary);
+}
+
+.success .bar {
+  background-color: var(--color-success);
+}
+
+.warning .bar {
+  background-color: var(--color-warning);
+}
+
+.danger .bar {
+  background-color: var(--color-destructive);
+}
+
+/* Striped */
+.striped .bar {
+  background-image: linear-gradient(
+    45deg,
+    rgba(255, 255, 255, 0.15) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(255, 255, 255, 0.15) 50%,
+    rgba(255, 255, 255, 0.15) 75%,
+    transparent 75%,
+    transparent
+  );
+  background-size: 1rem 1rem;
+}
+
+.animated .bar {
+  animation: progressStripes 1s linear infinite;
+}
+
+@keyframes progressStripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Step Progress */
+.stepProgress {
+  display: flex;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1;
+  position: relative;
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gray-200);
+  color: var(--color-muted);
+  font-weight: var(--font-weight-semibold);
+  z-index: 1;
+}
+
+.stepSm .stepIndicator {
+  width: 24px;
+  height: 24px;
+  font-size: var(--font-size-xs);
+}
+
+.stepMd .stepIndicator {
+  width: 32px;
+  height: 32px;
+  font-size: var(--font-size-sm);
+}
+
+.stepLg .stepIndicator {
+  width: 40px;
+  height: 40px;
+  font-size: var(--font-size-base);
+}
+
+.stepCompleted .stepIndicator {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.stepActive .stepIndicator {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+.stepLabel {
+  margin-top: var(--spacing-2);
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  text-align: center;
+}
+
+.stepCompleted .stepLabel,
+.stepActive .stepLabel {
+  color: var(--color-heading);
+}
+
+.stepConnector {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gray-200);
+  transform: translateY(-50%);
+  z-index: 0;
+}
+
+.stepCompleted .stepConnector {
+  background-color: var(--color-primary);
+}
+
+.step:last-child .stepConnector {
+  display: none;
+}

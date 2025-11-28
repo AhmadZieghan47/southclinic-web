@@ -1,0 +1,75 @@
+/* Table Component Styles */
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--font-size-sm);
+}
+
+.header {
+  background-color: var(--color-gray-50);
+}
+
+.body {
+  background-color: var(--color-surface);
+}
+
+.row {
+  border-bottom: 1px solid var(--color-border-light);
+  transition: background-color var(--transition-fast);
+}
+
+.row:last-child {
+  border-bottom: none;
+}
+
+.rowClickable {
+  cursor: pointer;
+}
+
+.rowClickable:hover {
+  background-color: var(--color-gray-50);
+}
+
+.rowSelected {
+  background-color: var(--color-primary-light);
+}
+
+.head {
+  padding: var(--spacing-3) var(--spacing-4);
+  text-align: left;
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted);
+  font-size: var(--font-size-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  white-space: nowrap;
+}
+
+.headSortable {
+  cursor: pointer;
+  user-select: none;
+}
+
+.headSortable:hover {
+  color: var(--color-heading);
+}
+
+.sortIcon {
+  display: inline-flex;
+  margin-left: var(--spacing-1);
+  vertical-align: middle;
+}
+
+.cell {
+  padding: var(--spacing-4);
+  color: var(--color-body);
+  vertical-align: middle;
+}
+
+/* Wrapper for bordered table */
+.wrapper {
+  overflow: hidden;
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+}
