@@ -29,6 +29,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       .filter(Boolean)
       .join(' ');
 
+    const inputWrapperClasses = [
+      styles.inputWrapper,
+      fullWidth && styles.fullWidth,
+    ]
+      .filter(Boolean)
+      .join(' ');
+
     const inputClasses = [
       styles.input,
       styles[size],
@@ -40,17 +47,27 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       .filter(Boolean)
       .join(' ');
 
+    const errorId = props.id ? `${props.id}-error` : undefined;
+
     return (
       <div className={wrapperClasses}>
-        {leftElement && (
-          <span className={styles.leftElement}>{leftElement}</span>
-        )}
-        <input ref={ref} className={inputClasses} {...props} />
-        {rightElement && (
-          <span className={styles.rightElement}>{rightElement}</span>
-        )}
+        <div className={inputWrapperClasses}>
+          {leftElement && (
+            <span className={styles.leftElement}>{leftElement}</span>
+          )}
+          <input
+            ref={ref}
+            className={inputClasses}
+            aria-invalid={error}
+            aria-describedby={errorMessage ? errorId : undefined}
+            {...props}
+          />
+          {rightElement && (
+            <span className={styles.rightElement}>{rightElement}</span>
+          )}
+        </div>
         {errorMessage && (
-          <span className={styles.errorMessage}>{errorMessage}</span>
+          <span id={errorId} className={styles.errorMessage}>{errorMessage}</span>
         )}
       </div>
     );

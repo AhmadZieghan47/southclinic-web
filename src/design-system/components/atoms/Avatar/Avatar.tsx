@@ -39,7 +39,14 @@ export const Avatar = forwardRef<HTMLDivElement, AvatarProps>(
       .join(' ');
 
     return (
-      <div ref={ref} className={classes} {...props}>
+      <div
+        ref={ref}
+        className={classes}
+        role={showInitials ? 'img' : undefined}
+        aria-label={showInitials ? alt : undefined}
+        title={showInitials ? alt : undefined}
+        {...props}
+      >
         {showImage && (
           <img
             src={src}

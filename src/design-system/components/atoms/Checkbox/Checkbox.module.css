@@ -47,12 +47,14 @@
 }
 
 /* Checked state */
-.input:checked + .checkbox {
+.input:checked + .checkbox,
+.input:indeterminate + .checkbox {
   background-color: var(--color-primary);
   border-color: var(--color-primary);
 }
 
-.input:checked + .checkbox .icon {
+.input:checked + .checkbox .icon,
+.input:indeterminate + .checkbox .icon {
   display: block;
   color: var(--color-white);
 }

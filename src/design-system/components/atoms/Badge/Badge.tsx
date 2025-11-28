@@ -34,6 +34,7 @@ export const Badge = forwardRef<HTMLSpanElement, BadgeProps>(
     return (
       <span ref={ref} className={classes} {...props}>
         {!dot && children}
+        {dot && <span className={styles.srOnly}>{props['aria-label'] || 'Status indicator'}</span>}
       </span>
     );
   }

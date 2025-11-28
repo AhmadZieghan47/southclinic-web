@@ -1,10 +1,16 @@
 /* Input Component Styles */
 
 .wrapper {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+}
+
+.inputWrapper {
   position: relative;
   display: inline-flex;
   align-items: center;
-  width: auto;
+  width: 100%;
 }
 
 .fullWidth {
