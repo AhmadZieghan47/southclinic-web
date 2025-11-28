@@ -1,0 +1,102 @@
+/* Divider Component Styles */
+
+.divider {
+  display: flex;
+  align-items: center;
+  color: var(--color-muted);
+  font-size: var(--font-size-xs);
+}
+
+/* Horizontal */
+.horizontal {
+  width: 100%;
+  flex-direction: row;
+}
+
+.horizontal::before,
+.horizontal::after {
+  content: '';
+  flex: 1;
+  border-top-width: 1px;
+  border-top-color: var(--color-border-light);
+}
+
+/* Vertical */
+.vertical {
+  flex-direction: column;
+  align-self: stretch;
+  height: auto;
+  min-height: 100%;
+}
+
+.vertical::before,
+.vertical::after {
+  content: '';
+  flex: 1;
+  border-left-width: 1px;
+  border-left-color: var(--color-border-light);
+}
+
+/* Variants */
+.solid::before,
+.solid::after {
+  border-style: solid;
+}
+
+.dashed::before,
+.dashed::after {
+  border-style: dashed;
+}
+
+.dotted::before,
+.dotted::after {
+  border-style: dotted;
+}
+
+/* Label */
+.label {
+  padding: 0 var(--spacing-3);
+  white-space: nowrap;
+}
+
+.vertical .label {
+  padding: var(--spacing-3) 0;
+}
+
+/* Label position */
+.labelLeft::before {
+  flex: 0 0 16px;
+}
+
+.labelRight::after {
+  flex: 0 0 16px;
+}
+
+/* Spacing */
+.spacingNone {
+  margin: 0;
+}
+
+.spacingSm {
+  margin: var(--spacing-2) 0;
+}
+
+.spacingMd {
+  margin: var(--spacing-4) 0;
+}
+
+.spacingLg {
+  margin: var(--spacing-6) 0;
+}
+
+.vertical.spacingSm {
+  margin: 0 var(--spacing-2);
+}
+
+.vertical.spacingMd {
+  margin: 0 var(--spacing-4);
+}
+
+.vertical.spacingLg {
+  margin: 0 var(--spacing-6);
+}

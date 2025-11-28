@@ -1,0 +1,110 @@
+/* EmptyState Component Styles */
+
+.emptyState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--spacing-8);
+}
+
+/* Sizes */
+.sm {
+  padding: var(--spacing-6);
+}
+
+.lg {
+  padding: var(--spacing-12);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--radius-full);
+  margin-bottom: var(--spacing-4);
+}
+
+/* Icon sizes */
+.sm .iconWrapper {
+  width: 48px;
+  height: 48px;
+}
+
+.md .iconWrapper {
+  width: 64px;
+  height: 64px;
+}
+
+.lg .iconWrapper {
+  width: 80px;
+  height: 80px;
+}
+
+/* Variants */
+.default .iconWrapper {
+  background-color: var(--color-gray-100);
+  color: var(--color-muted);
+}
+
+.error .iconWrapper {
+  background-color: var(--color-destructive-light);
+  color: var(--color-destructive);
+}
+
+.search .iconWrapper {
+  background-color: var(--color-info-light);
+  color: var(--color-info);
+}
+
+.empty .iconWrapper {
+  background-color: var(--color-gray-100);
+  color: var(--color-gray-400);
+}
+
+.title {
+  font-size: var(--font-size-lg);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-2);
+}
+
+.sm .title {
+  font-size: var(--font-size-base);
+}
+
+.lg .title {
+  font-size: var(--font-size-xl);
+}
+
+.description {
+  font-size: var(--font-size-sm);
+  color: var(--color-muted);
+  max-width: 400px;
+  margin: 0;
+}
+
+.sm .description {
+  font-size: var(--font-size-xs);
+  max-width: 300px;
+}
+
+.lg .description {
+  font-size: var(--font-size-base);
+  max-width: 500px;
+}
+
+.actions {
+  display: flex;
+  gap: var(--spacing-3);
+  margin-top: var(--spacing-5);
+}
+
+.sm .actions {
+  margin-top: var(--spacing-4);
+}
+
+.lg .actions {
+  margin-top: var(--spacing-6);
+}

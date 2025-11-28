@@ -1,0 +1,111 @@
+/* Checkbox Component Styles */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+}
+
+.wrapper:has(.input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.checkbox {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-sm);
+  background-color: var(--color-surface);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm .checkbox {
+  width: 16px;
+  height: 16px;
+}
+
+.md .checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.lg .checkbox {
+  width: 24px;
+  height: 24px;
+}
+
+/* Checked state */
+.input:checked + .checkbox {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input:checked + .checkbox .icon {
+  display: block;
+  color: var(--color-white);
+}
+
+/* Focus state */
+.input:focus-visible + .checkbox {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Error state */
+.error .checkbox {
+  border-color: var(--color-destructive);
+}
+
+.error .input:focus-visible + .checkbox {
+  box-shadow: 0 0 0 3px var(--color-destructive-light);
+}
+
+/* Icon */
+.icon {
+  display: none;
+}
+
+.sm .icon {
+  width: 10px;
+  height: 10px;
+}
+
+.md .icon {
+  width: 12px;
+  height: 12px;
+}
+
+.lg .icon {
+  width: 14px;
+  height: 14px;
+}
+
+/* Label */
+.label {
+  font-family: var(--font-family);
+  color: var(--color-body);
+  user-select: none;
+}
+
+.sm .label {
+  font-size: var(--font-size-xs);
+}
+
+.md .label {
+  font-size: var(--font-size-sm);
+}
+
+.lg .label {
+  font-size: var(--font-size-base);
+}

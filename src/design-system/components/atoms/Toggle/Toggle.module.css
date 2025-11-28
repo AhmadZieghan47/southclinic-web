@@ -1,0 +1,115 @@
+/* Toggle Component Styles */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+}
+
+.labelLeft {
+  flex-direction: row-reverse;
+}
+
+.wrapper:has(.input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle {
+  position: relative;
+  background-color: var(--color-gray-300);
+  border-radius: var(--radius-full);
+  transition: background-color var(--transition-fast);
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm .toggle {
+  width: 32px;
+  height: 18px;
+}
+
+.md .toggle {
+  width: 40px;
+  height: 22px;
+}
+
+.lg .toggle {
+  width: 48px;
+  height: 26px;
+}
+
+/* Knob */
+.knob {
+  position: absolute;
+  top: 2px;
+  left: 2px;
+  background-color: var(--color-white);
+  border-radius: var(--radius-full);
+  transition: transform var(--transition-fast);
+  box-shadow: var(--shadow-sm);
+}
+
+.sm .knob {
+  width: 14px;
+  height: 14px;
+}
+
+.md .knob {
+  width: 18px;
+  height: 18px;
+}
+
+.lg .knob {
+  width: 22px;
+  height: 22px;
+}
+
+/* Checked state */
+.input:checked + .toggle {
+  background-color: var(--color-primary);
+}
+
+.sm .input:checked + .toggle .knob {
+  transform: translateX(14px);
+}
+
+.md .input:checked + .toggle .knob {
+  transform: translateX(18px);
+}
+
+.lg .input:checked + .toggle .knob {
+  transform: translateX(22px);
+}
+
+/* Focus state */
+.input:focus-visible + .toggle {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Label */
+.label {
+  font-family: var(--font-family);
+  color: var(--color-body);
+  user-select: none;
+}
+
+.sm .label {
+  font-size: var(--font-size-xs);
+}
+
+.md .label {
+  font-size: var(--font-size-sm);
+}
+
+.lg .label {
+  font-size: var(--font-size-base);
+}

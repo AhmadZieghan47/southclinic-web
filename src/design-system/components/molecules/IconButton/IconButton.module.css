@@ -1,0 +1,101 @@
+/* IconButton Component Styles */
+
+.iconButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.iconButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Sizes */
+.sm {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+}
+
+.md {
+  width: 36px;
+  height: 36px;
+  border-radius: var(--radius);
+}
+
+.lg {
+  width: 44px;
+  height: 44px;
+  border-radius: var(--radius);
+}
+
+/* Rounded */
+.rounded {
+  border-radius: var(--radius-full);
+}
+
+/* Variants */
+.default {
+  background-color: var(--color-surface);
+  border-color: var(--color-border);
+  color: var(--color-body);
+}
+
+.default:hover:not(:disabled) {
+  background-color: var(--color-gray-100);
+  border-color: var(--color-gray-300);
+}
+
+.primary {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.primary:hover:not(:disabled) {
+  background-color: var(--color-primary-hover);
+}
+
+.secondary {
+  background-color: var(--color-gray-100);
+  color: var(--color-body);
+}
+
+.secondary:hover:not(:disabled) {
+  background-color: var(--color-gray-200);
+}
+
+.ghost {
+  background-color: transparent;
+  color: var(--color-body);
+}
+
+.ghost:hover:not(:disabled) {
+  background-color: var(--color-gray-100);
+}
+
+.danger {
+  background-color: transparent;
+  color: var(--color-destructive);
+}
+
+.danger:hover:not(:disabled) {
+  background-color: var(--color-destructive-light);
+}
+
+/* Loading */
+.loading {
+  position: relative;
+  color: transparent;
+}
+
+.spinner {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}

@@ -1,0 +1,129 @@
+/* Radio Component Styles */
+
+.wrapper {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--spacing-2);
+  cursor: pointer;
+}
+
+.wrapper:has(.input:disabled) {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
+
+.input {
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.radio {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-full);
+  background-color: var(--color-surface);
+  transition: all var(--transition-fast);
+  flex-shrink: 0;
+}
+
+/* Sizes */
+.sm .radio {
+  width: 16px;
+  height: 16px;
+}
+
+.md .radio {
+  width: 20px;
+  height: 20px;
+}
+
+.lg .radio {
+  width: 24px;
+  height: 24px;
+}
+
+/* Inner dot */
+.dot {
+  border-radius: var(--radius-full);
+  background-color: var(--color-white);
+  transform: scale(0);
+  transition: transform var(--transition-fast);
+}
+
+.sm .dot {
+  width: 6px;
+  height: 6px;
+}
+
+.md .dot {
+  width: 8px;
+  height: 8px;
+}
+
+.lg .dot {
+  width: 10px;
+  height: 10px;
+}
+
+/* Checked state */
+.input:checked + .radio {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+}
+
+.input:checked + .radio .dot {
+  transform: scale(1);
+}
+
+/* Focus state */
+.input:focus-visible + .radio {
+  box-shadow: 0 0 0 3px var(--color-primary-light);
+}
+
+/* Error state */
+.error .radio {
+  border-color: var(--color-destructive);
+}
+
+.error .input:focus-visible + .radio {
+  box-shadow: 0 0 0 3px var(--color-destructive-light);
+}
+
+/* Label */
+.label {
+  font-family: var(--font-family);
+  color: var(--color-body);
+  user-select: none;
+}
+
+.sm .label {
+  font-size: var(--font-size-xs);
+}
+
+.md .label {
+  font-size: var(--font-size-sm);
+}
+
+.lg .label {
+  font-size: var(--font-size-base);
+}
+
+/* Radio Group */
+.group {
+  display: flex;
+  gap: var(--spacing-4);
+}
+
+.vertical {
+  flex-direction: column;
+  gap: var(--spacing-2);
+}
+
+.horizontal {
+  flex-direction: row;
+  flex-wrap: wrap;
+}

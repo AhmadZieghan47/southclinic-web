@@ -1,0 +1,80 @@
+/* PatientDetailsPage Styles */
+
+.page {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-4);
+  padding: var(--spacing-4);
+  max-width: 1280px;
+  margin: 0 auto;
+  width: 100%;
+}
+
+@media (min-width: 768px) {
+  .page {
+    padding: var(--spacing-6);
+    gap: var(--spacing-5);
+  }
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+}
+
+/* Title Section */
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-1);
+}
+
+.pageTitle {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-black);
+  color: var(--color-heading);
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+@media (min-width: 768px) {
+  .pageTitle {
+    font-size: var(--font-size-3xl);
+  }
+}
+
+.pageSubtitle {
+  font-size: var(--font-size-base);
+  color: var(--color-muted);
+  margin: 0;
+}
+
+/* Loading State */
+.loadingState {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-4);
+  min-height: 400px;
+  color: var(--color-muted);
+}
+
+/* Error Actions */
+.errorActions {
+  display: flex;
+  gap: var(--spacing-3);
+  justify-content: center;
+  margin-top: var(--spacing-4);
+}
+
+/* Not Found Card */
+.notFoundCard {
+  padding: var(--spacing-8);
+}
+
+/* Tab Content */
+.tabContent {
+  min-height: 400px;
+}

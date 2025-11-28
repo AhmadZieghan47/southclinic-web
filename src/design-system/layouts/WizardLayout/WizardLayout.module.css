@@ -1,0 +1,165 @@
+/* WizardLayout Component Styles */
+
+.wizardLayout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: var(--spacing-6);
+}
+
+/* Back link */
+.backLink {
+  margin-bottom: var(--spacing-4);
+}
+
+/* Header */
+.header {
+  text-align: center;
+  margin-bottom: var(--spacing-6);
+}
+
+.title {
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  color: var(--color-heading);
+  margin: 0 0 var(--spacing-6);
+}
+
+/* Progress */
+.progress {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  margin-bottom: var(--spacing-8);
+}
+
+.step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  flex: 0 0 auto;
+  min-width: 120px;
+}
+
+.stepIndicator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-full);
+  background-color: var(--color-gray-200);
+  color: var(--color-muted);
+  font-weight: var(--font-weight-semibold);
+  font-size: var(--font-size-sm);
+  z-index: 1;
+  transition: all var(--transition-fast);
+}
+
+.stepCompleted .stepIndicator {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+}
+
+.stepActive .stepIndicator {
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  box-shadow: 0 0 0 4px var(--color-primary-light);
+}
+
+.stepInfo {
+  margin-top: var(--spacing-2);
+  text-align: center;
+}
+
+.stepTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  color: var(--color-muted);
+}
+
+.stepCompleted .stepTitle,
+.stepActive .stepTitle {
+  color: var(--color-heading);
+}
+
+.stepDescription {
+  font-size: var(--font-size-xs);
+  color: var(--color-muted);
+  margin-top: var(--spacing-1);
+}
+
+/* Connector */
+.stepConnector {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-gray-200);
+  z-index: 0;
+}
+
+.stepCompleted .stepConnector {
+  background-color: var(--color-primary);
+}
+
+.step:last-child .stepConnector {
+  display: none;
+}
+
+/* Error */
+.error {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  background-color: var(--color-destructive-light);
+  border: 1px solid var(--color-destructive);
+  border-radius: var(--radius);
+  margin-bottom: var(--spacing-6);
+}
+
+.errorIcon {
+  color: var(--color-destructive);
+  flex-shrink: 0;
+}
+
+.errorContent {
+  flex: 1;
+}
+
+.errorTitle {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  color: var(--color-destructive);
+  margin: 0;
+}
+
+.errorMessage {
+  font-size: var(--font-size-sm);
+  color: var(--color-body);
+  margin: var(--spacing-1) 0 0;
+}
+
+.errorClose {
+  padding: var(--spacing-1);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: var(--color-destructive);
+  opacity: 0.6;
+  border-radius: var(--radius-sm);
+}
+
+.errorClose:hover {
+  opacity: 1;
+}
+
+/* Content */
+.content {
+  flex: 1;
+}

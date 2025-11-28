@@ -1,0 +1,84 @@
+/* AlertBanner Component Styles */
+
+.alert {
+  display: flex;
+  gap: var(--spacing-3);
+  padding: var(--spacing-4);
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+}
+
+/* Variants */
+.info {
+  background-color: var(--color-info-light);
+  border-color: var(--color-info);
+  color: var(--color-info);
+}
+
+.success {
+  background-color: var(--color-success-light);
+  border-color: var(--color-success);
+  color: var(--color-success);
+}
+
+.warning {
+  background-color: var(--color-warning-light);
+  border-color: var(--color-warning);
+  color: var(--color-warning);
+}
+
+.error {
+  background-color: var(--color-destructive-light);
+  border-color: var(--color-destructive);
+  color: var(--color-destructive);
+}
+
+.iconWrapper {
+  flex-shrink: 0;
+  display: flex;
+  align-items: flex-start;
+  padding-top: 2px;
+}
+
+.content {
+  flex: 1;
+  min-width: 0;
+}
+
+.title {
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-semibold);
+  margin-bottom: var(--spacing-1);
+  color: inherit;
+}
+
+.message {
+  font-size: var(--font-size-sm);
+  color: var(--color-body);
+  line-height: var(--line-height-relaxed);
+}
+
+.actions {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--spacing-2);
+  flex-shrink: 0;
+}
+
+.dismissBtn {
+  padding: var(--spacing-1);
+  border: none;
+  background: none;
+  cursor: pointer;
+  color: inherit;
+  opacity: 0.6;
+  border-radius: var(--radius-sm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.dismissBtn:hover {
+  opacity: 1;
+  background-color: rgba(0, 0, 0, 0.1);
+}
