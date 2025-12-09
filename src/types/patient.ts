@@ -10,29 +10,29 @@ export type ISODateTime = string;
 export type Money = string;
 
 // Enums
-export type GenderT = "M" | "F" | "O";
-export type RoleT = "ADMIN" | "MANAGER" | "RECEPTION" | "THERAPIST";
-export type PlanTypeT = "PAY_PER_VISIT" | "PACKAGE";
-export type PlanStatusT = "ONGOING" | "DISCHARGED";
+export type GenderT = 'M' | 'F' | 'O';
+export type RoleT = 'ADMIN' | 'MANAGER' | 'RECEPTION' | 'THERAPIST';
+export type PlanTypeT = 'PAY_PER_VISIT' | 'PACKAGE';
+export type PlanStatusT = 'ONGOING' | 'DISCHARGED';
 export type SessionTypeT =
-  | "REGULAR"
-  | "SHOCK_WAVE"
-  | "INDIBA"
-  | "HOME"
-  | "HOJAMA"
-  | "ELDER"
-  | "HOSPITAL";
-export type LocationT = "CLINIC" | "HOME" | "HOSPITAL";
-export type ApptStatusT = "BOOKED" | "CHECKED_IN" | "COMPLETED" | "CANCELLED" | "RESCHEDULED";
-export type PaymentMethod = "CASH" | "CARD" | "INSURANCE";
+  | 'REGULAR'
+  | 'SHOCK_WAVE'
+  | 'INDIBA'
+  | 'HOME'
+  | 'HOJAMA'
+  | 'ELDER'
+  | 'HOSPITAL';
+export type LocationT = 'CLINIC' | 'HOME' | 'HOSPITAL';
+export type ApptStatusT = 'BOOKED' | 'CHECKED_IN' | 'COMPLETED' | 'CANCELLED' | 'RESCHEDULED';
+export type PaymentMethod = 'CASH' | 'CARD' | 'INSURANCE';
 export type CancelReasonT =
-  | "PATIENT_REQUEST"
-  | "THERAPIST_UNAVAILABLE"
-  | "INSURANCE_ISSUE"
-  | "WEATHER_TRANSPORT"
-  | "DUPLICATE_BOOKING"
-  | "CREATED_IN_ERROR"
-  | "DOCTOR_ADVISED_HOLD";
+  | 'PATIENT_REQUEST'
+  | 'THERAPIST_UNAVAILABLE'
+  | 'INSURANCE_ISSUE'
+  | 'WEATHER_TRANSPORT'
+  | 'DUPLICATE_BOOKING'
+  | 'CREATED_IN_ERROR'
+  | 'DOCTOR_ADVISED_HOLD';
 
 // Patient Interface
 export interface Patient {

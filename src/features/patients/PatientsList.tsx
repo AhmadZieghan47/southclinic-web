@@ -43,7 +43,7 @@ export const PatientsList = () => {
 
   const handleDeleteConfirm = async () => {
     if (!patientToDelete) return;
-    
+
     const success = await handleDeletePatient(patientToDelete.id);
     if (success) {
       setDeleteModalOpen(false);
@@ -102,7 +102,7 @@ export const PatientsList = () => {
       </Card>
 
       {/* Error Display */}
-      {error && (
+      {error ? (
         <Card className={styles.errorCard}>
           <div className={styles.errorContent}>
             <p className={styles.errorMessage}>{error.message}</p>
@@ -116,15 +116,15 @@ export const PatientsList = () => {
             </div>
           </div>
         </Card>
-      )}
+      ) : null}
 
       {/* Loading State */}
-      {loading && (
+      {loading ? (
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
           <p>Loading patients...</p>
         </div>
-      )}
+      ) : null}
 
       {/* Patients Table */}
       {!loading && !error && (
@@ -151,17 +151,10 @@ export const PatientsList = () => {
                 patients.map((patient) => (
                   <tr
                     key={patient.id}
-                    className={
-                      patient.plans && patient.plans.length > 0
-                        ? ''
-                        : styles.warningRow
-                    }
+                    className={patient.plans && patient.plans.length > 0 ? '' : styles.warningRow}
                   >
                     <td>
-                      <Link
-                        to={`/patients/${patient.id}`}
-                        className={styles.patientLink}
-                      >
+                      <Link to={`/patients/${patient.id}`} className={styles.patientLink}>
                         {patient.fullName}
                       </Link>
                     </td>
@@ -172,20 +165,12 @@ export const PatientsList = () => {
                     <td>
                       <div className={styles.actions}>
                         <Link to={`/patients/${patient.id}`}>
-                          <Button
-                            variant="outlinePrimary"
-                            size="sm"
-                            title="View Details"
-                          >
+                          <Button variant="outlinePrimary" size="sm" title="View Details">
                             👁️
                           </Button>
                         </Link>
                         <Link to={`/patients/${patient.id}/edit`}>
-                          <Button
-                            variant="outlineSecondary"
-                            size="sm"
-                            title="Edit Patient"
-                          >
+                          <Button variant="outlineSecondary" size="sm" title="Edit Patient">
                             ✏️
                           </Button>
                         </Link>
@@ -233,13 +218,13 @@ export const PatientsList = () => {
       )}
 
       {/* Delete Confirmation Modal */}
-      {deleteModalOpen && (
+      {deleteModalOpen ? (
         <div className={styles.modalOverlay}>
           <div className={styles.modal}>
             <h3>Delete Patient</h3>
             <p>
-              Are you sure you want to delete <strong>{patientToDelete?.fullName}</strong>?
-              This action cannot be undone.
+              Are you sure you want to delete <strong>{patientToDelete?.fullName}</strong>? This
+              action cannot be undone.
             </p>
             <div className={styles.modalActions}>
               <Button variant="secondary" onClick={handleDeleteCancel}>
@@ -251,7 +236,7 @@ export const PatientsList = () => {
             </div>
           </div>
         </div>
-      )}
+      ) : null}
     </div>
   );
 };

@@ -12,22 +12,13 @@ const variantIcons = {
 
 /**
  * EmptyState Component
- * 
+ *
  * Display for empty, error, or no results states.
  */
 export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
   (
-    {
-      variant = 'default',
-      size = 'md',
-      icon,
-      title,
-      description,
-      actions,
-      className,
-      ...props
-    },
-    ref
+    { variant = 'default', size = 'md', icon, title, description, actions, className, ...props },
+    ref,
   ) => {
     const Icon = variantIcons[variant];
     const iconSize = size === 'sm' ? 24 : size === 'lg' ? 40 : 32;
@@ -41,11 +32,11 @@ export const EmptyState = forwardRef<HTMLDivElement, EmptyStateProps>(
       <div ref={ref} className={classes} {...props}>
         <div className={styles.iconWrapper}>{displayIcon}</div>
         <h3 className={styles.title}>{title}</h3>
-        {description && <p className={styles.description}>{description}</p>}
-        {actions && <div className={styles.actions}>{actions}</div>}
+        {description ? <p className={styles.description}>{description}</p> : null}
+        {actions ? <div className={styles.actions}>{actions}</div> : null}
       </div>
     );
-  }
+  },
 );
 
 EmptyState.displayName = 'EmptyState';

@@ -55,9 +55,7 @@ export interface ChangePasswordData {
 // CRUD
 // ============================================================================
 
-export async function getUsers(
-  params: GetUsersParams = {}
-): Promise<PaginatedResponse<AppUser>> {
+export async function getUsers(params: GetUsersParams = {}): Promise<PaginatedResponse<AppUser>> {
   const query: Record<string, unknown> = {};
 
   if (params.page !== undefined) query.page = params.page;
@@ -122,7 +120,11 @@ export async function changePassword(data: ChangePasswordData): Promise<void> {
 }
 
 export async function resetUserPassword(id: BigIntStr, newPassword: string): Promise<void> {
-  await usersApi.post(`/app-users/${id}/reset-password`, { newPassword }, {
-    context: { action: 'reset_user_password', additionalData: { userId: id } },
-  });
+  await usersApi.post(
+    `/app-users/${id}/reset-password`,
+    { newPassword },
+    {
+      context: { action: 'reset_user_password', additionalData: { userId: id } },
+    },
+  );
 }

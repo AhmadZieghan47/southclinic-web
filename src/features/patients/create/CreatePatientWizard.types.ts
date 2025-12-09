@@ -117,21 +117,21 @@ export interface UseCreatePatientReturn {
   // Form state
   formData: CreatePatientFormData;
   setFormData: React.Dispatch<React.SetStateAction<CreatePatientFormData>>;
-  
+
   // Step management
   currentStep: number;
   setCurrentStep: (step: number) => void;
-  
+
   // Validation
   validateStep: (step: number) => Promise<boolean>;
   errors: Record<string, string>;
   clearErrors: () => void;
-  
+
   // Submission
   isSubmitting: boolean;
   submitError: Error | null;
   handleSubmit: () => Promise<void>;
-  
+
   // Utilities
   resetForm: () => void;
   updatePersonalInfo: (data: Partial<PersonalInfoData>) => void;
@@ -182,12 +182,7 @@ export const ORTHOPEDIC_IMPLANTS_OPTIONS = [
   'Screws/Pins',
 ] as const;
 
-export const ALLOWED_FILE_TYPES = [
-  'application/pdf',
-  'image/jpeg',
-  'image/jpg',
-  'image/png',
-];
+export const ALLOWED_FILE_TYPES = ['application/pdf', 'image/jpeg', 'image/jpg', 'image/png'];
 
 export const MAX_FILE_SIZE = 10 * 1024 * 1024; // 10MB
 

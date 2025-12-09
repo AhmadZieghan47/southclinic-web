@@ -68,29 +68,30 @@ export function PersonalInfoStep({
     (field: keyof PersonalInfoData) => (e: React.ChangeEvent<HTMLInputElement>) => {
       onPersonalChange({ [field]: e.target.value });
     },
-    [onPersonalChange]
+    [onPersonalChange],
   );
 
   const handleGenderChange = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onPersonalChange({ gender: e.target.value as PersonalInfoData['gender'] });
     },
-    [onPersonalChange]
+    [onPersonalChange],
   );
 
   const handleInsuranceToggle = useCallback(
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onInsuranceChange({ hasInsurance: e.target.checked });
     },
-    [onInsuranceChange]
+    [onInsuranceChange],
   );
 
   const handleInsuranceInputChange = useCallback(
-    (field: keyof InsuranceData) => (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
-      const value = field === 'coveragePercent' ? Number(e.target.value) : e.target.value;
-      onInsuranceChange({ [field]: value });
-    },
-    [onInsuranceChange]
+    (field: keyof InsuranceData) =>
+      (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
+        const value = field === 'coveragePercent' ? Number(e.target.value) : e.target.value;
+        onInsuranceChange({ [field]: value });
+      },
+    [onInsuranceChange],
   );
 
   return (
@@ -107,11 +108,7 @@ export function PersonalInfoStep({
       <Card className={styles.formCard}>
         <div className={styles.formGrid}>
           {/* First Name */}
-          <FormField
-            label="First Name"
-            required
-            error={errors['personal.firstName']}
-          >
+          <FormField label="First Name" required error={errors['personal.firstName']}>
             <Input
               placeholder="Enter first name"
               value={personalData.firstName}
@@ -122,11 +119,7 @@ export function PersonalInfoStep({
           </FormField>
 
           {/* Last Name */}
-          <FormField
-            label="Last Name"
-            required
-            error={errors['personal.lastName']}
-          >
+          <FormField label="Last Name" required error={errors['personal.lastName']}>
             <Input
               placeholder="Enter last name"
               value={personalData.lastName}
@@ -137,11 +130,7 @@ export function PersonalInfoStep({
           </FormField>
 
           {/* Phone */}
-          <FormField
-            label="Phone Number"
-            required
-            error={errors['personal.phone']}
-          >
+          <FormField label="Phone Number" required error={errors['personal.phone']}>
             <Input
               type="tel"
               placeholder="Enter phone number"
@@ -153,11 +142,7 @@ export function PersonalInfoStep({
           </FormField>
 
           {/* Date of Birth */}
-          <FormField
-            label="Date of Birth"
-            required
-            error={errors['personal.dob']}
-          >
+          <FormField label="Date of Birth" required error={errors['personal.dob']}>
             <Input
               type="date"
               placeholder="YYYY-MM-DD"
@@ -216,9 +201,7 @@ export function PersonalInfoStep({
       <div className={styles.insuranceHeader}>
         <div>
           <h2 className={styles.sectionTitle}>Insurance</h2>
-          <p className={styles.sectionDescription}>
-            Toggle if the patient has insurance coverage.
-          </p>
+          <p className={styles.sectionDescription}>Toggle if the patient has insurance coverage.</p>
         </div>
         <input
           type="checkbox"
@@ -229,7 +212,7 @@ export function PersonalInfoStep({
       </div>
 
       {/* Insurance Details (Conditional) */}
-      {insuranceData.hasInsurance && (
+      {insuranceData.hasInsurance ? (
         <Card className={styles.formCard}>
           {insurersLoading ? (
             <div className={styles.loadingContainer}>
@@ -316,7 +299,7 @@ export function PersonalInfoStep({
             </div>
           )}
         </Card>
-      )}
+      ) : null}
     </div>
   );
 }

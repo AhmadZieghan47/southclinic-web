@@ -5,7 +5,7 @@ import styles from './NavItem.module.css';
 
 /**
  * NavItem Component
- * 
+ *
  * Navigation menu item with icon and badge support.
  */
 export const NavItem = forwardRef<HTMLElement, NavItemProps>(
@@ -22,7 +22,7 @@ export const NavItem = forwardRef<HTMLElement, NavItemProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const classes = [
       styles.navItem,
@@ -36,20 +36,15 @@ export const NavItem = forwardRef<HTMLElement, NavItemProps>(
 
     const content = (
       <>
-        {icon && <span className={styles.icon}>{icon}</span>}
+        {icon ? <span className={styles.icon}>{icon}</span> : null}
         <span className={styles.label}>{label}</span>
-        {badge && <span className={styles.badge}>{badge}</span>}
+        {badge ? <span className={styles.badge}>{badge}</span> : null}
       </>
     );
 
     if (href && !disabled) {
       return (
-        <a
-          ref={ref as React.Ref<HTMLAnchorElement>}
-          href={href}
-          className={classes}
-          {...props}
-        >
+        <a ref={ref as React.Ref<HTMLAnchorElement>} href={href} className={classes} {...props}>
           {content}
         </a>
       );
@@ -66,14 +61,14 @@ export const NavItem = forwardRef<HTMLElement, NavItemProps>(
         {content}
       </button>
     );
-  }
+  },
 );
 
 NavItem.displayName = 'NavItem';
 
 /**
  * NavGroup Component
- * 
+ *
  * Collapsible navigation group with child items.
  */
 export const NavGroup = ({
@@ -86,11 +81,7 @@ export const NavGroup = ({
 }: NavGroupProps) => {
   const [isExpanded, setIsExpanded] = useState(defaultExpanded);
 
-  const groupClasses = [
-    styles.navGroup,
-    collapsed && styles.navGroupCollapsed,
-    className,
-  ]
+  const groupClasses = [styles.navGroup, collapsed && styles.navGroupCollapsed, className]
     .filter(Boolean)
     .join(' ');
 
@@ -101,16 +92,14 @@ export const NavGroup = ({
         onClick={() => setIsExpanded(!isExpanded)}
         aria-expanded={isExpanded}
       >
-        {icon && <span className={styles.icon}>{icon}</span>}
+        {icon ? <span className={styles.icon}>{icon}</span> : null}
         <span className={styles.label}>{label}</span>
         <ChevronDown
           size={16}
           className={`${styles.chevron} ${isExpanded ? styles.chevronOpen : ''}`}
         />
       </button>
-      {isExpanded && !collapsed && (
-        <div className={styles.navGroupChildren}>{children}</div>
-      )}
+      {isExpanded && !collapsed ? <div className={styles.navGroupChildren}>{children}</div> : null}
     </div>
   );
 };

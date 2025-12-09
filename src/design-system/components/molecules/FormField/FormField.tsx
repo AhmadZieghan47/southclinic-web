@@ -3,7 +3,7 @@ import styles from './FormField.module.css';
 
 /**
  * FormField Component
- * 
+ *
  * Form field wrapper with label, helper text, and error message.
  */
 export const FormField = ({
@@ -19,17 +19,15 @@ export const FormField = ({
 
   return (
     <div className={classes}>
-      {label && (
+      {label ? (
         <label className={styles.label} htmlFor={htmlFor}>
           {label}
-          {required && <span className={styles.required}>*</span>}
+          {required ? <span className={styles.required}>*</span> : null}
         </label>
-      )}
+      ) : null}
       {children}
-      {helperText && !error && (
-        <span className={styles.helperText}>{helperText}</span>
-      )}
-      {error && <span className={styles.error}>{error}</span>}
+      {helperText && !error ? <span className={styles.helperText}>{helperText}</span> : null}
+      {error ? <span className={styles.error}>{error}</span> : null}
     </div>
   );
 };

@@ -5,7 +5,7 @@ import styles from './Select.module.css';
 
 /**
  * Select Component
- * 
+ *
  * Dropdown select input with customizable options.
  */
 export const Select = forwardRef<HTMLSelectElement, SelectProps>(
@@ -20,12 +20,9 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const wrapperClasses = [
-      styles.wrapper,
-      fullWidth && styles.fullWidth,
-    ]
+    const wrapperClasses = [styles.wrapper, fullWidth && styles.fullWidth]
       .filter(Boolean)
       .join(' ');
 
@@ -41,21 +38,15 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
 
     return (
       <div className={wrapperClasses}>
-        {leftElement && (
-          <span className={styles.leftElement}>{leftElement}</span>
-        )}
+        {leftElement ? <span className={styles.leftElement}>{leftElement}</span> : null}
         <select ref={ref} className={selectClasses} {...props}>
-          {placeholder && (
+          {placeholder ? (
             <option value="" disabled>
               {placeholder}
             </option>
-          )}
+          ) : null}
           {options.map((option) => (
-            <option
-              key={option.value}
-              value={option.value}
-              disabled={option.disabled}
-            >
+            <option key={option.value} value={option.value} disabled={option.disabled}>
               {option.label}
             </option>
           ))}
@@ -65,7 +56,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(
         </span>
       </div>
     );
-  }
+  },
 );
 
 Select.displayName = 'Select';

@@ -70,7 +70,10 @@ export async function createDiagnosis(data: CreateDiagnosisData): Promise<Diagno
   return response.data;
 }
 
-export async function updateDiagnosis(id: BigIntStr, data: UpdateDiagnosisData): Promise<Diagnosis> {
+export async function updateDiagnosis(
+  id: BigIntStr,
+  data: UpdateDiagnosisData,
+): Promise<Diagnosis> {
   const response = await diagnosesApi.patch<Diagnosis>(`/diagnoses/${id}`, data, {
     context: { action: 'update_diagnosis', additionalData: { diagnosisId: id } },
   });

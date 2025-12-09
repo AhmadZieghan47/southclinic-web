@@ -54,7 +54,7 @@ export interface UseAppointmentsTableReturn {
 // ============================================================================
 
 export function useAppointmentsTable(
-  options: UseAppointmentsTableOptions = {}
+  options: UseAppointmentsTableOptions = {},
 ): UseAppointmentsTableReturn {
   const {
     page = 1,
@@ -98,22 +98,12 @@ export function useAppointmentsTable(
       setAppointments(response.data);
       setTotalCount(response.total);
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error('Failed to fetch appointments')
-      );
+      setError(err instanceof Error ? err : new Error('Failed to fetch appointments'));
       console.error('Error fetching appointments:', err);
     } finally {
       setLoading(false);
     }
-  }, [
-    currentPage,
-    currentPageSize,
-    planId,
-    therapistId,
-    status,
-    dateFrom,
-    dateTo,
-  ]);
+  }, [currentPage, currentPageSize, planId, therapistId, status, dateFrom, dateTo]);
 
   // Fetch appointments when dependencies change
   useEffect(() => {
@@ -126,7 +116,18 @@ export function useAppointmentsTable(
       setCurrentPage(1);
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [search, planId, therapistId, status, sessionType, location, dateFrom, dateTo, sortBy, sortOrder]);
+  }, [
+    search,
+    planId,
+    therapistId,
+    status,
+    sessionType,
+    location,
+    dateFrom,
+    dateTo,
+    sortBy,
+    sortOrder,
+  ]);
 
   // Handle page change
   const handlePageChange = useCallback((page: number, pageSize?: number) => {
@@ -146,13 +147,11 @@ export function useAppointmentsTable(
         return true;
       } catch (err) {
         console.error('Error cancelling appointment:', err);
-        setError(
-          err instanceof Error ? err : new Error('Failed to cancel appointment')
-        );
+        setError(err instanceof Error ? err : new Error('Failed to cancel appointment'));
         return false;
       }
     },
-    [fetchAppointments]
+    [fetchAppointments],
   );
 
   // Retry on error

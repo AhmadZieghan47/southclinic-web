@@ -4,7 +4,7 @@ import styles from './Input.module.css';
 
 /**
  * Input Component
- * 
+ *
  * Base input field component with support for icons,
  * error states, and multiple sizes.
  */
@@ -20,12 +20,9 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
       className = '',
       ...props
     },
-    ref
+    ref,
   ) => {
-    const wrapperClasses = [
-      styles.wrapper,
-      fullWidth && styles.fullWidth,
-    ]
+    const wrapperClasses = [styles.wrapper, fullWidth && styles.fullWidth]
       .filter(Boolean)
       .join(' ');
 
@@ -42,19 +39,13 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(
 
     return (
       <div className={wrapperClasses}>
-        {leftElement && (
-          <span className={styles.leftElement}>{leftElement}</span>
-        )}
+        {leftElement ? <span className={styles.leftElement}>{leftElement}</span> : null}
         <input ref={ref} className={inputClasses} {...props} />
-        {rightElement && (
-          <span className={styles.rightElement}>{rightElement}</span>
-        )}
-        {errorMessage && (
-          <span className={styles.errorMessage}>{errorMessage}</span>
-        )}
+        {rightElement ? <span className={styles.rightElement}>{rightElement}</span> : null}
+        {errorMessage ? <span className={styles.errorMessage}>{errorMessage}</span> : null}
       </div>
     );
-  }
+  },
 );
 
 Input.displayName = 'Input';

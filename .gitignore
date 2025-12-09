@@ -138,4 +138,7 @@ dist
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
 
+# MCP Configuration (contains secrets)
+mcp-config.json
+
 system-design/

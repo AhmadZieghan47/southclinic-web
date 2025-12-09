@@ -5,22 +5,11 @@ import styles from './Checkbox.module.css';
 
 /**
  * Checkbox Component
- * 
+ *
  * Checkbox input with label support.
  */
 export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
-  (
-    {
-      label,
-      size = 'md',
-      error = false,
-      indeterminate = false,
-      className,
-      id,
-      ...props
-    },
-    ref
-  ) => {
+  ({ label, size = 'md', error = false, indeterminate = false, className, id, ...props }, ref) => {
     const internalRef = useRef<HTMLInputElement>(null);
     const checkboxRef = (ref as React.RefObject<HTMLInputElement>) || internalRef;
 
@@ -30,12 +19,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
       }
     }, [indeterminate, checkboxRef]);
 
-    const wrapperClasses = [
-      styles.wrapper,
-      styles[size],
-      error && styles.error,
-      className,
-    ]
+    const wrapperClasses = [styles.wrapper, styles[size], error && styles.error, className]
       .filter(Boolean)
       .join(' ');
 
@@ -43,13 +27,7 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
 
     return (
       <label className={wrapperClasses}>
-        <input
-          ref={checkboxRef}
-          type="checkbox"
-          className={styles.input}
-          id={id}
-          {...props}
-        />
+        <input ref={checkboxRef} type="checkbox" className={styles.input} id={id} {...props} />
         <span className={styles.checkbox}>
           {indeterminate ? (
             <Minus size={iconSize} className={styles.icon} />
@@ -57,10 +35,10 @@ export const Checkbox = forwardRef<HTMLInputElement, CheckboxProps>(
             <Check size={iconSize} className={styles.icon} />
           )}
         </span>
-        {label && <span className={styles.label}>{label}</span>}
+        {label ? <span className={styles.label}>{label}</span> : null}
       </label>
     );
-  }
+  },
 );
 
 Checkbox.displayName = 'Checkbox';

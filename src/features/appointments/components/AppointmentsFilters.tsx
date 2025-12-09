@@ -78,7 +78,6 @@ export const AppointmentsFilters = ({
   sessionType,
   setSessionType,
   therapistId,
-  setTherapistId,
   dateFrom,
   setDateFrom,
   dateTo,
@@ -89,13 +88,7 @@ export const AppointmentsFilters = ({
   setSortOrder,
   onClearFilters,
 }: AppointmentsFiltersProps) => {
-  const hasActiveFilters =
-    searchText ||
-    status ||
-    sessionType ||
-    therapistId ||
-    dateFrom ||
-    dateTo;
+  const hasActiveFilters = searchText || status || sessionType || therapistId || dateFrom || dateTo;
 
   return (
     <Card className={styles.filtersCard}>
@@ -188,18 +181,13 @@ export const AppointmentsFilters = ({
         </div>
 
         {/* Clear Filters */}
-        {hasActiveFilters && (
+        {hasActiveFilters ? (
           <div className={styles.filterActions}>
-            <Button
-              variant="ghost"
-              size="sm"
-              onClick={onClearFilters}
-              leftIcon={<X size={14} />}
-            >
+            <Button variant="ghost" size="sm" onClick={onClearFilters} leftIcon={<X size={14} />}>
               Clear
             </Button>
           </div>
-        )}
+        ) : null}
       </div>
     </Card>
   );

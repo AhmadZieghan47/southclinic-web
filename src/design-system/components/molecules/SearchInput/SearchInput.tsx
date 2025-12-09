@@ -6,7 +6,7 @@ import styles from './SearchInput.module.css';
 
 /**
  * SearchInput Component
- * 
+ *
  * Input field optimized for search with icon and clear button.
  */
 export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
@@ -21,7 +21,7 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const hasValue = value !== undefined && value !== '';
     const showClear = clearable && hasValue && !loading;
@@ -43,19 +43,13 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
         <span className={styles.searchIcon}>
           <Search size={iconSize} />
         </span>
-        <input
-          ref={ref}
-          type="search"
-          className={styles.input}
-          value={value}
-          {...props}
-        />
-        {loading && (
+        <input ref={ref} type="search" className={styles.input} value={value} {...props} />
+        {loading ? (
           <span className={styles.spinner}>
             <Spinner size="sm" />
           </span>
-        )}
-        {showClear && (
+        ) : null}
+        {showClear ? (
           <button
             type="button"
             className={styles.clearBtn}
@@ -64,10 +58,10 @@ export const SearchInput = forwardRef<HTMLInputElement, SearchInputProps>(
           >
             <X size={iconSize} />
           </button>
-        )}
+        ) : null}
       </div>
     );
-  }
+  },
 );
 
 SearchInput.displayName = 'SearchInput';

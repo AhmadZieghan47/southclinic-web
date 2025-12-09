@@ -1,7 +1,7 @@
 /**
  * Design System Tokens
  * South Physical Clinic
- * 
+ *
  * Central export for all design tokens
  */
 

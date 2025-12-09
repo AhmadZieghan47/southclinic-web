@@ -34,7 +34,7 @@ export interface PatientStats {
 // ============================================================================
 
 export async function getPatients(
-  params: GetPatientsParams = {}
+  params: GetPatientsParams = {},
 ): Promise<PaginatedResponse<Patient>> {
   const query: Record<string, unknown> = {};
 
@@ -107,10 +107,14 @@ export async function getPatientStats(): Promise<PatientStats> {
 
 export function isPatientNotFoundError(error: unknown): boolean {
   const err = error as { error?: { code?: string; message?: string } };
-  return err?.error?.code === 'NOT_FOUND_ERROR' && (err?.error?.message?.includes('patient') ?? false);
+  return (
+    err?.error?.code === 'NOT_FOUND_ERROR' && (err?.error?.message?.includes('patient') ?? false)
+  );
 }
 
 export function isPatientConflictError(error: unknown): boolean {
   const err = error as { error?: { code?: string; message?: string } };
-  return err?.error?.code === 'CONFLICT_ERROR' && (err?.error?.message?.includes('patient') ?? false);
+  return (
+    err?.error?.code === 'CONFLICT_ERROR' && (err?.error?.message?.includes('patient') ?? false)
+  );
 }

@@ -1,7 +1,12 @@
 import { useState } from 'react';
 import { Check } from 'lucide-react';
 import { Button } from '../../atoms/Button';
-import type { WizardProps, WizardHeaderProps, WizardContentProps, WizardFooterProps } from './Wizard.types';
+import type {
+  WizardProps,
+  WizardHeaderProps,
+  WizardContentProps,
+  WizardFooterProps,
+} from './Wizard.types';
 import styles from './Wizard.module.css';
 
 /**
@@ -48,12 +53,10 @@ export const WizardHeader = ({
                 </span>
                 <div className={styles.stepInfo}>
                   <span className={styles.stepTitle}>{step.title}</span>
-                  {step.description && (
+                  {step.description ? (
                     <span className={styles.stepDescription}>{step.description}</span>
-                  )}
-                  {step.optional && (
-                    <span className={styles.stepOptional}>Optional</span>
-                  )}
+                  ) : null}
+                  {step.optional ? <span className={styles.stepOptional}>Optional</span> : null}
                 </div>
               </button>
               <div className={styles.stepConnector} />
@@ -89,44 +92,27 @@ export const WizardFooter = ({
   const isFirstStep = currentStep === 0;
   const isLastStep = currentStep === totalSteps - 1;
 
-  const {
-    next = 'Next',
-    previous = 'Previous',
-    complete = 'Complete',
-    skip = 'Skip',
-  } = labels;
+  const { next = 'Next', previous = 'Previous', complete = 'Complete', skip = 'Skip' } = labels;
 
   return (
     <div className={styles.footer}>
       <div className={styles.footerLeft}>
-        <Button
-          variant="outline"
-          onClick={onPrevious}
-          disabled={isFirstStep || isLoading}
-        >
+        <Button variant="outline" onClick={onPrevious} disabled={isFirstStep || isLoading}>
           {previous}
         </Button>
       </div>
       <div className={styles.footerRight}>
-        {isOptional && onSkip && (
+        {isOptional && onSkip ? (
           <Button variant="ghost" onClick={onSkip} disabled={isLoading}>
             {skip}
           </Button>
-        )}
+        ) : null}
         {isLastStep ? (
-          <Button
-            variant="primary"
-            onClick={onComplete}
-            loading={isLoading}
-          >
+          <Button variant="primary" onClick={onComplete} loading={isLoading}>
             {complete}
           </Button>
         ) : (
-          <Button
-            variant="primary"
-            onClick={onNext}
-            loading={isLoading}
-          >
+          <Button variant="primary" onClick={onNext} loading={isLoading}>
             {next}
           </Button>
         )}
@@ -137,7 +123,7 @@ export const WizardFooter = ({
 
 /**
  * Wizard Component
- * 
+ *
  * Multi-step form wizard with progress indicator.
  */
 export const Wizard = ({
@@ -194,14 +180,14 @@ export const Wizard = ({
 
   return (
     <div className={classes}>
-      {showProgress && (
+      {showProgress ? (
         <WizardHeader
           steps={steps}
           currentStep={currentStep}
           onStepClick={onStepChange}
           allowClick={allowStepClick}
         />
-      )}
+      ) : null}
       <WizardContent>{currentStepData?.content}</WizardContent>
       <WizardFooter
         currentStep={currentStep}

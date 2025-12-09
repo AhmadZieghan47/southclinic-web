@@ -56,19 +56,19 @@
   color: white;
 }
 
-.statIcon[data-color="primary"] {
+.statIcon[data-color='primary'] {
   background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
 }
 
-.statIcon[data-color="success"] {
+.statIcon[data-color='success'] {
   background: linear-gradient(135deg, var(--color-success) 0%, var(--color-success-hover) 100%);
 }
 
-.statIcon[data-color="warning"] {
+.statIcon[data-color='warning'] {
   background: linear-gradient(135deg, var(--color-warning) 0%, var(--color-warning-hover) 100%);
 }
 
-.statIcon[data-color="info"] {
+.statIcon[data-color='info'] {
   background: linear-gradient(135deg, var(--color-info) 0%, var(--color-info-hover) 100%);
 }
 
@@ -157,17 +157,17 @@
   text-transform: capitalize;
 }
 
-.badge[data-status="completed"] {
+.badge[data-status='completed'] {
   background-color: var(--color-success-transparent);
   color: var(--color-success);
 }
 
-.badge[data-status="pending"] {
+.badge[data-status='pending'] {
   background-color: var(--color-warning-transparent);
   color: var(--color-warning);
 }
 
-.badge[data-status="processing"] {
+.badge[data-status='processing'] {
   background-color: var(--color-info-transparent);
   color: var(--color-info);
 }

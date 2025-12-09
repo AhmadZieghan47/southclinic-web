@@ -21,15 +21,15 @@ export const ModalHeader = ({
   return (
     <div className={classes} {...props}>
       <div className={styles.headerContent}>
-        {title && <h2 className={styles.title}>{title}</h2>}
-        {description && <p className={styles.description}>{description}</p>}
+        {title ? <h2 className={styles.title}>{title}</h2> : null}
+        {description ? <p className={styles.description}>{description}</p> : null}
         {children}
       </div>
-      {showCloseButton && onClose && (
+      {showCloseButton && onClose ? (
         <button className={styles.closeBtn} onClick={onClose} aria-label="Close">
           <X size={20} />
         </button>
-      )}
+      ) : null}
     </div>
   );
 };
@@ -62,7 +62,7 @@ export const ModalFooter = ({ children, className, ...props }: ModalFooterProps)
 
 /**
  * Modal Component
- * 
+ *
  * Dialog modal with header, body, and footer sections.
  */
 export const Modal = ({
@@ -84,7 +84,7 @@ export const Modal = ({
         onClose();
       }
     },
-    [closeOnEscape, onClose]
+    [closeOnEscape, onClose],
   );
 
   const handleOverlayClick = (e: React.MouseEvent) => {
@@ -107,9 +107,7 @@ export const Modal = ({
 
   if (!isOpen) return null;
 
-  const modalClasses = [styles.modal, styles[size], className]
-    .filter(Boolean)
-    .join(' ');
+  const modalClasses = [styles.modal, styles[size], className].filter(Boolean).join(' ');
 
   const modalContent = (
     <div className={styles.overlay} onClick={handleOverlayClick}>
@@ -119,16 +117,16 @@ export const Modal = ({
         aria-modal="true"
         aria-labelledby={title ? 'modal-title' : undefined}
       >
-        {(title || description || showCloseButton) && (
+        {title || description || showCloseButton ? (
           <ModalHeader
             title={title}
             description={description}
             showCloseButton={showCloseButton}
             onClose={onClose}
           />
-        )}
+        ) : null}
         <ModalBody>{children}</ModalBody>
-        {footer && <ModalFooter>{footer}</ModalFooter>}
+        {footer ? <ModalFooter>{footer}</ModalFooter> : null}
       </div>
     </div>
   );

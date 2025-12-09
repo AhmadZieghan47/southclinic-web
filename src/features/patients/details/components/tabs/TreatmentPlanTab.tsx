@@ -55,7 +55,7 @@ export const TreatmentPlanTab: React.FC<TreatmentPlanTabProps> = ({
   return (
     <div className={styles.tabContent}>
       {/* Active Plan Details */}
-      {activePlan && (
+      {activePlan ? (
         <Card className={styles.card}>
           <div className={styles.cardHeader}>
             <div className={styles.cardTitleGroup}>
@@ -118,7 +118,7 @@ export const TreatmentPlanTab: React.FC<TreatmentPlanTabProps> = ({
             </div>
 
             {/* Progress Bar */}
-            {activePlan.totalSessions && (
+            {activePlan.totalSessions ? (
               <div className={styles.progressSection}>
                 <div className={styles.progressHeader}>
                   <span className={styles.progressLabel}>Session Progress</span>
@@ -135,26 +135,26 @@ export const TreatmentPlanTab: React.FC<TreatmentPlanTabProps> = ({
                   />
                 </div>
               </div>
-            )}
+            ) : null}
 
             {/* Diagnosis */}
-            {(activePlan.diagnosisEn || activePlan.diagnosisAr) && (
+            {activePlan.diagnosisEn || activePlan.diagnosisAr ? (
               <div className={styles.diagnosisSection}>
                 <h4 className={styles.sectionTitle}>Diagnosis</h4>
                 <div className={styles.diagnosisList}>
-                  {activePlan.diagnosisEn && (
+                  {activePlan.diagnosisEn ? (
                     <div className={styles.diagnosisItem}>
                       <Badge variant="info" size="md">
                         {activePlan.diagnosisEn}
                       </Badge>
                     </div>
-                  )}
+                  ) : null}
                 </div>
               </div>
-            )}
+            ) : null}
           </div>
         </Card>
-      )}
+      ) : null}
 
       {/* Plan History */}
       {allPlans.length > 1 && (
@@ -173,16 +173,13 @@ export const TreatmentPlanTab: React.FC<TreatmentPlanTabProps> = ({
                     <span className={styles.planHistoryType}>
                       {plan.planType === 'PACKAGE' ? 'Package' : 'Pay Per Visit'}
                     </span>
-                    <Badge
-                      variant={plan.status === 'ONGOING' ? 'success' : 'default'}
-                      size="sm"
-                    >
+                    <Badge variant={plan.status === 'ONGOING' ? 'success' : 'default'} size="sm">
                       {plan.status}
                     </Badge>
                   </div>
                   <div className={styles.planHistoryMeta}>
                     <span>Started: {formatDate(plan.startedAt)}</span>
-                    {plan.dischargedAt && <span>Ended: {formatDate(plan.dischargedAt)}</span>}
+                    {plan.dischargedAt ? <span>Ended: {formatDate(plan.dischargedAt)}</span> : null}
                   </div>
                   <div className={styles.planHistoryStats}>
                     <span>{plan.completedSessions} sessions completed</span>

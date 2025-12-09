@@ -22,11 +22,11 @@ export const MedicalHistoryTab: React.FC<MedicalHistoryTabProps> = ({
   return (
     <div className={styles.tabContent}>
       {/* Extra Care Warning */}
-      {patient.extraCare && (
+      {patient.extraCare ? (
         <AlertBanner variant="warning" title="Extra Care Required">
           This patient requires extra care and attention during treatments.
         </AlertBanner>
-      )}
+      ) : null}
 
       <div className={styles.gridTwo}>
         {/* Medical History Card */}

@@ -1,7 +1,7 @@
 /**
  * Layouts Index
  * Design System - South Physical Clinic
- * 
+ *
  * Export all layout components
  */
 

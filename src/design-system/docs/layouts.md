@@ -17,13 +17,13 @@ import type { MenuItem } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `logoText` | `string` | `'South Clinic'` | No | Logo/brand text |
-| `menuItems` | `MenuItem[]` | - | Yes | Sidebar menu configuration |
-| `userName` | `string` | - | No | User display name |
-| `notificationCount` | `number` | - | No | Notification badge count |
-| `onLogout` | `() => void` | - | No | Logout handler |
+| Prop                | Type         | Default          | Required | Description                |
+| ------------------- | ------------ | ---------------- | -------- | -------------------------- |
+| `logoText`          | `string`     | `'South Clinic'` | No       | Logo/brand text            |
+| `menuItems`         | `MenuItem[]` | -                | Yes      | Sidebar menu configuration |
+| `userName`          | `string`     | -                | No       | User display name          |
+| `notificationCount` | `number`     | -                | No       | Notification badge count   |
+| `onLogout`          | `() => void` | -                | No       | Logout handler             |
 
 ### MenuItem Interface
 
@@ -126,8 +126,8 @@ function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route 
-          path="/" 
+        <Route
+          path="/"
           element={
             <MainLayout
               menuItems={menuItems}
@@ -152,10 +152,10 @@ function App() {
 
 ### Sidebar Behavior
 
-| Screen Width | Behavior |
-|--------------|----------|
-| ≥ 1024px | Sidebar always visible |
-| < 1024px | Sidebar hidden, toggle button in header |
+| Screen Width | Behavior                                |
+| ------------ | --------------------------------------- |
+| ≥ 1024px     | Sidebar always visible                  |
+| < 1024px     | Sidebar hidden, toggle button in header |
 
 ### CSS Variables Used
 
@@ -179,15 +179,15 @@ import { DashboardLayout } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `title` | `string` | - | Yes | Page title |
-| `subtitle` | `string` | - | No | Page subtitle/description |
-| `breadcrumbs` | `ReactNode` | - | No | Breadcrumb navigation |
-| `actions` | `ReactNode` | - | No | Header action buttons |
-| `stats` | `ReactNode` | - | No | Stats cards section |
-| `children` | `ReactNode` | - | Yes | Main content |
-| `className` | `string` | - | No | Additional CSS class |
+| Prop          | Type        | Default | Required | Description               |
+| ------------- | ----------- | ------- | -------- | ------------------------- |
+| `title`       | `string`    | -       | Yes      | Page title                |
+| `subtitle`    | `string`    | -       | No       | Page subtitle/description |
+| `breadcrumbs` | `ReactNode` | -       | No       | Breadcrumb navigation     |
+| `actions`     | `ReactNode` | -       | No       | Header action buttons     |
+| `stats`       | `ReactNode` | -       | No       | Stats cards section       |
+| `children`    | `ReactNode` | -       | Yes      | Main content              |
+| `className`   | `string`    | -       | No       | Additional CSS class      |
 
 ### Features
 
@@ -248,31 +248,31 @@ import { Users, Calendar, DollarSign, Clock } from 'lucide-react';
   subtitle="Overview of your clinic"
   stats={
     <>
-      <StatCard 
-        title="Total Patients" 
-        value="1,234" 
+      <StatCard
+        title="Total Patients"
+        value="1,234"
         change="+12%"
         isPositive
         icon={<Users size={24} />}
         variant="primary"
       />
-      <StatCard 
-        title="Today's Appointments" 
-        value="28" 
+      <StatCard
+        title="Today's Appointments"
+        value="28"
         change="+5"
         isPositive
         icon={<Calendar size={24} />}
       />
-      <StatCard 
-        title="Monthly Revenue" 
-        value="$45,678" 
+      <StatCard
+        title="Monthly Revenue"
+        value="$45,678"
         change="+8.2%"
         isPositive
         icon={<DollarSign size={24} />}
       />
-      <StatCard 
-        title="Avg Wait Time" 
-        value="12 min" 
+      <StatCard
+        title="Avg Wait Time"
+        value="12 min"
         change="-15%"
         isPositive
         icon={<Clock size={24} />}
@@ -319,7 +319,7 @@ import { Users, Calendar, DollarSign, Clock } from 'lucide-react';
       <PatientList limit={5} />
     </Card>
   </div>
-  
+
   <Card title="Analytics" className="mt-6">
     <AnalyticsChart />
   </Card>
@@ -328,11 +328,11 @@ import { Users, Calendar, DollarSign, Clock } from 'lucide-react';
 
 ### Stats Grid Breakpoints
 
-| Breakpoint | Columns |
-|------------|---------|
-| ≥ 1200px | 4 columns |
+| Breakpoint     | Columns   |
+| -------------- | --------- |
+| ≥ 1200px       | 4 columns |
 | 640px - 1199px | 2 columns |
-| < 640px | 1 column |
+| < 640px        | 1 column  |
 
 ---
 
@@ -349,15 +349,15 @@ import type { WizardLayoutStep } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `title` | `string` | - | Yes | Page title |
-| `steps` | `WizardLayoutStep[]` | - | Yes | Step configuration |
-| `currentStep` | `number` | - | Yes | Current step (0-indexed) |
-| `children` | `ReactNode` | - | Yes | Step content |
-| `error` | `string` | - | No | Error message to display |
-| `backLink` | `ReactNode` | - | No | Back navigation element |
-| `className` | `string` | - | No | Additional CSS class |
+| Prop          | Type                 | Default | Required | Description              |
+| ------------- | -------------------- | ------- | -------- | ------------------------ |
+| `title`       | `string`             | -       | Yes      | Page title               |
+| `steps`       | `WizardLayoutStep[]` | -       | Yes      | Step configuration       |
+| `currentStep` | `number`             | -       | Yes      | Current step (0-indexed) |
+| `children`    | `ReactNode`          | -       | Yes      | Step content             |
+| `error`       | `string`             | -       | No       | Error message to display |
+| `backLink`    | `ReactNode`          | -       | No       | Back navigation element  |
+| `className`   | `string`             | -       | No       | Additional CSS class     |
 
 ### WizardLayoutStep Interface
 
@@ -400,24 +400,24 @@ const steps: WizardLayoutStep[] = [
     {currentStep === 1 && <MedicalHistoryForm />}
     {currentStep === 2 && <InsuranceForm />}
     {currentStep === 3 && <ReviewStep />}
-    
+
     <div className="flex justify-between mt-6">
-      <Button 
-        variant="outline" 
+      <Button
+        variant="outline"
         onClick={() => setCurrentStep(s => s - 1)}
         disabled={currentStep === 0}
       >
         Previous
       </Button>
       {currentStep < steps.length - 1 ? (
-        <Button 
+        <Button
           variant="primary"
           onClick={() => setCurrentStep(s => s + 1)}
         >
           Next
         </Button>
       ) : (
-        <Button 
+        <Button
           variant="primary"
           onClick={handleSubmit}
         >
@@ -436,8 +436,8 @@ import { ArrowLeft } from 'lucide-react';
   steps={steps}
   currentStep={currentStep}
   backLink={
-    <Button 
-      variant="ghost" 
+    <Button
+      variant="ghost"
       leftIcon={<ArrowLeft size={16} />}
       onClick={() => navigate('/patients')}
     >
@@ -460,23 +460,23 @@ import { ArrowLeft } from 'lucide-react';
 
 // Steps with descriptions
 const stepsWithDesc: WizardLayoutStep[] = [
-  { 
-    id: 'info', 
+  {
+    id: 'info',
     title: 'Patient Info',
     description: 'Basic information',
   },
-  { 
-    id: 'medical', 
+  {
+    id: 'medical',
     title: 'Medical History',
     description: 'Health records',
   },
-  { 
-    id: 'insurance', 
+  {
+    id: 'insurance',
     title: 'Insurance',
     description: 'Coverage details',
   },
-  { 
-    id: 'review', 
+  {
+    id: 'review',
     title: 'Review',
     description: 'Confirm details',
   },
@@ -531,8 +531,8 @@ function PatientRegistration() {
       currentStep={currentStep}
       error={error}
       backLink={
-        <Button 
-          variant="ghost" 
+        <Button
+          variant="ghost"
           leftIcon={<ArrowLeft size={16} />}
           onClick={() => navigate('/patients')}
         >
@@ -541,21 +541,21 @@ function PatientRegistration() {
       }
     >
       <Card>
-        <StepContent 
-          step={currentStep} 
+        <StepContent
+          step={currentStep}
           formData={formData}
           onChange={setFormData}
         />
-        
+
         <div className="flex justify-between mt-6 pt-6 border-t">
-          <Button 
-            variant="outline" 
+          <Button
+            variant="outline"
             onClick={() => setCurrentStep(s => s - 1)}
             disabled={currentStep === 0}
           >
             Previous
           </Button>
-          
+
           {currentStep < steps.length - 1 ? (
             <Button variant="primary" onClick={handleNext}>
               Continue
@@ -574,35 +574,38 @@ function PatientRegistration() {
 
 ### Layout Dimensions
 
-| Property | Value |
-|----------|-------|
-| Max width | 900px |
-| Padding | 24px |
+| Property             | Value          |
+| -------------------- | -------------- |
+| Max width            | 900px          |
+| Padding              | 24px           |
 | Step indicator width | 120px per step |
 
 ---
 
 ## Layout Comparison
 
-| Layout | Use Case | Key Features |
-|--------|----------|--------------|
-| **MainLayout** | Application shell | Sidebar, header, nested routes |
-| **DashboardLayout** | Dashboard pages | Stats grid, actions, breadcrumbs |
-| **WizardLayout** | Multi-step forms | Progress indicator, error handling |
+| Layout              | Use Case          | Key Features                       |
+| ------------------- | ----------------- | ---------------------------------- |
+| **MainLayout**      | Application shell | Sidebar, header, nested routes     |
+| **DashboardLayout** | Dashboard pages   | Stats grid, actions, breadcrumbs   |
+| **WizardLayout**    | Multi-step forms  | Progress indicator, error handling |
 
 ### When to Use Each
 
 **MainLayout:**
+
 - Wrap the entire application
 - Provides consistent navigation
 - Use as the root layout for authenticated pages
 
 **DashboardLayout:**
+
 - Dashboard overview pages
 - List pages with stats
 - Pages with action buttons in header
 
 **WizardLayout:**
+
 - Patient registration
 - Multi-step forms
 - Onboarding flows
@@ -612,8 +615,8 @@ function PatientRegistration() {
 
 ## File Locations
 
-| Layout | Path |
-|--------|------|
-| MainLayout | `src/design-system/layouts/MainLayout/` |
+| Layout          | Path                                         |
+| --------------- | -------------------------------------------- |
+| MainLayout      | `src/design-system/layouts/MainLayout/`      |
 | DashboardLayout | `src/design-system/layouts/DashboardLayout/` |
-| WizardLayout | `src/design-system/layouts/WizardLayout/` |
+| WizardLayout    | `src/design-system/layouts/WizardLayout/`    |

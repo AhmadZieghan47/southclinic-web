@@ -47,37 +47,37 @@ export function usePatientDetails({ patientId }: UsePatientDetailsOptions) {
   // Get all appointments from plans
   const allAppointments = useMemo(() => {
     if (!patient?.plans) return [];
-    
+
     const appointments: Appointment[] = [];
     for (const plan of patient.plans) {
       if (plan.appointments) {
         appointments.push(...plan.appointments);
       }
     }
-    
+
     // Sort by date (newest first)
     return appointments.sort(
-      (a, b) => new Date(b.startsAt).getTime() - new Date(a.startsAt).getTime()
+      (a, b) => new Date(b.startsAt).getTime() - new Date(a.startsAt).getTime(),
     );
   }, [patient]);
 
   // Get all payments
   const allPayments = useMemo(() => {
     if (!patient?.payments) return [];
-    
+
     // Sort by date (newest first)
     return [...patient.payments].sort(
-      (a, b) => new Date(b.paidAt).getTime() - new Date(a.paidAt).getTime()
+      (a, b) => new Date(b.paidAt).getTime() - new Date(a.paidAt).getTime(),
     );
   }, [patient]);
 
   // Get all files
   const allFiles = useMemo(() => {
     if (!patient?.files) return [];
-    
+
     // Sort by date (newest first)
     return [...patient.files].sort(
-      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime()
+      (a, b) => new Date(b.createdAt).getTime() - new Date(a.createdAt).getTime(),
     );
   }, [patient]);
 
@@ -85,13 +85,14 @@ export function usePatientDetails({ patientId }: UsePatientDetailsOptions) {
   const filteredAppointments = useMemo(() => {
     const q = searchText.trim().toLowerCase();
     if (!q) return allAppointments;
-    
-    return allAppointments.filter((appointment) =>
-      appointment.sessionType.toLowerCase().includes(q) ||
-      appointment.location.toLowerCase().includes(q) ||
-      appointment.status.toLowerCase().includes(q) ||
-      appointment.noteEn?.toLowerCase().includes(q) ||
-      appointment.noteAr?.toLowerCase().includes(q)
+
+    return allAppointments.filter(
+      (appointment) =>
+        appointment.sessionType.toLowerCase().includes(q) ||
+        appointment.location.toLowerCase().includes(q) ||
+        appointment.status.toLowerCase().includes(q) ||
+        appointment.noteEn?.toLowerCase().includes(q) ||
+        appointment.noteAr?.toLowerCase().includes(q),
     );
   }, [allAppointments, searchText]);
 
@@ -99,11 +100,12 @@ export function usePatientDetails({ patientId }: UsePatientDetailsOptions) {
   const filteredPayments = useMemo(() => {
     const q = searchText.trim().toLowerCase();
     if (!q) return allPayments;
-    
-    return allPayments.filter((payment) =>
-      payment.id.toLowerCase().includes(q) ||
-      payment.method.toLowerCase().includes(q) ||
-      String(payment.amountJd).toLowerCase().includes(q)
+
+    return allPayments.filter(
+      (payment) =>
+        payment.id.toLowerCase().includes(q) ||
+        payment.method.toLowerCase().includes(q) ||
+        String(payment.amountJd).toLowerCase().includes(q),
     );
   }, [allPayments, searchText]);
 
@@ -111,12 +113,13 @@ export function usePatientDetails({ patientId }: UsePatientDetailsOptions) {
   const filteredFiles = useMemo(() => {
     const q = searchText.trim().toLowerCase();
     if (!q) return allFiles;
-    
-    return allFiles.filter((file) =>
-      file.id.toLowerCase().includes(q) ||
-      file.labelEn?.toLowerCase().includes(q) ||
-      file.labelAr?.toLowerCase().includes(q) ||
-      file.mimeType.toLowerCase().includes(q)
+
+    return allFiles.filter(
+      (file) =>
+        file.id.toLowerCase().includes(q) ||
+        file.labelEn?.toLowerCase().includes(q) ||
+        file.labelAr?.toLowerCase().includes(q) ||
+        file.mimeType.toLowerCase().includes(q),
     );
   }, [allFiles, searchText]);
 

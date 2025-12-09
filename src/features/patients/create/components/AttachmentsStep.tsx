@@ -60,7 +60,7 @@ export function AttachmentsStep({
         onAddFile(file);
       });
     },
-    [onAddFile]
+    [onAddFile],
   );
 
   // Handle input change
@@ -72,7 +72,7 @@ export function AttachmentsStep({
         fileInputRef.current.value = '';
       }
     },
-    [handleFileSelect]
+    [handleFileSelect],
   );
 
   // Handle drag over
@@ -88,7 +88,7 @@ export function AttachmentsStep({
       e.stopPropagation();
       handleFileSelect(e.dataTransfer.files);
     },
-    [handleFileSelect]
+    [handleFileSelect],
   );
 
   // Trigger file input click
@@ -102,8 +102,8 @@ export function AttachmentsStep({
       <div className={styles.sectionHeader}>
         <h2 className={styles.sectionTitle}>Attachments</h2>
         <p className={styles.sectionDescription}>
-          Upload patient referrals, reports, or consent forms. Files should be PDF, JPG, or PNG,
-          and no larger than 10MB each.
+          Upload patient referrals, reports, or consent forms. Files should be PDF, JPG, or PNG, and
+          no larger than 10MB each.
         </p>
       </div>
 
@@ -120,7 +120,7 @@ export function AttachmentsStep({
             <span className={styles.dropZoneLink}>Click to upload</span> or drag and drop
           </div>
           <p className={styles.dropZoneHelp}>PDF, JPG, PNG (max. 10MB per file)</p>
-          
+
           <input
             ref={fileInputRef}
             type="file"
@@ -138,11 +138,7 @@ export function AttachmentsStep({
           <h3 className={styles.cardTitle}>Uploaded Files</h3>
           <div className={styles.fileList}>
             {attachmentsData.files.map((file) => (
-              <FileItem
-                key={file.id}
-                file={file}
-                onRemove={() => onRemoveFile(file.id)}
-              />
+              <FileItem key={file.id} file={file} onRemove={() => onRemoveFile(file.id)} />
             ))}
           </div>
         </Card>
@@ -150,7 +146,8 @@ export function AttachmentsStep({
 
       {/* Info Banner */}
       <AlertBanner variant="info" title="Optional Step">
-        Attachments are optional. You can add files now or upload them later from the patient's profile.
+        Attachments are optional. You can add files now or upload them later from the patient's
+        profile.
       </AlertBanner>
     </div>
   );
@@ -175,22 +172,17 @@ function FileItem({ file, onRemove }: FileItemProps) {
           getFileIcon(file.type)
         )}
       </div>
-      
+
       <div className={styles.fileItemInfo}>
         <p className={styles.fileName}>{file.name}</p>
         {isUploading && file.progress !== undefined ? (
           <div className={styles.progressBar}>
-            <div
-              className={styles.progressFill}
-              style={{ width: `${file.progress}%` }}
-            />
+            <div className={styles.progressFill} style={{ width: `${file.progress}%` }} />
           </div>
         ) : (
           <p className={styles.fileSize}>{formatFileSize(file.size)}</p>
         )}
-        {isError && file.error && (
-          <p className={styles.fileError}>{file.error}</p>
-        )}
+        {isError && file.error ? <p className={styles.fileError}>{file.error}</p> : null}
       </div>
 
       <Button

@@ -75,10 +75,13 @@ export const PatientDetailsPage: React.FC = () => {
   }, [navigate, patient?.id]);
 
   // Tab change handler
-  const handleTabChange = useCallback((tab: PatientTab) => {
-    setActiveTab(tab);
-    setSearchText(''); // Clear search when switching tabs
-  }, [setSearchText]);
+  const handleTabChange = useCallback(
+    (tab: PatientTab) => {
+      setActiveTab(tab);
+      setSearchText(''); // Clear search when switching tabs
+    },
+    [setSearchText],
+  );
 
   // Appointment handlers (placeholders for modals)
   const handleViewAppointment = useCallback((appointment: AppointmentRow) => {
@@ -186,12 +189,7 @@ export const PatientDetailsPage: React.FC = () => {
           />
         );
       case 'medical':
-        return (
-          <MedicalHistoryTab
-            patient={patient}
-            onEditMedicalInfo={handleEditMedicalInfo}
-          />
-        );
+        return <MedicalHistoryTab patient={patient} onEditMedicalInfo={handleEditMedicalInfo} />;
       case 'plan':
         return (
           <TreatmentPlanTab
@@ -258,9 +256,7 @@ export const PatientDetailsPage: React.FC = () => {
       <PatientTabs activeTab={activeTab} onTabChange={handleTabChange} />
 
       {/* Tab Content */}
-      <div className={styles.tabContent}>
-        {renderTabContent()}
-      </div>
+      <div className={styles.tabContent}>{renderTabContent()}</div>
     </div>
   );
 };

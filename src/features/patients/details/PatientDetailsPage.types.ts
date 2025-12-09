@@ -163,7 +163,7 @@ export interface UsePatientDetailsReturn {
   patient: Patient | null;
   loading: boolean;
   error: string | null;
-  
+
   // Computed
   activePlan: TreatmentPlan | null;
   insuranceProfile: InsuranceProfile | null;
@@ -171,16 +171,16 @@ export interface UsePatientDetailsReturn {
   payments: PaymentRow[];
   files: FileRow[];
   lastVisitDate: string | null;
-  
+
   // Filtered data
   filteredAppointments: AppointmentRow[];
   filteredPayments: PaymentRow[];
   filteredFiles: FileRow[];
-  
+
   // Search
   searchText: string;
   setSearchText: (text: string) => void;
-  
+
   // Actions
   refresh: () => Promise<void>;
   clearError: () => void;
@@ -204,7 +204,10 @@ export const LOCATION_LABELS: Record<LocationT, string> = {
   HOSPITAL: 'Hospital',
 };
 
-export const STATUS_CONFIG: Record<ApptStatusT, { label: string; variant: AppointmentRow['statusVariant'] }> = {
+export const STATUS_CONFIG: Record<
+  ApptStatusT,
+  { label: string; variant: AppointmentRow['statusVariant'] }
+> = {
   BOOKED: { label: 'Booked', variant: 'info' },
   CHECKED_IN: { label: 'Checked In', variant: 'warning' },
   COMPLETED: { label: 'Completed', variant: 'success' },

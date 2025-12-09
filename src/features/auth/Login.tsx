@@ -14,10 +14,7 @@ import styles from './Auth.module.css';
 
 // Zod validation schema
 const loginSchema = z.object({
-  email: z
-    .string()
-    .min(1, 'Email is required')
-    .email('Invalid email address'),
+  email: z.string().min(1, 'Email is required').email('Invalid email address'),
   password: z
     .string()
     .min(8, 'Password must be at least 8 characters')
@@ -46,15 +43,15 @@ export const Login: React.FC = () => {
 
   const onSubmit = async (data: LoginFormData) => {
     setIsLoading(true);
-    
+
     // Simulate API call
     await new Promise((resolve) => setTimeout(resolve, 1500));
-    
+
     console.log('Login data:', data);
-    
+
     // Set fake auth token
     localStorage.setItem('auth-token', 'fake-jwt-token');
-    
+
     setIsLoading(false);
     navigate('/dashboard');
   };
@@ -81,7 +78,9 @@ export const Login: React.FC = () => {
                 error={!!errors.email}
                 {...register('email')}
               />
-              {errors.email && <span className={styles.errorText}>{errors.email.message}</span>}
+              {errors.email ? (
+                <span className={styles.errorText}>{errors.email.message}</span>
+              ) : null}
             </div>
 
             <div className={styles.formField}>
@@ -93,16 +92,14 @@ export const Login: React.FC = () => {
                 error={!!errors.password}
                 {...register('password')}
               />
-              {errors.password && <span className={styles.errorText}>{errors.password.message}</span>}
+              {errors.password ? (
+                <span className={styles.errorText}>{errors.password.message}</span>
+              ) : null}
             </div>
 
             <div className={styles.authOptions}>
               <div className={styles.checkbox}>
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  {...register('rememberMe')}
-                />
+                <input type="checkbox" id="rememberMe" {...register('rememberMe')} />
                 <label htmlFor="rememberMe">Remember me</label>
               </div>
               <Link to="/forgot-password" className={styles.link}>
@@ -110,13 +107,7 @@ export const Login: React.FC = () => {
               </Link>
             </div>
 
-            <Button
-              type="submit"
-              variant="primary"
-              size="lg"
-              fullWidth
-              loading={isLoading}
-            >
+            <Button type="submit" variant="primary" size="lg" fullWidth loading={isLoading}>
               {isLoading ? 'Signing in...' : 'Sign In'}
             </Button>
 

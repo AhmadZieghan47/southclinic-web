@@ -4,26 +4,12 @@ import styles from './Spinner.module.css';
 
 /**
  * Spinner Component
- * 
+ *
  * Loading indicator with customizable size and color.
  */
 export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
-  (
-    {
-      size = 'md',
-      variant = 'primary',
-      label = 'Loading...',
-      className,
-      ...props
-    },
-    ref
-  ) => {
-    const classes = [
-      styles.spinner,
-      styles[size],
-      styles[variant],
-      className,
-    ]
+  ({ size = 'md', variant = 'primary', label = 'Loading...', className, ...props }, ref) => {
+    const classes = [styles.spinner, styles[size], styles[variant], className]
       .filter(Boolean)
       .join(' ');
 
@@ -32,7 +18,7 @@ export const Spinner = forwardRef<HTMLDivElement, SpinnerProps>(
         <span className={styles.srOnly}>{label}</span>
       </div>
     );
-  }
+  },
 );
 
 Spinner.displayName = 'Spinner';

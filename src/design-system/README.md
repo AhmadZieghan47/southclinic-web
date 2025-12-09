@@ -22,20 +22,49 @@ The design system is already integrated into the project. Import components from
 ```tsx
 import {
   // Atoms
-  Button, Input, Select, Badge, Spinner, Checkbox, Radio, Toggle, Avatar, Divider,
-  
+  Button,
+  Input,
+  Select,
+  Badge,
+  Spinner,
+  Checkbox,
+  Radio,
+  Toggle,
+  Avatar,
+  Divider,
+
   // Molecules
-  Card, FormField, StatCard, AlertBanner, Tabs, SearchInput, NavItem, Pagination,
-  ProgressBar, IconButton,
-  
+  Card,
+  FormField,
+  StatCard,
+  AlertBanner,
+  Tabs,
+  SearchInput,
+  NavItem,
+  Pagination,
+  ProgressBar,
+  IconButton,
+
   // Organisms
-  Table, Modal, Wizard, ProfileHeader, EmptyState, DescriptionList,
-  
+  Table,
+  Modal,
+  Wizard,
+  ProfileHeader,
+  EmptyState,
+  DescriptionList,
+
   // Layouts
-  MainLayout, DashboardLayout, WizardLayout,
-  
+  MainLayout,
+  DashboardLayout,
+  WizardLayout,
+
   // Tokens
-  colors, typography, spacing, shadows, radii, zIndex,
+  colors,
+  typography,
+  spacing,
+  shadows,
+  radii,
+  zIndex,
 } from '@/design-system';
 ```
 
@@ -97,42 +126,43 @@ Design tokens are the foundational values that define the visual language of the
 
 ### Colors
 
-| Category | Token | Value | Usage |
-|----------|-------|-------|-------|
-| **Primary** | `--color-primary` | `#0D9488` (Teal-600) | Primary actions, links |
-| | `--color-primary-hover` | `#0F766E` | Primary hover state |
-| | `--color-primary-light` | `#CCFBF1` | Primary backgrounds |
-| **Secondary** | `--color-secondary` | `#0EA5E9` (Sky-500) | Secondary actions |
-| | `--color-secondary-hover` | `#0284C7` | Secondary hover |
-| | `--color-secondary-light` | `#E0F2FE` | Secondary backgrounds |
-| **Destructive** | `--color-destructive` | `#E11D48` (Rose-600) | Destructive actions |
-| | `--color-destructive-hover` | `#BE123C` | Destructive hover |
-| | `--color-destructive-light` | `#FFE4E6` | Error backgrounds |
-| **Success** | `--color-success` | `#16A34A` | Success states |
-| **Warning** | `--color-warning` | `#CA8A04` | Warning states |
-| **Info** | `--color-info` | `#0EA5E9` | Info states |
-| **Text** | `--color-heading` | `#1F2937` | Headings |
-| | `--color-body` | `#4B5563` | Body text |
-| | `--color-muted` | `#6B7280` | Muted text |
-| **Surface** | `--color-background` | `#F3F4F6` | Page background |
-| | `--color-surface` | `#FFFFFF` | Card/component background |
-| **Border** | `--color-border` | `#D1D5DB` | Default borders |
-| | `--color-border-light` | `#E5E7EB` | Light borders |
+| Category        | Token                       | Value                | Usage                     |
+| --------------- | --------------------------- | -------------------- | ------------------------- |
+| **Primary**     | `--color-primary`           | `#0D9488` (Teal-600) | Primary actions, links    |
+|                 | `--color-primary-hover`     | `#0F766E`            | Primary hover state       |
+|                 | `--color-primary-light`     | `#CCFBF1`            | Primary backgrounds       |
+| **Secondary**   | `--color-secondary`         | `#0EA5E9` (Sky-500)  | Secondary actions         |
+|                 | `--color-secondary-hover`   | `#0284C7`            | Secondary hover           |
+|                 | `--color-secondary-light`   | `#E0F2FE`            | Secondary backgrounds     |
+| **Destructive** | `--color-destructive`       | `#E11D48` (Rose-600) | Destructive actions       |
+|                 | `--color-destructive-hover` | `#BE123C`            | Destructive hover         |
+|                 | `--color-destructive-light` | `#FFE4E6`            | Error backgrounds         |
+| **Success**     | `--color-success`           | `#16A34A`            | Success states            |
+| **Warning**     | `--color-warning`           | `#CA8A04`            | Warning states            |
+| **Info**        | `--color-info`              | `#0EA5E9`            | Info states               |
+| **Text**        | `--color-heading`           | `#1F2937`            | Headings                  |
+|                 | `--color-body`              | `#4B5563`            | Body text                 |
+|                 | `--color-muted`             | `#6B7280`            | Muted text                |
+| **Surface**     | `--color-background`        | `#F3F4F6`            | Page background           |
+|                 | `--color-surface`           | `#FFFFFF`            | Card/component background |
+| **Border**      | `--color-border`            | `#D1D5DB`            | Default borders           |
+|                 | `--color-border-light`      | `#E5E7EB`            | Light borders             |
 
 ### Typography
 
-| Token | Value | Pixels |
-|-------|-------|--------|
-| `--font-size-xs` | `0.75rem` | 12px |
-| `--font-size-sm` | `0.875rem` | 14px |
-| `--font-size-base` | `1rem` | 16px |
-| `--font-size-lg` | `1.125rem` | 18px |
-| `--font-size-xl` | `1.25rem` | 20px |
-| `--font-size-2xl` | `1.5rem` | 24px |
-| `--font-size-3xl` | `1.875rem` | 30px |
-| `--font-size-4xl` | `2.25rem` | 36px |
+| Token              | Value      | Pixels |
+| ------------------ | ---------- | ------ |
+| `--font-size-xs`   | `0.75rem`  | 12px   |
+| `--font-size-sm`   | `0.875rem` | 14px   |
+| `--font-size-base` | `1rem`     | 16px   |
+| `--font-size-lg`   | `1.125rem` | 18px   |
+| `--font-size-xl`   | `1.25rem`  | 20px   |
+| `--font-size-2xl`  | `1.5rem`   | 24px   |
+| `--font-size-3xl`  | `1.875rem` | 30px   |
+| `--font-size-4xl`  | `2.25rem`  | 36px   |
 
 **Font Weights:**
+
 - `--font-weight-normal`: 400
 - `--font-weight-medium`: 500
 - `--font-weight-semibold`: 600
@@ -144,50 +174,50 @@ Design tokens are the foundational values that define the visual language of the
 
 Based on a 4px grid system:
 
-| Token | Value | Pixels |
-|-------|-------|--------|
-| `--spacing-1` | `0.25rem` | 4px |
-| `--spacing-2` | `0.5rem` | 8px |
-| `--spacing-3` | `0.75rem` | 12px |
-| `--spacing-4` | `1rem` | 16px |
-| `--spacing-5` | `1.25rem` | 20px |
-| `--spacing-6` | `1.5rem` | 24px |
-| `--spacing-8` | `2rem` | 32px |
-| `--spacing-10` | `2.5rem` | 40px |
-| `--spacing-12` | `3rem` | 48px |
+| Token          | Value     | Pixels |
+| -------------- | --------- | ------ |
+| `--spacing-1`  | `0.25rem` | 4px    |
+| `--spacing-2`  | `0.5rem`  | 8px    |
+| `--spacing-3`  | `0.75rem` | 12px   |
+| `--spacing-4`  | `1rem`    | 16px   |
+| `--spacing-5`  | `1.25rem` | 20px   |
+| `--spacing-6`  | `1.5rem`  | 24px   |
+| `--spacing-8`  | `2rem`    | 32px   |
+| `--spacing-10` | `2.5rem`  | 40px   |
+| `--spacing-12` | `3rem`    | 48px   |
 
 ### Shadows
 
-| Token | Usage |
-|-------|-------|
+| Token         | Usage                                  |
+| ------------- | -------------------------------------- |
 | `--shadow-sm` | Subtle elevation (inputs, small cards) |
-| `--shadow` | Default elevation (cards) |
-| `--shadow-md` | Medium elevation (dropdowns) |
-| `--shadow-lg` | High elevation (modals) |
-| `--shadow-xl` | Highest elevation (overlays) |
+| `--shadow`    | Default elevation (cards)              |
+| `--shadow-md` | Medium elevation (dropdowns)           |
+| `--shadow-lg` | High elevation (modals)                |
+| `--shadow-xl` | Highest elevation (overlays)           |
 
 ### Border Radius
 
-| Token | Value | Pixels |
-|-------|-------|--------|
-| `--radius-sm` | `0.25rem` | 4px |
-| `--radius` | `0.5rem` | 8px (default) |
-| `--radius-lg` | `0.75rem` | 12px |
-| `--radius-xl` | `1rem` | 16px |
-| `--radius-full` | `9999px` | Circular |
+| Token           | Value     | Pixels        |
+| --------------- | --------- | ------------- |
+| `--radius-sm`   | `0.25rem` | 4px           |
+| `--radius`      | `0.5rem`  | 8px (default) |
+| `--radius-lg`   | `0.75rem` | 12px          |
+| `--radius-xl`   | `1rem`    | 16px          |
+| `--radius-full` | `9999px`  | Circular      |
 
 ### Z-Index
 
-| Token | Value | Usage |
-|-------|-------|-------|
-| `--z-dropdown` | 1000 | Dropdowns |
-| `--z-sticky` | 1020 | Sticky elements |
-| `--z-fixed` | 1030 | Fixed elements |
-| `--z-modal-backdrop` | 1040 | Modal backdrop |
-| `--z-modal` | 1050 | Modals |
-| `--z-popover` | 1060 | Popovers |
-| `--z-tooltip` | 1070 | Tooltips |
-| `--z-toast` | 1080 | Toast notifications |
+| Token                | Value | Usage               |
+| -------------------- | ----- | ------------------- |
+| `--z-dropdown`       | 1000  | Dropdowns           |
+| `--z-sticky`         | 1020  | Sticky elements     |
+| `--z-fixed`          | 1030  | Fixed elements      |
+| `--z-modal-backdrop` | 1040  | Modal backdrop      |
+| `--z-modal`          | 1050  | Modals              |
+| `--z-popover`        | 1060  | Popovers            |
+| `--z-tooltip`        | 1070  | Tooltips            |
+| `--z-toast`          | 1080  | Toast notifications |
 
 ---
 
@@ -225,14 +255,14 @@ import { Button } from '@/design-system';
 <Button fullWidth>Full Width</Button>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'primary' \| 'secondary' \| 'outline' \| 'ghost' \| 'destructive' \| 'outlinePrimary' \| 'outlineSecondary' \| 'outlineDanger' \| 'warning' \| 'danger'` | `'primary'` | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `fullWidth` | `boolean` | `false` | Full width button |
-| `loading` | `boolean` | `false` | Loading state with spinner |
-| `leftIcon` | `ReactNode` | - | Icon on the left |
-| `rightIcon` | `ReactNode` | - | Icon on the right |
+| Prop        | Type                                                                                                                                                      | Default     | Description                |
+| ----------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------- | -------------------------- |
+| `variant`   | `'primary' \| 'secondary' \| 'outline' \| 'ghost' \| 'destructive' \| 'outlinePrimary' \| 'outlineSecondary' \| 'outlineDanger' \| 'warning' \| 'danger'` | `'primary'` | Visual variant             |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                                                                                                                    | `'md'`      | Size variant               |
+| `fullWidth` | `boolean`                                                                                                                                                 | `false`     | Full width button          |
+| `loading`   | `boolean`                                                                                                                                                 | `false`     | Loading state with spinner |
+| `leftIcon`  | `ReactNode`                                                                                                                                               | -           | Icon on the left           |
+| `rightIcon` | `ReactNode`                                                                                                                                               | -           | Icon on the right          |
 
 ---
 
@@ -260,14 +290,14 @@ import { Mail, Eye } from 'lucide-react';
 <Input size="lg" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `error` | `boolean` | `false` | Error state |
-| `errorMessage` | `string` | - | Error message text |
-| `leftElement` | `ReactNode` | - | Left icon/element |
-| `rightElement` | `ReactNode` | - | Right icon/element |
-| `fullWidth` | `boolean` | `false` | Full width input |
+| Prop           | Type                   | Default | Description        |
+| -------------- | ---------------------- | ------- | ------------------ |
+| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`  | Size variant       |
+| `error`        | `boolean`              | `false` | Error state        |
+| `errorMessage` | `string`               | -       | Error message text |
+| `leftElement`  | `ReactNode`            | -       | Left icon/element  |
+| `rightElement` | `ReactNode`            | -       | Right icon/element |
+| `fullWidth`    | `boolean`              | `false` | Full width input   |
 
 ---
 
@@ -289,14 +319,14 @@ const options = [
 <Select options={options} error />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `options` | `SelectOption[]` | Required | Array of options |
-| `placeholder` | `string` | - | Placeholder text |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `error` | `boolean` | `false` | Error state |
-| `fullWidth` | `boolean` | `false` | Full width select |
-| `leftElement` | `ReactNode` | - | Left icon/element |
+| Prop          | Type                   | Default  | Description       |
+| ------------- | ---------------------- | -------- | ----------------- |
+| `options`     | `SelectOption[]`       | Required | Array of options  |
+| `placeholder` | `string`               | -        | Placeholder text  |
+| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`   | Size variant      |
+| `error`       | `boolean`              | `false`  | Error state       |
+| `fullWidth`   | `boolean`              | `false`  | Full width select |
+| `leftElement` | `ReactNode`            | -        | Left icon/element |
 
 ---
 
@@ -324,12 +354,12 @@ import { Badge } from '@/design-system';
 <Badge dot variant="success" /> {/* Dot indicator */}
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | `'default'` | Color variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `pill` | `boolean` | `false` | Rounded pill style |
-| `dot` | `boolean` | `false` | Dot indicator (no text) |
+| Prop      | Type                                                                                    | Default     | Description             |
+| --------- | --------------------------------------------------------------------------------------- | ----------- | ----------------------- |
+| `variant` | `'default' \| 'primary' \| 'secondary' \| 'success' \| 'warning' \| 'danger' \| 'info'` | `'default'` | Color variant           |
+| `size`    | `'sm' \| 'md' \| 'lg'`                                                                  | `'md'`      | Size variant            |
+| `pill`    | `boolean`                                                                               | `false`     | Rounded pill style      |
+| `dot`     | `boolean`                                                                               | `false`     | Dot indicator (no text) |
 
 ---
 
@@ -347,11 +377,11 @@ import { Spinner } from '@/design-system';
 <Spinner variant="white" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `variant` | `'default' \| 'primary' \| 'white' \| 'current'` | `'default'` | Color variant |
-| `label` | `string` | `'Loading'` | Accessibility label |
+| Prop      | Type                                             | Default     | Description         |
+| --------- | ------------------------------------------------ | ----------- | ------------------- |
+| `size`    | `'sm' \| 'md' \| 'lg'`                           | `'md'`      | Size variant        |
+| `variant` | `'default' \| 'primary' \| 'white' \| 'current'` | `'default'` | Color variant       |
+| `label`   | `string`                                         | `'Loading'` | Accessibility label |
 
 ---
 
@@ -369,12 +399,12 @@ import { Checkbox } from '@/design-system';
 <Checkbox size="sm" label="Small" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | Checkbox label |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `error` | `boolean` | `false` | Error state |
-| `indeterminate` | `boolean` | `false` | Indeterminate state |
+| Prop            | Type                   | Default | Description         |
+| --------------- | ---------------------- | ------- | ------------------- |
+| `label`         | `string`               | -       | Checkbox label      |
+| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`  | Size variant        |
+| `error`         | `boolean`              | `false` | Error state         |
+| `indeterminate` | `boolean`              | `false` | Indeterminate state |
 
 ---
 
@@ -402,15 +432,15 @@ const options = [
 <RadioGroup direction="horizontal" ... />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `name` | `string` | Required | Radio group name |
-| `options` | `RadioOption[]` | Required | Array of options |
-| `value` | `string` | - | Selected value |
-| `onChange` | `(value: string) => void` | - | Change handler |
+| Prop        | Type                         | Default      | Description      |
+| ----------- | ---------------------------- | ------------ | ---------------- |
+| `name`      | `string`                     | Required     | Radio group name |
+| `options`   | `RadioOption[]`              | Required     | Array of options |
+| `value`     | `string`                     | -            | Selected value   |
+| `onChange`  | `(value: string) => void`    | -            | Change handler   |
 | `direction` | `'horizontal' \| 'vertical'` | `'vertical'` | Layout direction |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `error` | `boolean` | `false` | Error state |
+| `size`      | `'sm' \| 'md' \| 'lg'`       | `'md'`       | Size variant     |
+| `error`     | `boolean`                    | `false`      | Error state      |
 
 ---
 
@@ -426,11 +456,11 @@ import { Toggle } from '@/design-system';
 <Toggle size="sm" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | Toggle label |
-| `labelPosition` | `'left' \| 'right'` | `'right'` | Label position |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
+| Prop            | Type                   | Default   | Description    |
+| --------------- | ---------------------- | --------- | -------------- |
+| `label`         | `string`               | -         | Toggle label   |
+| `labelPosition` | `'left' \| 'right'`    | `'right'` | Label position |
+| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`    | Size variant   |
 
 ---
 
@@ -448,14 +478,14 @@ import { Avatar } from '@/design-system';
 <Avatar size="lg" variant="rounded" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `src` | `string` | - | Image URL |
-| `alt` | `string` | - | Alt text |
-| `initials` | `string` | - | Fallback initials |
-| `size` | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'` | Size variant |
-| `variant` | `'circle' \| 'rounded'` | `'circle'` | Shape variant |
-| `color` | `'gray' \| 'primary' \| 'secondary'` | `'gray'` | Background color |
+| Prop       | Type                                   | Default    | Description       |
+| ---------- | -------------------------------------- | ---------- | ----------------- |
+| `src`      | `string`                               | -          | Image URL         |
+| `alt`      | `string`                               | -          | Alt text          |
+| `initials` | `string`                               | -          | Fallback initials |
+| `size`     | `'xs' \| 'sm' \| 'md' \| 'lg' \| 'xl'` | `'md'`     | Size variant      |
+| `variant`  | `'circle' \| 'rounded'`                | `'circle'` | Shape variant     |
+| `color`    | `'gray' \| 'primary' \| 'secondary'`   | `'gray'`   | Background color  |
 
 ---
 
@@ -472,13 +502,13 @@ import { Divider } from '@/design-system';
 <Divider variant="dashed" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | Orientation |
-| `variant` | `'solid' \| 'dashed'` | `'solid'` | Line style |
-| `label` | `string` | - | Center label |
-| `labelPosition` | `'left' \| 'center' \| 'right'` | `'center'` | Label position |
-| `spacing` | `'sm' \| 'md' \| 'lg'` | `'md'` | Vertical spacing |
+| Prop            | Type                            | Default        | Description      |
+| --------------- | ------------------------------- | -------------- | ---------------- |
+| `orientation`   | `'horizontal' \| 'vertical'`    | `'horizontal'` | Orientation      |
+| `variant`       | `'solid' \| 'dashed'`           | `'solid'`      | Line style       |
+| `label`         | `string`                        | -              | Center label     |
+| `labelPosition` | `'left' \| 'center' \| 'right'` | `'center'`     | Label position   |
+| `spacing`       | `'sm' \| 'md' \| 'lg'`          | `'md'`         | Vertical spacing |
 
 ---
 
@@ -517,13 +547,13 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/design-system';
 </Card>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | - | Card title |
-| `description` | `string` | - | Card description |
-| `headerActions` | `ReactNode` | - | Header action buttons |
-| `footer` | `ReactNode` | - | Footer content |
-| `noPadding` | `boolean` | `false` | Remove padding |
+| Prop            | Type        | Default | Description           |
+| --------------- | ----------- | ------- | --------------------- |
+| `title`         | `string`    | -       | Card title            |
+| `description`   | `string`    | -       | Card description      |
+| `headerActions` | `ReactNode` | -       | Header action buttons |
+| `footer`        | `ReactNode` | -       | Footer content        |
+| `noPadding`     | `boolean`   | `false` | Remove padding        |
 
 ---
 
@@ -543,13 +573,13 @@ import { FormField, Input, Select } from '@/design-system';
 </FormField>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | - | Field label |
-| `required` | `boolean` | `false` | Show required indicator |
-| `error` | `string` | - | Error message |
-| `helperText` | `string` | - | Helper text |
-| `htmlFor` | `string` | - | Associated input ID |
+| Prop         | Type      | Default | Description             |
+| ------------ | --------- | ------- | ----------------------- |
+| `label`      | `string`  | -       | Field label             |
+| `required`   | `boolean` | `false` | Show required indicator |
+| `error`      | `string`  | -       | Error message           |
+| `helperText` | `string`  | -       | Helper text             |
+| `htmlFor`    | `string`  | -       | Associated input ID     |
 
 ---
 
@@ -579,15 +609,15 @@ import { Users, TrendingUp } from 'lucide-react';
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | Required | Stat title |
-| `value` | `string \| number` | Required | Stat value |
-| `change` | `string` | - | Change indicator |
-| `isPositive` | `boolean` | `true` | Positive/negative change |
-| `icon` | `ReactNode` | - | Stat icon |
-| `variant` | `'default' \| 'primary' \| 'secondary'` | `'default'` | Color variant |
-| `description` | `string` | - | Additional description |
+| Prop          | Type                                    | Default     | Description              |
+| ------------- | --------------------------------------- | ----------- | ------------------------ |
+| `title`       | `string`                                | Required    | Stat title               |
+| `value`       | `string \| number`                      | Required    | Stat value               |
+| `change`      | `string`                                | -           | Change indicator         |
+| `isPositive`  | `boolean`                               | `true`      | Positive/negative change |
+| `icon`        | `ReactNode`                             | -           | Stat icon                |
+| `variant`     | `'default' \| 'primary' \| 'secondary'` | `'default'` | Color variant            |
+| `description` | `string`                                | -           | Additional description   |
 
 ---
 
@@ -615,14 +645,14 @@ import { AlertBanner } from '@/design-system';
 </AlertBanner>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Alert variant |
-| `title` | `string` | - | Alert title |
-| `dismissible` | `boolean` | `false` | Show dismiss button |
-| `onDismiss` | `() => void` | - | Dismiss handler |
-| `icon` | `ReactNode` | - | Custom icon |
-| `action` | `ReactNode` | - | Action button |
+| Prop          | Type                                          | Default  | Description         |
+| ------------- | --------------------------------------------- | -------- | ------------------- |
+| `variant`     | `'info' \| 'success' \| 'warning' \| 'error'` | `'info'` | Alert variant       |
+| `title`       | `string`                                      | -        | Alert title         |
+| `dismissible` | `boolean`                                     | `false`  | Show dismiss button |
+| `onDismiss`   | `() => void`                                  | -        | Dismiss handler     |
+| `icon`        | `ReactNode`                                   | -        | Custom icon         |
+| `action`      | `ReactNode`                                   | -        | Action button       |
 
 ---
 
@@ -651,14 +681,14 @@ const tabs = [
 <Tabs variant="boxed" ... />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `items` | `TabItem[]` | Required | Tab items |
-| `activeId` | `string` | Required | Active tab ID |
-| `onChange` | `(id: string) => void` | Required | Change handler |
-| `variant` | `'underline' \| 'pills' \| 'boxed'` | `'underline'` | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `fullWidth` | `boolean` | `false` | Full width tabs |
+| Prop        | Type                                | Default       | Description     |
+| ----------- | ----------------------------------- | ------------- | --------------- |
+| `items`     | `TabItem[]`                         | Required      | Tab items       |
+| `activeId`  | `string`                            | Required      | Active tab ID   |
+| `onChange`  | `(id: string) => void`              | Required      | Change handler  |
+| `variant`   | `'underline' \| 'pills' \| 'boxed'` | `'underline'` | Visual variant  |
+| `size`      | `'sm' \| 'md' \| 'lg'`              | `'md'`        | Size variant    |
+| `fullWidth` | `boolean`                           | `false`       | Full width tabs |
 
 ---
 
@@ -680,13 +710,13 @@ import { SearchInput } from '@/design-system';
 <SearchInput size="sm" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `clearable` | `boolean` | `true` | Show clear button |
-| `onClear` | `() => void` | - | Clear handler |
-| `loading` | `boolean` | `false` | Loading state |
-| `fullWidth` | `boolean` | `false` | Full width |
+| Prop        | Type                   | Default | Description       |
+| ----------- | ---------------------- | ------- | ----------------- |
+| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`  | Size variant      |
+| `clearable` | `boolean`              | `true`  | Show clear button |
+| `onClear`   | `() => void`           | -       | Clear handler     |
+| `loading`   | `boolean`              | `false` | Loading state     |
+| `fullWidth` | `boolean`              | `false` | Full width        |
 
 ---
 
@@ -711,16 +741,16 @@ import { Home, Users } from 'lucide-react';
 <NavItem icon={<Home />} label="Dashboard" collapsed />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `label` | `string` | Required | Item label |
-| `icon` | `ReactNode` | - | Item icon |
-| `href` | `string` | - | Link URL |
-| `active` | `boolean` | `false` | Active state |
-| `badge` | `ReactNode` | - | Badge content |
-| `collapsed` | `boolean` | `false` | Collapsed mode |
-| `disabled` | `boolean` | `false` | Disabled state |
-| `onClick` | `() => void` | - | Click handler |
+| Prop        | Type         | Default  | Description    |
+| ----------- | ------------ | -------- | -------------- |
+| `label`     | `string`     | Required | Item label     |
+| `icon`      | `ReactNode`  | -        | Item icon      |
+| `href`      | `string`     | -        | Link URL       |
+| `active`    | `boolean`    | `false`  | Active state   |
+| `badge`     | `ReactNode`  | -        | Badge content  |
+| `collapsed` | `boolean`    | `false`  | Collapsed mode |
+| `disabled`  | `boolean`    | `false`  | Disabled state |
+| `onClick`   | `() => void` | -        | Click handler  |
 
 ---
 
@@ -745,15 +775,15 @@ import { Pagination } from '@/design-system';
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `currentPage` | `number` | Required | Current page (1-indexed) |
-| `totalPages` | `number` | Required | Total number of pages |
-| `onChange` | `(page: number) => void` | Required | Page change handler |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `showFirstLast` | `boolean` | `true` | Show first/last buttons |
-| `siblingCount` | `number` | `1` | Pages to show on each side |
-| `disabled` | `boolean` | `false` | Disabled state |
+| Prop            | Type                     | Default  | Description                |
+| --------------- | ------------------------ | -------- | -------------------------- |
+| `currentPage`   | `number`                 | Required | Current page (1-indexed)   |
+| `totalPages`    | `number`                 | Required | Total number of pages      |
+| `onChange`      | `(page: number) => void` | Required | Page change handler        |
+| `size`          | `'sm' \| 'md' \| 'lg'`   | `'md'`   | Size variant               |
+| `showFirstLast` | `boolean`                | `true`   | Show first/last buttons    |
+| `siblingCount`  | `number`                 | `1`      | Pages to show on each side |
+| `disabled`      | `boolean`                | `false`  | Disabled state             |
 
 ---
 
@@ -777,16 +807,16 @@ import { ProgressBar, StepProgress } from '@/design-system';
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `value` | `number` | Required | Current value |
-| `max` | `number` | `100` | Maximum value |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `variant` | `'default' \| 'primary' \| 'success' \| 'warning' \| 'danger'` | `'primary'` | Color variant |
-| `showLabel` | `boolean` | `false` | Show percentage |
-| `label` | `string` | - | Custom label |
-| `striped` | `boolean` | `false` | Striped style |
-| `animated` | `boolean` | `false` | Animated stripes |
+| Prop        | Type                                                           | Default     | Description      |
+| ----------- | -------------------------------------------------------------- | ----------- | ---------------- |
+| `value`     | `number`                                                       | Required    | Current value    |
+| `max`       | `number`                                                       | `100`       | Maximum value    |
+| `size`      | `'sm' \| 'md' \| 'lg'`                                         | `'md'`      | Size variant     |
+| `variant`   | `'default' \| 'primary' \| 'success' \| 'warning' \| 'danger'` | `'primary'` | Color variant    |
+| `showLabel` | `boolean`                                                      | `false`     | Show percentage  |
+| `label`     | `string`                                                       | -           | Custom label     |
+| `striped`   | `boolean`                                                      | `false`     | Striped style    |
+| `animated`  | `boolean`                                                      | `false`     | Animated stripes |
 
 ---
 
@@ -804,14 +834,14 @@ import { Edit, Trash, MoreHorizontal } from 'lucide-react';
 <IconButton icon={<Plus size={16} />} rounded aria-label="Add" />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `icon` | `ReactNode` | Required | Icon element |
-| `aria-label` | `string` | Required | Accessibility label |
-| `variant` | `'default' \| 'primary' \| 'secondary' \| 'ghost' \| 'danger'` | `'default'` | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `rounded` | `boolean` | `false` | Circular shape |
-| `loading` | `boolean` | `false` | Loading state |
+| Prop         | Type                                                           | Default     | Description         |
+| ------------ | -------------------------------------------------------------- | ----------- | ------------------- |
+| `icon`       | `ReactNode`                                                    | Required    | Icon element        |
+| `aria-label` | `string`                                                       | Required    | Accessibility label |
+| `variant`    | `'default' \| 'primary' \| 'secondary' \| 'ghost' \| 'danger'` | `'default'` | Visual variant      |
+| `size`       | `'sm' \| 'md' \| 'lg'`                                         | `'md'`      | Size variant        |
+| `rounded`    | `boolean`                                                      | `false`     | Circular shape      |
+| `loading`    | `boolean`                                                      | `false`     | Loading state       |
 
 ---
 
@@ -823,8 +853,13 @@ Data table with sorting support.
 
 ```tsx
 import {
-  Table, TableWrapper, TableHeader, TableBody,
-  TableRow, TableHead, TableCell
+  Table,
+  TableWrapper,
+  TableHeader,
+  TableBody,
+  TableRow,
+  TableHead,
+  TableCell,
 } from '@/design-system';
 
 <TableWrapper>
@@ -850,23 +885,23 @@ import {
       ))}
     </TableBody>
   </Table>
-</TableWrapper>
+</TableWrapper>;
 ```
 
 **TableHead Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `sortable` | `boolean` | `false` | Enable sorting |
-| `sortDirection` | `'asc' \| 'desc' \| null` | `null` | Sort direction |
-| `onSort` | `() => void` | - | Sort click handler |
+| Prop            | Type                      | Default | Description        |
+| --------------- | ------------------------- | ------- | ------------------ |
+| `sortable`      | `boolean`                 | `false` | Enable sorting     |
+| `sortDirection` | `'asc' \| 'desc' \| null` | `null`  | Sort direction     |
+| `onSort`        | `() => void`              | -       | Sort click handler |
 
 **TableRow Props:**
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `onClick` | `() => void` | - | Row click handler |
-| `selected` | `boolean` | `false` | Selected state |
+| Prop       | Type         | Default | Description       |
+| ---------- | ------------ | ------- | ----------------- |
+| `onClick`  | `() => void` | -       | Row click handler |
+| `selected` | `boolean`    | `false` | Selected state    |
 
 ---
 
@@ -903,17 +938,17 @@ import { Modal, Button } from '@/design-system';
 <Modal size="full" ... />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `isOpen` | `boolean` | Required | Open state |
-| `onClose` | `() => void` | Required | Close handler |
-| `title` | `ReactNode` | - | Modal title |
-| `description` | `string` | - | Modal description |
-| `footer` | `ReactNode` | - | Footer content |
-| `size` | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'md'` | Size variant |
-| `closeOnOverlay` | `boolean` | `true` | Close on overlay click |
-| `closeOnEscape` | `boolean` | `true` | Close on Escape key |
-| `showCloseButton` | `boolean` | `true` | Show close button |
+| Prop              | Type                                     | Default  | Description            |
+| ----------------- | ---------------------------------------- | -------- | ---------------------- |
+| `isOpen`          | `boolean`                                | Required | Open state             |
+| `onClose`         | `() => void`                             | Required | Close handler          |
+| `title`           | `ReactNode`                              | -        | Modal title            |
+| `description`     | `string`                                 | -        | Modal description      |
+| `footer`          | `ReactNode`                              | -        | Footer content         |
+| `size`            | `'sm' \| 'md' \| 'lg' \| 'xl' \| 'full'` | `'md'`   | Size variant           |
+| `closeOnOverlay`  | `boolean`                                | `true`   | Close on overlay click |
+| `closeOnEscape`   | `boolean`                                | `true`   | Close on Escape key    |
+| `showCloseButton` | `boolean`                                | `true`   | Show close button      |
 
 ---
 
@@ -955,18 +990,18 @@ const steps = [
     previous: 'Back',
     complete: 'Submit',
   }}
-/>
+/>;
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `steps` | `WizardStep[]` | Required | Step configuration |
-| `currentStep` | `number` | Required | Current step (0-indexed) |
-| `onStepChange` | `(step: number) => void` | Required | Step change handler |
-| `onComplete` | `() => void` | - | Complete handler |
-| `showProgress` | `boolean` | `true` | Show progress indicator |
-| `allowStepClick` | `boolean` | `false` | Allow clicking steps |
-| `labels` | `object` | - | Custom button labels |
+| Prop             | Type                     | Default  | Description              |
+| ---------------- | ------------------------ | -------- | ------------------------ |
+| `steps`          | `WizardStep[]`           | Required | Step configuration       |
+| `currentStep`    | `number`                 | Required | Current step (0-indexed) |
+| `onStepChange`   | `(step: number) => void` | Required | Step change handler      |
+| `onComplete`     | `() => void`             | -        | Complete handler         |
+| `showProgress`   | `boolean`                | `true`   | Show progress indicator  |
+| `allowStepClick` | `boolean`                | `false`  | Allow clicking steps     |
+| `labels`         | `object`                 | -        | Custom button labels     |
 
 ---
 
@@ -1001,21 +1036,21 @@ import { ProfileHeader, Badge, Button } from '@/design-system';
     </>
   }
   warning="Outstanding balance: $150"
-/>
+/>;
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `avatarSrc` | `string` | - | Avatar image URL |
-| `initials` | `string` | - | Fallback initials |
-| `name` | `string` | Required | Display name |
-| `subtitle` | `string` | - | Subtitle/ID |
-| `badges` | `ReactNode` | - | Status badges |
-| `contactInfo` | `ReactNode` | - | Contact info items |
-| `actions` | `ReactNode` | - | Action buttons |
-| `warning` | `ReactNode` | - | Warning banner |
-| `stats` | `ReactNode` | - | Stats display |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
+| Prop          | Type                   | Default  | Description        |
+| ------------- | ---------------------- | -------- | ------------------ |
+| `avatarSrc`   | `string`               | -        | Avatar image URL   |
+| `initials`    | `string`               | -        | Fallback initials  |
+| `name`        | `string`               | Required | Display name       |
+| `subtitle`    | `string`               | -        | Subtitle/ID        |
+| `badges`      | `ReactNode`            | -        | Status badges      |
+| `contactInfo` | `ReactNode`            | -        | Contact info items |
+| `actions`     | `ReactNode`            | -        | Action buttons     |
+| `warning`     | `ReactNode`            | -        | Warning banner     |
+| `stats`       | `ReactNode`            | -        | Stats display      |
+| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`   | Size variant       |
 
 ---
 
@@ -1049,14 +1084,14 @@ import { EmptyState, Button } from '@/design-system';
 />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `variant` | `'default' \| 'error' \| 'search' \| 'empty'` | `'default'` | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `icon` | `ReactNode` | - | Custom icon |
-| `title` | `string` | Required | Title text |
-| `description` | `string` | - | Description text |
-| `actions` | `ReactNode` | - | Action buttons |
+| Prop          | Type                                          | Default     | Description      |
+| ------------- | --------------------------------------------- | ----------- | ---------------- |
+| `variant`     | `'default' \| 'error' \| 'search' \| 'empty'` | `'default'` | Visual variant   |
+| `size`        | `'sm' \| 'md' \| 'lg'`                        | `'md'`      | Size variant     |
+| `icon`        | `ReactNode`                                   | -           | Custom icon      |
+| `title`       | `string`                                      | Required    | Title text       |
+| `description` | `string`                                      | -           | Description text |
+| `actions`     | `ReactNode`                                   | -           | Action buttons   |
 
 ---
 
@@ -1088,14 +1123,14 @@ const items = [
 <DescriptionList items={items} striped />
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `items` | `DescriptionItem[]` | Required | List items |
-| `layout` | `'horizontal' \| 'vertical' \| 'grid'` | `'horizontal'` | Layout variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | Size variant |
-| `columns` | `1 \| 2 \| 3 \| 4` | `2` | Grid columns |
-| `dividers` | `boolean` | `false` | Show dividers |
-| `striped` | `boolean` | `false` | Striped rows |
+| Prop       | Type                                   | Default        | Description    |
+| ---------- | -------------------------------------- | -------------- | -------------- |
+| `items`    | `DescriptionItem[]`                    | Required       | List items     |
+| `layout`   | `'horizontal' \| 'vertical' \| 'grid'` | `'horizontal'` | Layout variant |
+| `size`     | `'sm' \| 'md' \| 'lg'`                 | `'md'`         | Size variant   |
+| `columns`  | `1 \| 2 \| 3 \| 4`                     | `2`            | Grid columns   |
+| `dividers` | `boolean`                              | `false`        | Show dividers  |
+| `striped`  | `boolean`                              | `false`        | Striped rows   |
 
 ---
 
@@ -1128,16 +1163,16 @@ const menuItems = [
   userName="Dr. Smith"
   notificationCount={3}
   onLogout={handleLogout}
-/>
+/>;
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `logoText` | `string` | `'South Clinic'` | Logo text |
-| `menuItems` | `MenuItem[]` | Required | Sidebar menu items |
-| `userName` | `string` | - | User display name |
-| `notificationCount` | `number` | - | Notification badge count |
-| `onLogout` | `() => void` | - | Logout handler |
+| Prop                | Type         | Default          | Description              |
+| ------------------- | ------------ | ---------------- | ------------------------ |
+| `logoText`          | `string`     | `'South Clinic'` | Logo text                |
+| `menuItems`         | `MenuItem[]` | Required         | Sidebar menu items       |
+| `userName`          | `string`     | -                | User display name        |
+| `notificationCount` | `number`     | -                | Notification badge count |
+| `onLogout`          | `() => void` | -                | Logout handler           |
 
 ---
 
@@ -1174,14 +1209,14 @@ import { DashboardLayout, StatCard, Button } from '@/design-system';
 </DashboardLayout>
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | Required | Page title |
-| `subtitle` | `string` | - | Page subtitle |
-| `breadcrumbs` | `ReactNode` | - | Breadcrumb navigation |
-| `actions` | `ReactNode` | - | Header action buttons |
-| `stats` | `ReactNode` | - | Stats cards (4-column grid) |
-| `children` | `ReactNode` | Required | Main content |
+| Prop          | Type        | Default  | Description                 |
+| ------------- | ----------- | -------- | --------------------------- |
+| `title`       | `string`    | Required | Page title                  |
+| `subtitle`    | `string`    | -        | Page subtitle               |
+| `breadcrumbs` | `ReactNode` | -        | Breadcrumb navigation       |
+| `actions`     | `ReactNode` | -        | Header action buttons       |
+| `stats`       | `ReactNode` | -        | Stats cards (4-column grid) |
+| `children`    | `ReactNode` | Required | Main content                |
 
 ---
 
@@ -1203,23 +1238,25 @@ const steps = [
   title="New Patient Registration"
   steps={steps}
   currentStep={1}
-  backLink={<Button variant="ghost" leftIcon={<ArrowLeft />}>Back to Patients</Button>}
+  backLink={
+    <Button variant="ghost" leftIcon={<ArrowLeft />}>
+      Back to Patients
+    </Button>
+  }
   error={error}
 >
-  <Card>
-    {/* Step content */}
-  </Card>
-</WizardLayout>
+  <Card>{/* Step content */}</Card>
+</WizardLayout>;
 ```
 
-| Prop | Type | Default | Description |
-|------|------|---------|-------------|
-| `title` | `string` | Required | Page title |
-| `steps` | `WizardLayoutStep[]` | Required | Step configuration |
-| `currentStep` | `number` | Required | Current step (0-indexed) |
-| `backLink` | `ReactNode` | - | Back navigation |
-| `error` | `string` | - | Error message |
-| `children` | `ReactNode` | Required | Step content |
+| Prop          | Type                 | Default  | Description              |
+| ------------- | -------------------- | -------- | ------------------------ |
+| `title`       | `string`             | Required | Page title               |
+| `steps`       | `WizardLayoutStep[]` | Required | Step configuration       |
+| `currentStep` | `number`             | Required | Current step (0-indexed) |
+| `backLink`    | `ReactNode`          | -        | Back navigation          |
+| `error`       | `string`             | -        | Error message            |
+| `children`    | `ReactNode`          | Required | Step content             |
 
 ---
 
@@ -1334,6 +1371,7 @@ import { Plus, Edit, Trash, Search, ChevronDown } from 'lucide-react';
 ```
 
 **Recommended icon sizes:**
+
 - Small components (`size="sm"`): 14-16px
 - Medium components (`size="md"`): 16-18px
 - Large components (`size="lg"`): 18-20px

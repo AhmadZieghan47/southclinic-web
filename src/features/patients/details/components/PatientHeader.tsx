@@ -53,11 +53,7 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
     <div className={styles.headerWrapper}>
       {/* Inactive Warning Banner */}
       {!patient.isActive && (
-        <AlertBanner
-          variant="warning"
-          title="Inactive Patient"
-          className={styles.inactiveWarning}
-        >
+        <AlertBanner variant="warning" title="Inactive Patient" className={styles.inactiveWarning}>
           This patient is currently inactive. Begin a new treatment to reactivate.
         </AlertBanner>
       )}
@@ -76,16 +72,16 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
 
               {/* Badges */}
               <div className={styles.badges}>
-                {patient.hasInsurance && (
+                {patient.hasInsurance ? (
                   <Badge variant="success" size="sm">
                     Insurance
                   </Badge>
-                )}
-                {patient.extraCare && (
+                ) : null}
+                {patient.extraCare ? (
                   <Badge variant="info" size="sm">
                     Extra Care
                   </Badge>
-                )}
+                ) : null}
                 {!patient.isActive && (
                   <Badge variant="default" size="sm">
                     Inactive
@@ -103,13 +99,16 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
               <div className={styles.quickInfo}>
                 <span>Age: {age} years</span>
                 <span className={styles.separator}>•</span>
-                <span>Gender: {patient.gender === 'M' ? 'Male' : patient.gender === 'F' ? 'Female' : 'Other'}</span>
-                {patient.nationalId && (
+                <span>
+                  Gender:{' '}
+                  {patient.gender === 'M' ? 'Male' : patient.gender === 'F' ? 'Female' : 'Other'}
+                </span>
+                {patient.nationalId ? (
                   <>
                     <span className={styles.separator}>•</span>
                     <span>ID: {patient.nationalId}</span>
                   </>
-                )}
+                ) : null}
               </div>
             </div>
           </div>
@@ -143,20 +142,12 @@ export const PatientHeader: React.FC<PatientHeaderProps> = ({
               </Button>
 
               {patient.isActive ? (
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={onBookAppointment}
-                >
+                <Button variant="primary" size="md" onClick={onBookAppointment}>
                   <Calendar size={16} />
                   Book Appointment
                 </Button>
               ) : (
-                <Button
-                  variant="primary"
-                  size="md"
-                  onClick={onBeginTreatment}
-                >
+                <Button variant="primary" size="md" onClick={onBeginTreatment}>
                   <Stethoscope size={16} />
                   Begin Treatment
                 </Button>

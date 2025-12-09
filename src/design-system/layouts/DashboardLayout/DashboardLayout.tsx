@@ -3,7 +3,7 @@ import styles from './DashboardLayout.module.css';
 
 /**
  * DashboardLayout Component
- * 
+ *
  * Layout for dashboard pages with header, stats, and content sections.
  */
 export const DashboardLayout = ({
@@ -19,17 +19,17 @@ export const DashboardLayout = ({
 
   return (
     <div className={classes}>
-      {breadcrumbs && <div className={styles.breadcrumbs}>{breadcrumbs}</div>}
+      {breadcrumbs ? <div className={styles.breadcrumbs}>{breadcrumbs}</div> : null}
 
       <div className={styles.header}>
         <div className={styles.headerContent}>
           <h1 className={styles.title}>{title}</h1>
-          {subtitle && <p className={styles.subtitle}>{subtitle}</p>}
+          {subtitle ? <p className={styles.subtitle}>{subtitle}</p> : null}
         </div>
-        {actions && <div className={styles.actions}>{actions}</div>}
+        {actions ? <div className={styles.actions}>{actions}</div> : null}
       </div>
 
-      {stats && <div className={styles.stats}>{stats}</div>}
+      {stats ? <div className={styles.stats}>{stats}</div> : null}
 
       <div className={styles.content}>{children}</div>
     </div>

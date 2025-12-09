@@ -35,13 +35,9 @@ const DEFAULT_FILTERS: PatientsFilters = {
 // ============================================================================
 
 export function usePatientsTableV2(
-  options: UsePatientsTableV2Options = {}
+  options: UsePatientsTableV2Options = {},
 ): UsePatientsTableV2Return {
-  const {
-    initialPage = 1,
-    initialPageSize = 10,
-    initialFilters = {},
-  } = options;
+  const { initialPage = 1, initialPageSize = 10, initialFilters = {} } = options;
 
   // ---------------------------------------------------------------------------
   // STATE
@@ -49,7 +45,7 @@ export function usePatientsTableV2(
 
   const [patients, setPatients] = useState<Patient[]>([]);
   const [stats, setStats] = useState<PatientStats | null>(null);
-  
+
   const [pagination, setPagination] = useState<PaginationState>({
     page: initialPage,
     pageSize: initialPageSize,
@@ -82,7 +78,7 @@ export function usePatientsTableV2(
       });
 
       setPatients(response.data);
-      setPagination(prev => ({ ...prev, total: response.total }));
+      setPagination((prev) => ({ ...prev, total: response.total }));
     } catch (err) {
       const error = err instanceof Error ? err : new Error('Failed to fetch patients');
       setError(error);
@@ -90,7 +86,13 @@ export function usePatientsTableV2(
     } finally {
       setLoading(false);
     }
-  }, [pagination.page, pagination.pageSize, filters.search, filters.isActive, filters.hasInsurance]);
+  }, [
+    pagination.page,
+    pagination.pageSize,
+    filters.search,
+    filters.isActive,
+    filters.hasInsurance,
+  ]);
 
   // ---------------------------------------------------------------------------
   // FETCH STATS
@@ -135,7 +137,7 @@ export function usePatientsTableV2(
   // Reset to page 1 when filters change (except page changes)
   useEffect(() => {
     if (pagination.page !== 1) {
-      setPagination(prev => ({ ...prev, page: 1 }));
+      setPagination((prev) => ({ ...prev, page: 1 }));
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filters.search, filters.isActive, filters.hasInsurance, filters.gender]);
@@ -146,10 +148,10 @@ export function usePatientsTableV2(
 
   const sortedPatients = useMemo(() => {
     const sorted = [...patients];
-    
+
     sorted.sort((a, b) => {
       let comparison = 0;
-      
+
       switch (filters.sortBy) {
         case 'fullName':
           comparison = a.fullName.localeCompare(b.fullName);
@@ -166,10 +168,10 @@ export function usePatientsTableV2(
         default:
           comparison = 0;
       }
-      
+
       return filters.sortOrder === 'desc' ? -comparison : comparison;
     });
-    
+
     return sorted;
   }, [patients, filters.sortBy, filters.sortOrder]);
 
@@ -178,25 +180,28 @@ export function usePatientsTableV2(
   // ---------------------------------------------------------------------------
 
   const handlePageChange = useCallback((page: number) => {
-    setPagination(prev => ({ ...prev, page }));
+    setPagination((prev) => ({ ...prev, page }));
   }, []);
 
   const handlePageSizeChange = useCallback((pageSize: number) => {
-    setPagination(prev => ({ ...prev, pageSize, page: 1 }));
+    setPagination((prev) => ({ ...prev, pageSize, page: 1 }));
   }, []);
 
-  const handleDeletePatient = useCallback(async (patientId: string): Promise<boolean> => {
-    try {
-      await deletePatient(patientId);
-      // Refresh both patients and stats after deletion
-      await Promise.all([fetchPatients(), fetchStats()]);
-      return true;
-    } catch (err) {
-      console.error('Error deleting patient:', err);
-      setError(err instanceof Error ? err : new Error('Failed to delete patient'));
-      return false;
-    }
-  }, [fetchPatients, fetchStats]);
+  const handleDeletePatient = useCallback(
+    async (patientId: string): Promise<boolean> => {
+      try {
+        await deletePatient(patientId);
+        // Refresh both patients and stats after deletion
+        await Promise.all([fetchPatients(), fetchStats()]);
+        return true;
+      } catch (err) {
+        console.error('Error deleting patient:', err);
+        setError(err instanceof Error ? err : new Error('Failed to delete patient'));
+        return false;
+      }
+    },
+    [fetchPatients, fetchStats],
+  );
 
   const handleRetry = useCallback(() => {
     setError(null);
@@ -223,20 +228,20 @@ export function usePatientsTableV2(
     // Data
     patients: sortedPatients,
     stats,
-    
+
     // Pagination
     pagination,
-    
+
     // Filters
     filters,
     setFilters,
     resetFilters,
-    
+
     // Loading & Error
     loading,
     statsLoading,
     error,
-    
+
     // Actions
     handlePageChange,
     handlePageSizeChange,

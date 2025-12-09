@@ -93,7 +93,7 @@ export const EditAppointmentModal = ({
   }, [appointment]);
 
   const handleInputChange = (
-    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>
+    e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>,
   ) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -132,10 +132,7 @@ export const EditAppointmentModal = ({
 
   return (
     <div className={styles.modalOverlay} onClick={handleClose}>
-      <div
-        className={`${styles.modal} ${styles.modalLarge}`}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={`${styles.modal} ${styles.modalLarge}`} onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Edit Appointment</h2>
@@ -147,19 +144,16 @@ export const EditAppointmentModal = ({
         {/* Body */}
         <form onSubmit={handleSubmit}>
           <div className={styles.modalBody}>
-            {error && (
+            {error ? (
               <div className={styles.warningBanner}>
                 <p className={styles.warningText}>{error}</p>
               </div>
-            )}
+            ) : null}
 
             {/* Patient Info (Read-only) */}
             <div className={styles.formGroup}>
               <label className={styles.formLabel}>Patient</label>
-              <Input
-                value={appointment.patient?.fullName || 'N/A'}
-                disabled
-              />
+              <Input value={appointment.patient?.fullName || 'N/A'} disabled />
             </div>
 
             {/* Start Date/Time */}

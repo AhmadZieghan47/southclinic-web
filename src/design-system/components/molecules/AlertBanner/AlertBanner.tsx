@@ -12,7 +12,7 @@ const variantIcons = {
 
 /**
  * AlertBanner Component
- * 
+ *
  * Notification banner for info, success, warning, or error messages.
  */
 export const AlertBanner = forwardRef<HTMLDivElement, AlertBannerProps>(
@@ -28,37 +28,31 @@ export const AlertBanner = forwardRef<HTMLDivElement, AlertBannerProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const Icon = variantIcons[variant];
     const displayIcon = icon ?? <Icon size={20} />;
 
-    const classes = [styles.alert, styles[variant], className]
-      .filter(Boolean)
-      .join(' ');
+    const classes = [styles.alert, styles[variant], className].filter(Boolean).join(' ');
 
     return (
       <div ref={ref} className={classes} role="alert" {...props}>
         <span className={styles.iconWrapper}>{displayIcon}</span>
         <div className={styles.content}>
-          {title && <h4 className={styles.title}>{title}</h4>}
+          {title ? <h4 className={styles.title}>{title}</h4> : null}
           <div className={styles.message}>{children}</div>
         </div>
         <div className={styles.actions}>
           {action}
-          {dismissible && (
-            <button
-              className={styles.dismissBtn}
-              onClick={onDismiss}
-              aria-label="Dismiss"
-            >
+          {dismissible ? (
+            <button className={styles.dismissBtn} onClick={onDismiss} aria-label="Dismiss">
               <X size={16} />
             </button>
-          )}
+          ) : null}
         </div>
       </div>
     );
-  }
+  },
 );
 
 AlertBanner.displayName = 'AlertBanner';

@@ -5,7 +5,7 @@ import styles from './ProgressBar.module.css';
 
 /**
  * ProgressBar Component
- * 
+ *
  * Linear progress indicator.
  */
 export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
@@ -22,13 +22,11 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const percentage = Math.min(Math.max((value / max) * 100, 0), 100);
 
-    const wrapperClasses = [styles.progressWrapper, className]
-      .filter(Boolean)
-      .join(' ');
+    const wrapperClasses = [styles.progressWrapper, className].filter(Boolean).join(' ');
 
     const progressClasses = [
       styles.progress,
@@ -42,12 +40,12 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
 
     return (
       <div ref={ref} className={wrapperClasses} {...props}>
-        {(showLabel || label) && (
+        {showLabel || label ? (
           <div className={styles.labelRow}>
             <span>{label}</span>
-            {showLabel && <span>{Math.round(percentage)}%</span>}
+            {showLabel ? <span>{Math.round(percentage)}%</span> : null}
           </div>
-        )}
+        ) : null}
         <div
           className={progressClasses}
           role="progressbar"
@@ -59,34 +57,24 @@ export const ProgressBar = forwardRef<HTMLDivElement, ProgressBarProps>(
         </div>
       </div>
     );
-  }
+  },
 );
 
 ProgressBar.displayName = 'ProgressBar';
 
 /**
  * StepProgress Component
- * 
+ *
  * Multi-step progress indicator for wizards.
  */
 export const StepProgress = forwardRef<HTMLDivElement, StepProgressProps>(
   (
-    {
-      currentStep,
-      totalSteps,
-      labels,
-      size = 'md',
-      variant = 'primary',
-      className,
-      ...props
-    },
-    ref
+    { currentStep, totalSteps, labels, size = 'md', variant = 'primary', className, ...props },
+    ref,
   ) => {
     const sizeClass = `step${size.charAt(0).toUpperCase()}${size.slice(1)}` as keyof typeof styles;
 
-    const classes = [styles.stepProgress, styles[sizeClass], className]
-      .filter(Boolean)
-      .join(' ');
+    const classes = [styles.stepProgress, styles[sizeClass], className].filter(Boolean).join(' ');
 
     const iconSize = size === 'sm' ? 12 : size === 'lg' ? 20 : 16;
 
@@ -109,16 +97,14 @@ export const StepProgress = forwardRef<HTMLDivElement, StepProgressProps>(
               <div className={styles.stepIndicator}>
                 {isCompleted ? <Check size={iconSize} /> : index + 1}
               </div>
-              {labels?.[index] && (
-                <span className={styles.stepLabel}>{labels[index]}</span>
-              )}
+              {labels?.[index] ? <span className={styles.stepLabel}>{labels[index]}</span> : null}
               <div className={styles.stepConnector} />
             </div>
           );
         })}
       </div>
     );
-  }
+  },
 );
 
 StepProgress.displayName = 'StepProgress';

@@ -8,10 +8,7 @@ import type { PatientTabsProps } from '../PatientDetailsPage.types';
 import { PATIENT_TABS } from '../PatientDetailsPage.types';
 import styles from './PatientTabs.module.css';
 
-export const PatientTabs: React.FC<PatientTabsProps> = ({
-  activeTab,
-  onTabChange,
-}) => {
+export const PatientTabs: React.FC<PatientTabsProps> = ({ activeTab, onTabChange }) => {
   return (
     <div className={styles.tabsWrapper}>
       <nav className={styles.tabList} role="tablist" aria-label="Patient Details Tabs">

@@ -4,7 +4,14 @@
  */
 
 import { createModuleApi } from './client';
-import type { PaginatedResponse, SearchParams, BigIntStr, ISODateTime, ISODate, Money } from './types';
+import type {
+  PaginatedResponse,
+  SearchParams,
+  BigIntStr,
+  ISODateTime,
+  ISODate,
+  Money,
+} from './types';
 
 const expensesApi = createModuleApi('ExpensesModule', {
   retryable: true,
@@ -56,11 +63,11 @@ export interface ExpenseStats {
   todayExpenses: Money;
   weekExpenses: Money;
   monthExpenses: Money;
-  byCategory: Array<{
+  byCategory: {
     categoryId: BigIntStr;
     categoryName: string;
     total: Money;
-  }>;
+  }[];
 }
 
 // ============================================================================
@@ -68,7 +75,7 @@ export interface ExpenseStats {
 // ============================================================================
 
 export async function getExpenses(
-  params: GetExpensesParams = {}
+  params: GetExpensesParams = {},
 ): Promise<PaginatedResponse<Expense>> {
   const query: Record<string, unknown> = {};
 
@@ -171,7 +178,7 @@ export async function getExpenseCategories(): Promise<ExpenseCategory[]> {
 
 export async function exportExpenses(
   format: 'csv' | 'excel' | 'pdf',
-  params?: GetExpensesParams
+  params?: GetExpensesParams,
 ): Promise<Blob> {
   return await expensesApi.downloadFile('/expenses/export', {
     params: { format, ...params },

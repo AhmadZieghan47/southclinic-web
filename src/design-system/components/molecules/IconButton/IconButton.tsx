@@ -5,7 +5,7 @@ import styles from './IconButton.module.css';
 
 /**
  * IconButton Component
- * 
+ *
  * Button containing only an icon.
  */
 export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
@@ -20,7 +20,7 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const classes = [
       styles.iconButton,
@@ -34,21 +34,16 @@ export const IconButton = forwardRef<HTMLButtonElement, IconButtonProps>(
       .join(' ');
 
     return (
-      <button
-        ref={ref}
-        className={classes}
-        disabled={disabled || loading}
-        {...props}
-      >
+      <button ref={ref} className={classes} disabled={disabled || loading} {...props}>
         {icon}
-        {loading && (
+        {loading ? (
           <span className={styles.spinner}>
             <Spinner size="sm" variant="current" />
           </span>
-        )}
+        ) : null}
       </button>
     );
-  }
+  },
 );
 
 IconButton.displayName = 'IconButton';

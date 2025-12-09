@@ -1,3 +1,132 @@
+# South Physical Center - Project Context & Developer Guide
+
+## 1. Project Overview
+**South Physical Center** is a Physiotherapy Clinic Management System built with **React**, **TypeScript**, and **Vite**. It is a comprehensive web application for managing patients, appointments, treatments, billing, and clinic staff.
+
+## 2. Tech Stack
+- **Frontend Framework:** React 19.2.0
+- **Language:** TypeScript 5.9.3
+- **Build Tool:** Vite 7.2.4
+- **State Management:**
+  - **Zustand** (Global/Complex state)
+  - **React Context** (UI state, e.g., Sidebar)
+  - **React Query** (Server state - implied usage)
+- **Forms:** React Hook Form + Zod validation
+- **Styling:** CSS Modules + Custom Design System (Variables)
+- **Icons:** Lucide React
+- **Routing:** React Router DOM 7.9.6
+- **HTTP Client:** Axios
+
+## 3. Architecture & Directory Structure
+
+The project follows a **Feature-Based** architecture combined with an **Atomic Design** system.
+
+```
+src/
+├── api/                # API client and service definitions
+├── assets/             # Static assets
+├── contexts/           # Global React Contexts (e.g., SidebarContext)
+├── design-system/      # CUSTOM ATOMIC DESIGN SYSTEM (Do not modify without strict adherence)
+│   ├── atoms/          # Basic building blocks (Button, Input, Badge)
+│   ├── molecules/      # Simple combinations (FormField, SearchInput)
+│   ├── organisms/      # Complex structures (Table, Modal, Sidebar)
+│   ├── layouts/        # Page wrappers (MainLayout, DashboardLayout)
+│   ├── foundations/    # CSS Variables, Reset, Global styles
+│   └── tokens/         # TS Token definitions (Colors, Spacing, Typography)
+├── features/           # Business logic & Page components (grouped by domain)
+│   ├── appointments/
+│   ├── auth/
+│   ├── dashboard/
+│   └── patients/
+├── hooks/              # Shared custom hooks
+├── routes/             # App routing configuration
+├── services/           # Service layer
+├── types/              # Shared TypeScript definitions
+└── App.tsx             # Root component
+```
+
+## 4. Development Workflow
+
+### Scripts
+- **Start Dev Server:** `npm run dev`
+- **Build for Production:** `npm run build`
+- **Lint Code:** `npm run lint`
+- **Format Code:** `npm run format`
+- **Preview Build:** `npm run preview`
+
+### Git & Version Control
+- **Branching:** Use descriptive branch names.
+- **Commits:** Clear, concise messages focusing on *why* a change was made.
+
+## 5. Coding Standards & Conventions
+
+### General
+- **Strict TypeScript:** No `any`. Define interfaces/types for all props and data.
+- **Functional Components:** Use React functional components with hooks.
+- **File Naming:**
+  - Components: `PascalCase.tsx` (e.g., `PatientList.tsx`)
+  - Hooks: `camelCase.ts` (e.g., `usePatient.ts`)
+  - Utilities/Logic: `camelCase.ts`
+  - Styles: `Component.module.css`
+
+### Styling (CSS Modules)
+- **Strictly use CSS Variables:** Never hardcode hex values. Use variables from the Design System.
+  - `var(--color-primary)`, `var(--spacing-4)`, `var(--radius-sm)`, etc.
+- **Class Naming:** `camelCase` for class names (e.g., `.submitButton`, `.hasError`).
+- **No Inline Styles:** Use CSS modules for all styling needs.
+
+### Component Pattern
+```tsx
+import styles from './MyComponent.module.css';
+import { Button } from '@/design-system/components/atoms';
+
+interface MyComponentProps {
+  title: string;
+  isActive?: boolean;
+}
+
+export const MyComponent = ({ title, isActive }: MyComponentProps) => {
+  return (
+    <div className={styles.container}>
+      <h2 className={styles.title}>{title}</h2>
+      <Button variant="primary" disabled={!isActive}>Action</Button>
+    </div>
+  );
+};
+```
+
+### Forms
+- Use **React Hook Form** for form state management.
+- Use **Zod** for schema validation.
+- Use `FormField` molecule from the design system for consistent labeling and error handling.
+
+### Icons
+- Use **Lucide React** icons.
+- **Never** use emojis as icons.
+- Import specific icons: `import { User, Calendar } from 'lucide-react';`
+
+## 6. Design System Usage
+
+The project utilizes a custom **Atomic Design System** located in `src/design-system`.
+
+- **Atoms:** `Button`, `Input`, `Select`, `Badge`, `Spinner`, `Avatar`.
+- **Molecules:** `FormField`, `SearchInput`, `StatCard`, `AlertBanner`.
+- **Organisms:** `Modal`, `Table`, `Wizard`, `EmptyState`.
+- **Layouts:** `MainLayout`, `DashboardLayout`.
+
+**Key Rules:**
+1. **Reuse First:** Always check `src/design-system` before building a new UI component.
+2. **Tokens:** Use `src/design-system/tokens` for reference values, but implement them via CSS variables.
+3. **Consistency:** Follow the visual patterns established in `src/design-system/foundations/variables.css`.
+
+## 7. Backend Integration
+- **API Base:** `/api/v1`
+- **Authentication:** JWT stored in localStorage.
+- **Data Fetching:** Use custom hooks in `src/hooks` or services in `src/api`.
+- **Error Handling:** Global error handling via Axios interceptors and UI feedback via `AlertBanner` or Toasts.
+
+---
+
 # AI-Assisted Design & Development Specification Template
 
 ## Project Context
@@ -891,3 +1020,5 @@ import { Eye, Edit2, Trash2 } from 'lucide-react';
 - All critical paths tested
 - Edge cases covered
 - Error states validated
+
+```

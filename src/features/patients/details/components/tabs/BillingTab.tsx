@@ -60,7 +60,7 @@ export const BillingTab: React.FC<BillingTabProps> = ({
       </div>
 
       {/* Insurance Details */}
-      {patient.hasInsurance && (
+      {patient.hasInsurance ? (
         <Card className={styles.card}>
           <div className={styles.cardHeader}>
             <div className={styles.cardTitleGroup}>
@@ -73,7 +73,9 @@ export const BillingTab: React.FC<BillingTabProps> = ({
               <div className={styles.infoGrid}>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Provider</span>
-                  <span className={styles.infoValue}>Insurance Provider #{insuranceProfile.insurerId}</span>
+                  <span className={styles.infoValue}>
+                    Insurance Provider #{insuranceProfile.insurerId}
+                  </span>
                 </div>
                 <div className={styles.infoItem}>
                   <span className={styles.infoLabel}>Policy Number</span>
@@ -93,7 +95,7 @@ export const BillingTab: React.FC<BillingTabProps> = ({
             )}
           </div>
         </Card>
-      )}
+      ) : null}
 
       {/* Payments Section */}
       <Card className={styles.card}>

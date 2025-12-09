@@ -1,7 +1,7 @@
 /**
  * Molecules Index
  * Design System - South Physical Clinic
- * 
+ *
  * Export all molecule components
  */
 
@@ -39,7 +39,12 @@ export type { PaginationProps, PaginationSize } from './Pagination';
 
 // ProgressBar
 export { ProgressBar, StepProgress } from './ProgressBar';
-export type { ProgressBarProps, StepProgressProps, ProgressBarSize, ProgressBarVariant } from './ProgressBar';
+export type {
+  ProgressBarProps,
+  StepProgressProps,
+  ProgressBarSize,
+  ProgressBarVariant,
+} from './ProgressBar';
 
 // IconButton
 export { IconButton } from './IconButton';

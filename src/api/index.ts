@@ -7,12 +7,7 @@
 // CORE
 // ============================================================================
 
-export {
-  EnhancedApiClient,
-  enhancedApi,
-  createEnhancedApi,
-  createModuleApi,
-} from './client';
+export { EnhancedApiClient, enhancedApi, createEnhancedApi, createModuleApi } from './client';
 
 export type {
   ApiRequestConfig,
@@ -172,12 +167,7 @@ export {
   reactivatePlan,
 } from './plans';
 
-export type {
-  GetPlansParams,
-  CreatePlanData,
-  UpdatePlanData,
-  PlanWithAppointments,
-} from './plans';
+export type { GetPlansParams, CreatePlanData, UpdatePlanData, PlanWithAppointments } from './plans';
 
 // ============================================================================
 // INSURERS
@@ -222,11 +212,7 @@ export {
   deleteSessionType,
 } from './session-types';
 
-export type {
-  SessionType,
-  CreateSessionTypeData,
-  UpdateSessionTypeData,
-} from './session-types';
+export type { SessionType, CreateSessionTypeData, UpdateSessionTypeData } from './session-types';
 
 // ============================================================================
 // USERS
@@ -289,12 +275,7 @@ export {
   isAuthDisabled,
 } from './auth';
 
-export type {
-  LoginCredentials,
-  LoginResponse,
-  AuthUser,
-  RefreshResponse,
-} from './auth';
+export type { LoginCredentials, LoginResponse, AuthUser, RefreshResponse } from './auth';
 
 // ============================================================================
 // DEFAULT EXPORT

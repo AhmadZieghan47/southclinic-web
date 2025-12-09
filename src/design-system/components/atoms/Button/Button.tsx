@@ -4,7 +4,7 @@ import styles from './Button.module.css';
 
 /**
  * Button Component
- * 
+ *
  * Primary UI component for user interactions.
  * Supports multiple variants, sizes, and states.
  */
@@ -22,7 +22,7 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       disabled,
       ...props
     },
-    ref
+    ref,
   ) => {
     const classes = [
       styles.button,
@@ -36,19 +36,14 @@ export const Button = forwardRef<HTMLButtonElement, ButtonProps>(
       .join(' ');
 
     return (
-      <button
-        ref={ref}
-        className={classes}
-        disabled={disabled || loading}
-        {...props}
-      >
-        {loading && <span className={styles.spinner} />}
-        {leftIcon && <span className={styles.icon}>{leftIcon}</span>}
+      <button ref={ref} className={classes} disabled={disabled || loading} {...props}>
+        {loading ? <span className={styles.spinner} /> : null}
+        {leftIcon ? <span className={styles.icon}>{leftIcon}</span> : null}
         {children}
-        {rightIcon && <span className={styles.icon}>{rightIcon}</span>}
+        {rightIcon ? <span className={styles.icon}>{rightIcon}</span> : null}
       </button>
     );
-  }
+  },
 );
 
 Button.displayName = 'Button';

@@ -81,7 +81,7 @@ export interface SchedulerEvent {
 // ============================================================================
 
 export async function getAppointments(
-  params: GetAppointmentsParams = {}
+  params: GetAppointmentsParams = {},
 ): Promise<PaginatedResponse<AppointmentWithPatient>> {
   const query: Record<string, unknown> = {};
 
@@ -99,7 +99,7 @@ export async function getAppointments(
     {
       params: query,
       context: { action: 'get_appointments', additionalData: { params } },
-    }
+    },
   );
 
   return response.data;
@@ -121,7 +121,7 @@ export async function createAppointment(data: CreateAppointmentData): Promise<Ap
 
 export async function updateAppointment(
   id: BigIntStr,
-  data: UpdateAppointmentData
+  data: UpdateAppointmentData,
 ): Promise<Appointment> {
   const response = await appointmentsApi.patch<Appointment>(`/appointments/${id}`, data, {
     context: { action: 'update_appointment', additionalData: { appointmentId: id } },
@@ -162,7 +162,7 @@ export async function cancelAppointment(id: BigIntStr, data: CancelData): Promis
 
 export async function rescheduleAppointment(
   id: BigIntStr,
-  data: RescheduleData
+  data: RescheduleData,
 ): Promise<Appointment> {
   const response = await appointmentsApi.post<Appointment>(`/appointments/${id}/reschedule`, data, {
     context: { action: 'reschedule_appointment', additionalData: { appointmentId: id } },
@@ -177,7 +177,7 @@ export async function rescheduleAppointment(
 export async function getSchedulerEvents(
   dateFrom: ISODateTime,
   dateTo: ISODateTime,
-  therapistId?: BigIntStr
+  therapistId?: BigIntStr,
 ): Promise<SchedulerEvent[]> {
   const params: Record<string, unknown> = { dateFrom, dateTo };
   if (therapistId) params.therapistId = therapistId;

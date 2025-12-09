@@ -5,7 +5,13 @@
 
 import { useState, useEffect, useCallback, useMemo } from 'react';
 import { getPatientById } from '../../../../services/patientApi';
-import type { Patient, TreatmentPlan, Appointment, Payment, InsuranceProfile } from '../../../../types/patient';
+import type {
+  Patient,
+  TreatmentPlan,
+  Appointment,
+  Payment,
+  InsuranceProfile,
+} from '../../../../types/patient';
 import type {
   UsePatientDetailsOptions,
   UsePatientDetailsReturn,
@@ -60,7 +66,7 @@ function generatePaymentDescription(payment: Payment): string {
 
 export function usePatientDetails(
   patientId: string | undefined,
-  options: UsePatientDetailsOptions = {}
+  options: UsePatientDetailsOptions = {},
 ): UsePatientDetailsReturn {
   const { autoRefresh = false, refreshInterval = 60000 } = options;
 
@@ -161,9 +167,7 @@ export function usePatientDetails(
       }
     }
 
-    return rows.sort(
-      (a, b) => new Date(b.startsAt).getTime() - new Date(a.startsAt).getTime()
-    );
+    return rows.sort((a, b) => new Date(b.startsAt).getTime() - new Date(a.startsAt).getTime());
   }, [patient]);
 
   // Transform payments to rows
@@ -207,7 +211,7 @@ export function usePatientDetails(
         appt.sessionTypeLabel.toLowerCase().includes(q) ||
         appt.locationLabel.toLowerCase().includes(q) ||
         appt.statusLabel.toLowerCase().includes(q) ||
-        appt.noteEn?.toLowerCase().includes(q)
+        appt.noteEn?.toLowerCase().includes(q),
     );
   }, [appointments, searchText]);
 
@@ -221,7 +225,7 @@ export function usePatientDetails(
         payment.id.toLowerCase().includes(q) ||
         payment.description.toLowerCase().includes(q) ||
         payment.methodLabel.toLowerCase().includes(q) ||
-        payment.amountJd.includes(q)
+        payment.amountJd.includes(q),
     );
   }, [payments, searchText]);
 
@@ -235,7 +239,7 @@ export function usePatientDetails(
         file.id.toLowerCase().includes(q) ||
         file.labelEn?.toLowerCase().includes(q) ||
         file.labelAr?.toLowerCase().includes(q) ||
-        file.fileTypeLabel.toLowerCase().includes(q)
+        file.fileTypeLabel.toLowerCase().includes(q),
     );
   }, [files, searchText]);
 

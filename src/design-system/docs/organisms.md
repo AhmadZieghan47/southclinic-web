@@ -28,38 +28,38 @@ import {
 
 Wraps table with overflow handling and border styling.
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | Yes | Table element |
+| Prop       | Type        | Default | Required | Description   |
+| ---------- | ----------- | ------- | -------- | ------------- |
+| `children` | `ReactNode` | -       | Yes      | Table element |
 
 #### Table
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | Yes | TableHeader and TableBody |
+| Prop       | Type        | Default | Required | Description               |
+| ---------- | ----------- | ------- | -------- | ------------------------- |
+| `children` | `ReactNode` | -       | Yes      | TableHeader and TableBody |
 
 #### TableHead
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | No | Header cell content |
-| `sortable` | `boolean` | `false` | No | Enable sorting |
-| `sortDirection` | `'asc' \| 'desc' \| null` | `null` | No | Current sort direction |
-| `onSort` | `() => void` | - | No | Sort click handler |
+| Prop            | Type                      | Default | Required | Description            |
+| --------------- | ------------------------- | ------- | -------- | ---------------------- |
+| `children`      | `ReactNode`               | -       | No       | Header cell content    |
+| `sortable`      | `boolean`                 | `false` | No       | Enable sorting         |
+| `sortDirection` | `'asc' \| 'desc' \| null` | `null`  | No       | Current sort direction |
+| `onSort`        | `() => void`              | -       | No       | Sort click handler     |
 
 #### TableRow
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | Yes | Table cells |
-| `onClick` | `() => void` | - | No | Row click handler |
-| `selected` | `boolean` | `false` | No | Selected state |
+| Prop       | Type         | Default | Required | Description       |
+| ---------- | ------------ | ------- | -------- | ----------------- |
+| `children` | `ReactNode`  | -       | Yes      | Table cells       |
+| `onClick`  | `() => void` | -       | No       | Row click handler |
+| `selected` | `boolean`    | `false` | No       | Selected state    |
 
 #### TableCell
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | No | Cell content |
+| Prop       | Type        | Default | Required | Description  |
+| ---------- | ----------- | ------- | -------- | ------------ |
+| `children` | `ReactNode` | -       | No       | Cell content |
 
 ### Examples
 
@@ -106,15 +106,15 @@ const handleSort = (column: string) => {
   <Table>
     <TableHeader>
       <TableRow>
-        <TableHead 
-          sortable 
+        <TableHead
+          sortable
           sortDirection={sortColumn === 'name' ? sortDirection : null}
           onSort={() => handleSort('name')}
         >
           Name
         </TableHead>
-        <TableHead 
-          sortable 
+        <TableHead
+          sortable
           sortDirection={sortColumn === 'email' ? sortDirection : null}
           onSort={() => handleSort('email')}
         >
@@ -147,8 +147,8 @@ const handleSort = (column: string) => {
     </TableHeader>
     <TableBody>
       {patients.map((patient) => (
-        <TableRow 
-          key={patient.id} 
+        <TableRow
+          key={patient.id}
           onClick={() => navigate(`/patients/${patient.id}`)}
         >
           <TableCell>{patient.name}</TableCell>
@@ -175,8 +175,8 @@ const handleSort = (column: string) => {
       {data.length === 0 ? (
         <TableRow>
           <TableCell colSpan={3}>
-            <EmptyState 
-              variant="empty" 
+            <EmptyState
+              variant="empty"
               title="No patients found"
               actions={<Button>Add Patient</Button>}
             />
@@ -204,19 +204,19 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from '@/design-system';
 
 ### Modal Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `isOpen` | `boolean` | - | Yes | Open state |
-| `onClose` | `() => void` | - | Yes | Close handler |
-| `title` | `ReactNode` | - | No | Modal title |
-| `description` | `string` | - | No | Modal description |
-| `children` | `ReactNode` | - | Yes | Modal content |
-| `footer` | `ReactNode` | - | No | Footer content |
-| `size` | `ModalSize` | `'md'` | No | Size variant |
-| `closeOnOverlay` | `boolean` | `true` | No | Close on overlay click |
-| `closeOnEscape` | `boolean` | `true` | No | Close on Escape key |
-| `showCloseButton` | `boolean` | `true` | No | Show close button |
-| `className` | `string` | - | No | Additional CSS class |
+| Prop              | Type         | Default | Required | Description            |
+| ----------------- | ------------ | ------- | -------- | ---------------------- |
+| `isOpen`          | `boolean`    | -       | Yes      | Open state             |
+| `onClose`         | `() => void` | -       | Yes      | Close handler          |
+| `title`           | `ReactNode`  | -       | No       | Modal title            |
+| `description`     | `string`     | -       | No       | Modal description      |
+| `children`        | `ReactNode`  | -       | Yes      | Modal content          |
+| `footer`          | `ReactNode`  | -       | No       | Footer content         |
+| `size`            | `ModalSize`  | `'md'`  | No       | Size variant           |
+| `closeOnOverlay`  | `boolean`    | `true`  | No       | Close on overlay click |
+| `closeOnEscape`   | `boolean`    | `true`  | No       | Close on Escape key    |
+| `showCloseButton` | `boolean`    | `true`  | No       | Show close button      |
+| `className`       | `string`     | -       | No       | Additional CSS class   |
 
 ### ModalSize
 
@@ -224,12 +224,12 @@ import { Modal, ModalHeader, ModalBody, ModalFooter } from '@/design-system';
 type ModalSize = 'sm' | 'md' | 'lg' | 'xl' | 'full';
 ```
 
-| Size | Max Width |
-|------|-----------|
-| `sm` | 400px |
-| `md` | 500px |
-| `lg` | 700px |
-| `xl` | 900px |
+| Size   | Max Width    |
+| ------ | ------------ |
+| `sm`   | 400px        |
+| `md`   | 500px        |
+| `lg`   | 700px        |
+| `xl`   | 900px        |
 | `full` | 100vw - 32px |
 
 ### Examples
@@ -336,7 +336,7 @@ const [isOpen, setIsOpen] = useState(false);
 
 // Composable modal
 <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
-  <ModalHeader 
+  <ModalHeader
     title="Custom Modal"
     description="With custom layout"
     onClose={() => setIsOpen(false)}
@@ -365,16 +365,16 @@ import type { WizardStep } from '@/design-system';
 
 ### Wizard Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `steps` | `WizardStep[]` | - | Yes | Step configuration |
-| `currentStep` | `number` | - | Yes | Current step (0-indexed) |
-| `onStepChange` | `(step: number) => void` | - | Yes | Step change handler |
-| `onComplete` | `() => void` | - | No | Complete handler |
-| `showProgress` | `boolean` | `true` | No | Show progress indicator |
-| `allowStepClick` | `boolean` | `false` | No | Allow clicking on completed steps |
-| `labels` | `object` | - | No | Custom button labels |
-| `className` | `string` | - | No | Additional CSS class |
+| Prop             | Type                     | Default | Required | Description                       |
+| ---------------- | ------------------------ | ------- | -------- | --------------------------------- |
+| `steps`          | `WizardStep[]`           | -       | Yes      | Step configuration                |
+| `currentStep`    | `number`                 | -       | Yes      | Current step (0-indexed)          |
+| `onStepChange`   | `(step: number) => void` | -       | Yes      | Step change handler               |
+| `onComplete`     | `() => void`             | -       | No       | Complete handler                  |
+| `showProgress`   | `boolean`                | `true`  | No       | Show progress indicator           |
+| `allowStepClick` | `boolean`                | `false` | No       | Allow clicking on completed steps |
+| `labels`         | `object`                 | -       | No       | Custom button labels              |
+| `className`      | `string`                 | -       | No       | Additional CSS class              |
 
 ### WizardStep Interface
 
@@ -496,18 +496,18 @@ import { ProfileHeader } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `avatarSrc` | `string` | - | No | Avatar image URL |
-| `initials` | `string` | - | No | Fallback initials |
-| `name` | `string` | - | Yes | Display name |
-| `subtitle` | `string` | - | No | Subtitle/ID |
-| `badges` | `ReactNode` | - | No | Status badges |
-| `contactInfo` | `ReactNode` | - | No | Contact information |
-| `actions` | `ReactNode` | - | No | Action buttons |
-| `warning` | `ReactNode` | - | No | Warning banner content |
-| `stats` | `ReactNode` | - | No | Stats display |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
+| Prop          | Type                   | Default | Required | Description            |
+| ------------- | ---------------------- | ------- | -------- | ---------------------- |
+| `avatarSrc`   | `string`               | -       | No       | Avatar image URL       |
+| `initials`    | `string`               | -       | No       | Fallback initials      |
+| `name`        | `string`               | -       | Yes      | Display name           |
+| `subtitle`    | `string`               | -       | No       | Subtitle/ID            |
+| `badges`      | `ReactNode`            | -       | No       | Status badges          |
+| `contactInfo` | `ReactNode`            | -       | No       | Contact information    |
+| `actions`     | `ReactNode`            | -       | No       | Action buttons         |
+| `warning`     | `ReactNode`            | -       | No       | Warning banner content |
+| `stats`       | `ReactNode`            | -       | No       | Stats display          |
+| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`  | No       | Size variant           |
 
 ### Examples
 
@@ -651,14 +651,14 @@ import { EmptyState } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `variant` | `EmptyStateVariant` | `'default'` | No | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `icon` | `ReactNode` | - | No | Custom icon |
-| `title` | `string` | - | Yes | Title text |
-| `description` | `string` | - | No | Description text |
-| `actions` | `ReactNode` | - | No | Action buttons |
+| Prop          | Type                   | Default     | Required | Description      |
+| ------------- | ---------------------- | ----------- | -------- | ---------------- |
+| `variant`     | `EmptyStateVariant`    | `'default'` | No       | Visual variant   |
+| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`      | No       | Size variant     |
+| `icon`        | `ReactNode`            | -           | No       | Custom icon      |
+| `title`       | `string`               | -           | Yes      | Title text       |
+| `description` | `string`               | -           | No       | Description text |
+| `actions`     | `ReactNode`            | -           | No       | Action buttons   |
 
 ### EmptyStateVariant
 
@@ -666,12 +666,12 @@ import { EmptyState } from '@/design-system';
 type EmptyStateVariant = 'default' | 'error' | 'search' | 'empty';
 ```
 
-| Variant | Icon | Use Case |
-|---------|------|----------|
-| `default` | Inbox | Generic empty state |
-| `error` | AlertCircle | Error states |
-| `search` | Search | No search results |
-| `empty` | FolderOpen | Empty data |
+| Variant   | Icon        | Use Case            |
+| --------- | ----------- | ------------------- |
+| `default` | Inbox       | Generic empty state |
+| `error`   | AlertCircle | Error states        |
+| `search`  | Search      | No search results   |
+| `empty`   | FolderOpen  | Empty data          |
 
 ### Examples
 
@@ -770,14 +770,14 @@ import type { DescriptionItem } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `items` | `DescriptionItem[]` | - | Yes | List items |
-| `layout` | `'horizontal' \| 'vertical' \| 'grid'` | `'horizontal'` | No | Layout variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `columns` | `1 \| 2 \| 3 \| 4` | `2` | No | Grid columns |
-| `dividers` | `boolean` | `false` | No | Show dividers |
-| `striped` | `boolean` | `false` | No | Striped rows |
+| Prop       | Type                                   | Default        | Required | Description    |
+| ---------- | -------------------------------------- | -------------- | -------- | -------------- |
+| `items`    | `DescriptionItem[]`                    | -              | Yes      | List items     |
+| `layout`   | `'horizontal' \| 'vertical' \| 'grid'` | `'horizontal'` | No       | Layout variant |
+| `size`     | `'sm' \| 'md' \| 'lg'`                 | `'md'`         | No       | Size variant   |
+| `columns`  | `1 \| 2 \| 3 \| 4`                     | `2`            | No       | Grid columns   |
+| `dividers` | `boolean`                              | `false`        | No       | Show dividers  |
+| `striped`  | `boolean`                              | `false`        | No       | Striped rows   |
 
 ### DescriptionItem Interface
 
@@ -809,16 +809,16 @@ const patientInfo: DescriptionItem[] = [
 <DescriptionList items={patientInfo} layout="vertical" />
 
 // Grid layout
-<DescriptionList 
-  items={patientInfo} 
-  layout="grid" 
+<DescriptionList
+  items={patientInfo}
+  layout="grid"
   columns={2}
 />
 
 // Grid with more columns
-<DescriptionList 
-  items={patientInfo} 
-  layout="grid" 
+<DescriptionList
+  items={patientInfo}
+  layout="grid"
   columns={3}
 />
 
@@ -847,7 +847,7 @@ const itemsWithIcons: DescriptionItem[] = [
 
 // In a card
 <Card title="Patient Details">
-  <DescriptionList 
+  <DescriptionList
     items={patientInfo}
     layout="grid"
     columns={2}
@@ -866,7 +866,7 @@ const medicalInfo: DescriptionItem[] = [
 ];
 
 <Card title="Medical Information">
-  <DescriptionList 
+  <DescriptionList
     items={medicalInfo}
     layout="grid"
     columns={2}
@@ -878,11 +878,11 @@ const medicalInfo: DescriptionItem[] = [
 
 ## File Locations
 
-| Component | Path |
-|-----------|------|
-| Table | `src/design-system/components/organisms/Table/` |
-| Modal | `src/design-system/components/organisms/Modal/` |
-| Wizard | `src/design-system/components/organisms/Wizard/` |
-| ProfileHeader | `src/design-system/components/organisms/ProfileHeader/` |
-| EmptyState | `src/design-system/components/organisms/EmptyState/` |
+| Component       | Path                                                      |
+| --------------- | --------------------------------------------------------- |
+| Table           | `src/design-system/components/organisms/Table/`           |
+| Modal           | `src/design-system/components/organisms/Modal/`           |
+| Wizard          | `src/design-system/components/organisms/Wizard/`          |
+| ProfileHeader   | `src/design-system/components/organisms/ProfileHeader/`   |
+| EmptyState      | `src/design-system/components/organisms/EmptyState/`      |
 | DescriptionList | `src/design-system/components/organisms/DescriptionList/` |

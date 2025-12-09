@@ -44,9 +44,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
     .filter((a) => a.status === 'BOOKED' || a.status === 'CHECKED_IN')
     .slice(0, 3);
 
-  const recentCompleted = recentAppointments
-    .filter((a) => a.status === 'COMPLETED')
-    .slice(0, 3);
+  const recentCompleted = recentAppointments.filter((a) => a.status === 'COMPLETED').slice(0, 3);
 
   return (
     <div className={styles.tabContent}>
@@ -129,7 +127,9 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
               </div>
               <div className={styles.planDetail}>
                 <span className={styles.infoLabel}>Diagnosis</span>
-                <span className={styles.infoValue}>{activePlan.diagnosisEn || 'Not specified'}</span>
+                <span className={styles.infoValue}>
+                  {activePlan.diagnosisEn || 'Not specified'}
+                </span>
               </div>
               <div className={styles.planDetail}>
                 <span className={styles.infoLabel}>Progress</span>
@@ -142,7 +142,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                 <span className={styles.infoValue}>{formatDate(activePlan.startedAt)}</span>
               </div>
             </div>
-            {activePlan.totalSessions && (
+            {activePlan.totalSessions ? (
               <div className={styles.progressBar}>
                 <div
                   className={styles.progressFill}
@@ -151,7 +151,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
                   }}
                 />
               </div>
-            )}
+            ) : null}
           </div>
         </Card>
       ) : (
@@ -181,9 +181,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
               {upcomingAppointments.map((appt) => (
                 <div key={appt.id} className={styles.appointmentItem}>
                   <div className={styles.appointmentDate}>
-                    <span className={styles.dateDay}>
-                      {new Date(appt.startsAt).getDate()}
-                    </span>
+                    <span className={styles.dateDay}>{new Date(appt.startsAt).getDate()}</span>
                     <span className={styles.dateMonth}>
                       {new Date(appt.startsAt).toLocaleDateString('en-US', { month: 'short' })}
                     </span>
@@ -220,9 +218,7 @@ export const OverviewTab: React.FC<OverviewTabProps> = ({
               {recentCompleted.map((appt) => (
                 <div key={appt.id} className={styles.appointmentItem}>
                   <div className={styles.appointmentDate}>
-                    <span className={styles.dateDay}>
-                      {new Date(appt.startsAt).getDate()}
-                    </span>
+                    <span className={styles.dateDay}>{new Date(appt.startsAt).getDate()}</span>
                     <span className={styles.dateMonth}>
                       {new Date(appt.startsAt).toLocaleDateString('en-US', { month: 'short' })}
                     </span>

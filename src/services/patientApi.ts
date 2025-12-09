@@ -18,7 +18,7 @@ import type {
 export async function getPatients(params: GetPatientsParams = {}): Promise<GetPatientsResponse> {
   const { page, pageSize, search } = params;
   const query: Record<string, any> = {};
-  
+
   if (page !== undefined) query.page = page;
   if (pageSize !== undefined) query.pageSize = pageSize;
   if (search && search.trim().length > 0) query.search = search.trim();
