@@ -56,106 +56,115 @@ export function useCreatePatient(options: UseCreatePatientOptions = {}): UseCrea
   // VALIDATION
   // ---------------------------------------------------------------------------
 
-  const validateStep = useCallback(async (step: number): Promise<boolean> => {
-    setErrors({});
+  const validateStep = useCallback(
+    async (step: number): Promise<boolean> => {
+      setErrors({});
 
-    switch (step) {
-      case 0: {
-        // Validate personal info
-        const personalResult = validatePersonalInfo(formData.personal);
-        if (!personalResult.success) {
-          const newErrors: Record<string, string> = {};
-          personalResult.error.issues.forEach((issue) => {
-            const path = `personal.${issue.path.join('.')}`;
-            newErrors[path] = issue.message;
-          });
-          setErrors(newErrors);
-          return false;
+      switch (step) {
+        case 0: {
+          // Validate personal info
+          const personalResult = validatePersonalInfo(formData.personal);
+          if (!personalResult.success) {
+            const newErrors: Record<string, string> = {};
+            personalResult.error.issues.forEach((issue) => {
+              const path = `personal.${issue.path.join('.')}`;
+              newErrors[path] = issue.message;
+            });
+            setErrors(newErrors);
+            return false;
+          }
+
+          // Validate insurance if enabled
+          const insuranceResult = validateInsurance(
+            formData.insurance,
+            formData.insurance.hasInsurance,
+          );
+          if (!insuranceResult.success && 'error' in insuranceResult) {
+            const newErrors: Record<string, string> = {};
+            insuranceResult.error.issues.forEach((issue) => {
+              const path = `insurance.${issue.path.join('.')}`;
+              newErrors[path] = issue.message;
+            });
+            setErrors((prev) => ({ ...prev, ...newErrors }));
+            return false;
+          }
+          return true;
         }
 
-        // Validate insurance if enabled
-        const insuranceResult = validateInsurance(formData.insurance, formData.insurance.hasInsurance);
-        if (!insuranceResult.success && 'error' in insuranceResult) {
-          const newErrors: Record<string, string> = {};
-          insuranceResult.error.issues.forEach((issue) => {
-            const path = `insurance.${issue.path.join('.')}`;
-            newErrors[path] = issue.message;
-          });
-          setErrors((prev) => ({ ...prev, ...newErrors }));
-          return false;
+        case 1: {
+          const result = validateMedicalInfo(formData.medical);
+          if (!result.success) {
+            const newErrors: Record<string, string> = {};
+            result.error.issues.forEach((issue) => {
+              const path = `medical.${issue.path.join('.')}`;
+              newErrors[path] = issue.message;
+            });
+            setErrors(newErrors);
+            return false;
+          }
+          return true;
         }
-        return true;
+
+        case 2: {
+          const result = validateAttachments(formData.attachments);
+          if (!result.success) {
+            const newErrors: Record<string, string> = {};
+            result.error.issues.forEach((issue) => {
+              const path = `attachments.${issue.path.join('.')}`;
+              newErrors[path] = issue.message;
+            });
+            setErrors(newErrors);
+            return false;
+          }
+          return true;
+        }
+
+        case 3: {
+          // Full validation on review step
+          const personalResult = validatePersonalInfo(formData.personal);
+          const insuranceResult = validateInsurance(
+            formData.insurance,
+            formData.insurance.hasInsurance,
+          );
+          const medicalResult = validateMedicalInfo(formData.medical);
+
+          const allErrors: Record<string, string> = {};
+          let hasErrors = false;
+
+          if (!personalResult.success) {
+            hasErrors = true;
+            personalResult.error.issues.forEach((issue) => {
+              allErrors[`personal.${issue.path.join('.')}`] = issue.message;
+            });
+          }
+
+          if (!insuranceResult.success && 'error' in insuranceResult) {
+            hasErrors = true;
+            insuranceResult.error.issues.forEach((issue) => {
+              allErrors[`insurance.${issue.path.join('.')}`] = issue.message;
+            });
+          }
+
+          if (!medicalResult.success) {
+            hasErrors = true;
+            medicalResult.error.issues.forEach((issue) => {
+              allErrors[`medical.${issue.path.join('.')}`] = issue.message;
+            });
+          }
+
+          if (hasErrors) {
+            setErrors(allErrors);
+            return false;
+          }
+          return true;
+        }
+
+        default:
+          return true;
       }
-
-      case 1: {
-        const result = validateMedicalInfo(formData.medical);
-        if (!result.success) {
-          const newErrors: Record<string, string> = {};
-          result.error.issues.forEach((issue) => {
-            const path = `medical.${issue.path.join('.')}`;
-            newErrors[path] = issue.message;
-          });
-          setErrors(newErrors);
-          return false;
-        }
-        return true;
-      }
-
-      case 2: {
-        const result = validateAttachments(formData.attachments);
-        if (!result.success) {
-          const newErrors: Record<string, string> = {};
-          result.error.issues.forEach((issue) => {
-            const path = `attachments.${issue.path.join('.')}`;
-            newErrors[path] = issue.message;
-          });
-          setErrors(newErrors);
-          return false;
-        }
-        return true;
-      }
-
-      case 3: {
-        // Full validation on review step
-        const personalResult = validatePersonalInfo(formData.personal);
-        const insuranceResult = validateInsurance(formData.insurance, formData.insurance.hasInsurance);
-        const medicalResult = validateMedicalInfo(formData.medical);
-
-        const allErrors: Record<string, string> = {};
-        let hasErrors = false;
-
-        if (!personalResult.success) {
-          hasErrors = true;
-          personalResult.error.issues.forEach((issue) => {
-            allErrors[`personal.${issue.path.join('.')}`] = issue.message;
-          });
-        }
-
-        if (!insuranceResult.success && 'error' in insuranceResult) {
-          hasErrors = true;
-          insuranceResult.error.issues.forEach((issue) => {
-            allErrors[`insurance.${issue.path.join('.')}`] = issue.message;
-          });
-        }
-
-        if (!medicalResult.success) {
-          hasErrors = true;
-          medicalResult.error.issues.forEach((issue) => {
-            allErrors[`medical.${issue.path.join('.')}`] = issue.message;
-          });
-        }
-
-        if (hasErrors) {
-          setErrors(allErrors);
-          return false;
-        }
-        return true;
-      }
-
-      default:
-        return true;
-    }
-  }, [formData]);
+    },
+    [formData],
+  );
 
   const clearErrors = useCallback(() => {
     setErrors({});

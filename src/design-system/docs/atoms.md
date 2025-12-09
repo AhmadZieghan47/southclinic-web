@@ -16,31 +16,31 @@ import { Button } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | Yes | Button content |
-| `variant` | `ButtonVariant` | `'primary'` | No | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `fullWidth` | `boolean` | `false` | No | Full width button |
-| `loading` | `boolean` | `false` | No | Loading state with spinner |
-| `leftIcon` | `ReactNode` | - | No | Icon on the left |
-| `rightIcon` | `ReactNode` | - | No | Icon on the right |
-| `disabled` | `boolean` | `false` | No | Disabled state |
-| `type` | `'button' \| 'submit' \| 'reset'` | `'button'` | No | Button type |
+| Prop        | Type                              | Default     | Required | Description                |
+| ----------- | --------------------------------- | ----------- | -------- | -------------------------- |
+| `children`  | `ReactNode`                       | -           | Yes      | Button content             |
+| `variant`   | `ButtonVariant`                   | `'primary'` | No       | Visual variant             |
+| `size`      | `'sm' \| 'md' \| 'lg'`            | `'md'`      | No       | Size variant               |
+| `fullWidth` | `boolean`                         | `false`     | No       | Full width button          |
+| `loading`   | `boolean`                         | `false`     | No       | Loading state with spinner |
+| `leftIcon`  | `ReactNode`                       | -           | No       | Icon on the left           |
+| `rightIcon` | `ReactNode`                       | -           | No       | Icon on the right          |
+| `disabled`  | `boolean`                         | `false`     | No       | Disabled state             |
+| `type`      | `'button' \| 'submit' \| 'reset'` | `'button'`  | No       | Button type                |
 
 ### ButtonVariant
 
 ```ts
-type ButtonVariant = 
-  | 'primary'        // Teal background, white text
-  | 'secondary'      // Gray background
-  | 'outline'        // Border only, transparent background
-  | 'ghost'          // No border, no background
-  | 'destructive'    // Red background for dangerous actions
-  | 'danger'         // Alias for destructive
-  | 'warning'        // Yellow/amber background
+type ButtonVariant =
+  | 'primary' // Teal background, white text
+  | 'secondary' // Gray background
+  | 'outline' // Border only, transparent background
+  | 'ghost' // No border, no background
+  | 'destructive' // Red background for dangerous actions
+  | 'danger' // Alias for destructive
+  | 'warning' // Yellow/amber background
   | 'outlinePrimary' // Primary color border
-  | 'outlineSecondary'// Secondary color border
+  | 'outlineSecondary' // Secondary color border
   | 'outlineDanger'; // Danger color border
 ```
 
@@ -79,11 +79,11 @@ import { Plus, ArrowRight, Save } from 'lucide-react';
 
 ### Sizing Guide
 
-| Size | Height | Font Size | Icon Size | Padding |
-|------|--------|-----------|-----------|---------|
-| `sm` | 32px | 14px | 14-16px | 8px 12px |
-| `md` | 40px | 14px | 16-18px | 10px 16px |
-| `lg` | 48px | 16px | 18-20px | 12px 20px |
+| Size | Height | Font Size | Icon Size | Padding   |
+| ---- | ------ | --------- | --------- | --------- |
+| `sm` | 32px   | 14px      | 14-16px   | 8px 12px  |
+| `md` | 40px   | 14px      | 16-18px   | 10px 16px |
+| `lg` | 48px   | 16px      | 18-20px   | 12px 20px |
 
 ---
 
@@ -99,19 +99,19 @@ import { Input } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `error` | `boolean` | `false` | No | Error state |
-| `errorMessage` | `string` | - | No | Error message text |
-| `leftElement` | `ReactNode` | - | No | Left icon/element |
-| `rightElement` | `ReactNode` | - | No | Right icon/element |
-| `fullWidth` | `boolean` | `false` | No | Full width input |
-| `type` | `string` | `'text'` | No | Input type |
-| `placeholder` | `string` | - | No | Placeholder text |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop           | Type                   | Default  | Required | Description        |
+| -------------- | ---------------------- | -------- | -------- | ------------------ |
+| `size`         | `'sm' \| 'md' \| 'lg'` | `'md'`   | No       | Size variant       |
+| `error`        | `boolean`              | `false`  | No       | Error state        |
+| `errorMessage` | `string`               | -        | No       | Error message text |
+| `leftElement`  | `ReactNode`            | -        | No       | Left icon/element  |
+| `rightElement` | `ReactNode`            | -        | No       | Right icon/element |
+| `fullWidth`    | `boolean`              | `false`  | No       | Full width input   |
+| `type`         | `string`               | `'text'` | No       | Input type         |
+| `placeholder`  | `string`               | -        | No       | Placeholder text   |
+| `disabled`     | `boolean`              | `false`  | No       | Disabled state     |
 
-*Extends all native `<input>` HTML attributes.*
+_Extends all native `<input>` HTML attributes._
 
 ### Examples
 
@@ -125,27 +125,27 @@ import { Input } from '@/design-system';
 // With icons
 import { Mail, Eye, EyeOff, Search, Calendar } from 'lucide-react';
 
-<Input 
-  leftElement={<Mail size={16} />} 
-  placeholder="Email" 
+<Input
+  leftElement={<Mail size={16} />}
+  placeholder="Email"
 />
 
-<Input 
-  rightElement={<Eye size={16} />} 
+<Input
+  rightElement={<Eye size={16} />}
   type="password"
-  placeholder="Password" 
+  placeholder="Password"
 />
 
-<Input 
+<Input
   leftElement={<Search size={16} />}
   rightElement={<span className="text-muted">⌘K</span>}
-  placeholder="Search..." 
+  placeholder="Search..."
 />
 
 // Error state
-<Input 
-  error 
-  errorMessage="This field is required" 
+<Input
+  error
+  errorMessage="This field is required"
   placeholder="Required field"
 />
 
@@ -161,10 +161,10 @@ import { Mail, Eye, EyeOff, Search, Calendar } from 'lucide-react';
 ### Sizing Guide
 
 | Size | Height | Font Size | Icon Size |
-|------|--------|-----------|-----------|
-| `sm` | 32px | 14px | 14-16px |
-| `md` | 40px | 14px | 16px |
-| `lg` | 48px | 16px | 18px |
+| ---- | ------ | --------- | --------- |
+| `sm` | 32px   | 14px      | 14-16px   |
+| `md` | 40px   | 14px      | 16px      |
+| `lg` | 48px   | 16px      | 18px      |
 
 ---
 
@@ -181,17 +181,17 @@ import type { SelectOption } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `options` | `SelectOption[]` | - | Yes | Array of options |
-| `placeholder` | `string` | - | No | Placeholder text |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `error` | `boolean` | `false` | No | Error state |
-| `fullWidth` | `boolean` | `false` | No | Full width select |
-| `leftElement` | `ReactNode` | - | No | Left icon/element |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop          | Type                   | Default | Required | Description       |
+| ------------- | ---------------------- | ------- | -------- | ----------------- |
+| `options`     | `SelectOption[]`       | -       | Yes      | Array of options  |
+| `placeholder` | `string`               | -       | No       | Placeholder text  |
+| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`  | No       | Size variant      |
+| `error`       | `boolean`              | `false` | No       | Error state       |
+| `fullWidth`   | `boolean`              | `false` | No       | Full width select |
+| `leftElement` | `ReactNode`            | -       | No       | Left icon/element |
+| `disabled`    | `boolean`              | `false` | No       | Disabled state    |
 
-*Extends all native `<select>` HTML attributes except `size`.*
+_Extends all native `<select>` HTML attributes except `size`._
 
 ### SelectOption Interface
 
@@ -213,22 +213,22 @@ const statusOptions: SelectOption[] = [
 ];
 
 // Basic usage
-<Select 
-  options={statusOptions} 
-  placeholder="Select status" 
+<Select
+  options={statusOptions}
+  placeholder="Select status"
 />
 
 // With left icon
 import { User } from 'lucide-react';
 
-<Select 
+<Select
   options={statusOptions}
   leftElement={<User size={16} />}
   placeholder="Select user type"
 />
 
 // Error state
-<Select 
+<Select
   options={statusOptions}
   error
   placeholder="Required"
@@ -237,7 +237,7 @@ import { User } from 'lucide-react';
 // Controlled
 const [status, setStatus] = useState('');
 
-<Select 
+<Select
   options={statusOptions}
   value={status}
   onChange={(e) => setStatus(e.target.value)}
@@ -258,25 +258,25 @@ import { Badge } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | No | Badge content |
-| `variant` | `BadgeVariant` | `'default'` | No | Color variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `pill` | `boolean` | `false` | No | Rounded pill style |
-| `dot` | `boolean` | `false` | No | Dot indicator (no text) |
+| Prop       | Type                   | Default     | Required | Description             |
+| ---------- | ---------------------- | ----------- | -------- | ----------------------- |
+| `children` | `ReactNode`            | -           | No       | Badge content           |
+| `variant`  | `BadgeVariant`         | `'default'` | No       | Color variant           |
+| `size`     | `'sm' \| 'md' \| 'lg'` | `'md'`      | No       | Size variant            |
+| `pill`     | `boolean`              | `false`     | No       | Rounded pill style      |
+| `dot`      | `boolean`              | `false`     | No       | Dot indicator (no text) |
 
 ### BadgeVariant
 
 ```ts
-type BadgeVariant = 
-  | 'default'   // Gray
-  | 'primary'   // Teal
+type BadgeVariant =
+  | 'default' // Gray
+  | 'primary' // Teal
   | 'secondary' // Blue
-  | 'success'   // Green
-  | 'warning'   // Yellow
-  | 'danger'    // Red
-  | 'info';     // Blue
+  | 'success' // Green
+  | 'warning' // Yellow
+  | 'danger' // Red
+  | 'info'; // Blue
 ```
 
 ### Examples
@@ -324,19 +324,19 @@ import { Spinner } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `variant` | `SpinnerVariant` | `'default'` | No | Color variant |
-| `label` | `string` | `'Loading'` | No | Accessibility label |
+| Prop      | Type                   | Default     | Required | Description         |
+| --------- | ---------------------- | ----------- | -------- | ------------------- |
+| `size`    | `'sm' \| 'md' \| 'lg'` | `'md'`      | No       | Size variant        |
+| `variant` | `SpinnerVariant`       | `'default'` | No       | Color variant       |
+| `label`   | `string`               | `'Loading'` | No       | Accessibility label |
 
 ### SpinnerVariant
 
 ```ts
-type SpinnerVariant = 
-  | 'default'  // Gray
-  | 'primary'  // Teal
-  | 'white'    // White (for dark backgrounds)
+type SpinnerVariant =
+  | 'default' // Gray
+  | 'primary' // Teal
+  | 'white' // White (for dark backgrounds)
   | 'current'; // Inherits current text color
 ```
 
@@ -384,17 +384,17 @@ import { Checkbox } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `label` | `string` | - | No | Checkbox label |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `error` | `boolean` | `false` | No | Error state |
-| `indeterminate` | `boolean` | `false` | No | Indeterminate state |
-| `checked` | `boolean` | - | No | Checked state |
-| `onChange` | `ChangeEventHandler` | - | No | Change handler |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop            | Type                   | Default | Required | Description         |
+| --------------- | ---------------------- | ------- | -------- | ------------------- |
+| `label`         | `string`               | -       | No       | Checkbox label      |
+| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`  | No       | Size variant        |
+| `error`         | `boolean`              | `false` | No       | Error state         |
+| `indeterminate` | `boolean`              | `false` | No       | Indeterminate state |
+| `checked`       | `boolean`              | -       | No       | Checked state       |
+| `onChange`      | `ChangeEventHandler`   | -       | No       | Change handler      |
+| `disabled`      | `boolean`              | `false` | No       | Disabled state      |
 
-*Extends all native `<input type="checkbox">` HTML attributes.*
+_Extends all native `<input type="checkbox">` HTML attributes._
 
 ### Examples
 
@@ -405,7 +405,7 @@ import { Checkbox } from '@/design-system';
 // Controlled
 const [checked, setChecked] = useState(false);
 
-<Checkbox 
+<Checkbox
   label="Subscribe to newsletter"
   checked={checked}
   onChange={(e) => setChecked(e.target.checked)}
@@ -442,16 +442,16 @@ import type { RadioOption } from '@/design-system';
 
 ### RadioGroup Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `name` | `string` | - | Yes | Radio group name |
-| `options` | `RadioOption[]` | - | Yes | Array of options |
-| `value` | `string` | - | No | Selected value |
-| `onChange` | `(value: string) => void` | - | No | Change handler |
-| `direction` | `'horizontal' \| 'vertical'` | `'vertical'` | No | Layout direction |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `error` | `boolean` | `false` | No | Error state |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop        | Type                         | Default      | Required | Description      |
+| ----------- | ---------------------------- | ------------ | -------- | ---------------- |
+| `name`      | `string`                     | -            | Yes      | Radio group name |
+| `options`   | `RadioOption[]`              | -            | Yes      | Array of options |
+| `value`     | `string`                     | -            | No       | Selected value   |
+| `onChange`  | `(value: string) => void`    | -            | No       | Change handler   |
+| `direction` | `'horizontal' \| 'vertical'` | `'vertical'` | No       | Layout direction |
+| `size`      | `'sm' \| 'md' \| 'lg'`       | `'md'`       | No       | Size variant     |
+| `error`     | `boolean`                    | `false`      | No       | Error state      |
+| `disabled`  | `boolean`                    | `false`      | No       | Disabled state   |
 
 ### RadioOption Interface
 
@@ -524,16 +524,16 @@ import { Toggle } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `label` | `string` | - | No | Toggle label |
-| `labelPosition` | `'left' \| 'right'` | `'right'` | No | Label position |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `checked` | `boolean` | - | No | Checked state |
-| `onChange` | `ChangeEventHandler` | - | No | Change handler |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop            | Type                   | Default   | Required | Description    |
+| --------------- | ---------------------- | --------- | -------- | -------------- |
+| `label`         | `string`               | -         | No       | Toggle label   |
+| `labelPosition` | `'left' \| 'right'`    | `'right'` | No       | Label position |
+| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`    | No       | Size variant   |
+| `checked`       | `boolean`              | -         | No       | Checked state  |
+| `onChange`      | `ChangeEventHandler`   | -         | No       | Change handler |
+| `disabled`      | `boolean`              | `false`   | No       | Disabled state |
 
-*Extends all native `<input type="checkbox">` HTML attributes.*
+_Extends all native `<input type="checkbox">` HTML attributes._
 
 ### Examples
 
@@ -544,7 +544,7 @@ import { Toggle } from '@/design-system';
 // Controlled
 const [enabled, setEnabled] = useState(false);
 
-<Toggle 
+<Toggle
   label="Dark mode"
   checked={enabled}
   onChange={(e) => setEnabled(e.target.checked)}
@@ -582,14 +582,14 @@ import { Avatar } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `src` | `string` | - | No | Image URL |
-| `alt` | `string` | - | No | Alt text |
-| `initials` | `string` | - | No | Fallback initials |
-| `size` | `AvatarSize` | `'md'` | No | Size variant |
-| `variant` | `'circle' \| 'rounded'` | `'circle'` | No | Shape variant |
-| `color` | `'gray' \| 'primary' \| 'secondary'` | `'gray'` | No | Background color |
+| Prop       | Type                                 | Default    | Required | Description       |
+| ---------- | ------------------------------------ | ---------- | -------- | ----------------- |
+| `src`      | `string`                             | -          | No       | Image URL         |
+| `alt`      | `string`                             | -          | No       | Alt text          |
+| `initials` | `string`                             | -          | No       | Fallback initials |
+| `size`     | `AvatarSize`                         | `'md'`     | No       | Size variant      |
+| `variant`  | `'circle' \| 'rounded'`              | `'circle'` | No       | Shape variant     |
+| `color`    | `'gray' \| 'primary' \| 'secondary'` | `'gray'`   | No       | Background color  |
 
 ### AvatarSize
 
@@ -598,12 +598,12 @@ type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 ```
 
 | Size | Dimensions |
-|------|------------|
-| `xs` | 24px |
-| `sm` | 32px |
-| `md` | 40px |
-| `lg` | 48px |
-| `xl` | 64px |
+| ---- | ---------- |
+| `xs` | 24px       |
+| `sm` | 32px       |
+| `md` | 40px       |
+| `lg` | 48px       |
+| `xl` | 64px       |
 
 ### Examples
 
@@ -628,10 +628,10 @@ type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
 <Avatar initials="JD" variant="rounded" />
 
 // With image and fallback
-<Avatar 
-  src="/maybe-broken.jpg" 
-  alt="User" 
-  initials="U" 
+<Avatar
+  src="/maybe-broken.jpg"
+  alt="User"
+  initials="U"
 />
 ```
 
@@ -649,13 +649,13 @@ import { Divider } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `orientation` | `'horizontal' \| 'vertical'` | `'horizontal'` | No | Orientation |
-| `variant` | `'solid' \| 'dashed'` | `'solid'` | No | Line style |
-| `label` | `string` | - | No | Center label |
-| `labelPosition` | `'left' \| 'center' \| 'right'` | `'center'` | No | Label position |
-| `spacing` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Vertical spacing |
+| Prop            | Type                            | Default        | Required | Description      |
+| --------------- | ------------------------------- | -------------- | -------- | ---------------- |
+| `orientation`   | `'horizontal' \| 'vertical'`    | `'horizontal'` | No       | Orientation      |
+| `variant`       | `'solid' \| 'dashed'`           | `'solid'`      | No       | Line style       |
+| `label`         | `string`                        | -              | No       | Center label     |
+| `labelPosition` | `'left' \| 'center' \| 'right'` | `'center'`     | No       | Label position   |
+| `spacing`       | `'sm' \| 'md' \| 'lg'`          | `'md'`         | No       | Vertical spacing |
 
 ### Examples
 
@@ -688,15 +688,15 @@ import { Divider } from '@/design-system';
 
 ## File Locations
 
-| Component | Path |
-|-----------|------|
-| Button | `src/design-system/components/atoms/Button/` |
-| Input | `src/design-system/components/atoms/Input/` |
-| Select | `src/design-system/components/atoms/Select/` |
-| Badge | `src/design-system/components/atoms/Badge/` |
-| Spinner | `src/design-system/components/atoms/Spinner/` |
-| Checkbox | `src/design-system/components/atoms/Checkbox/` |
-| Radio | `src/design-system/components/atoms/Radio/` |
-| Toggle | `src/design-system/components/atoms/Toggle/` |
-| Avatar | `src/design-system/components/atoms/Avatar/` |
-| Divider | `src/design-system/components/atoms/Divider/` |
+| Component | Path                                           |
+| --------- | ---------------------------------------------- |
+| Button    | `src/design-system/components/atoms/Button/`   |
+| Input     | `src/design-system/components/atoms/Input/`    |
+| Select    | `src/design-system/components/atoms/Select/`   |
+| Badge     | `src/design-system/components/atoms/Badge/`    |
+| Spinner   | `src/design-system/components/atoms/Spinner/`  |
+| Checkbox  | `src/design-system/components/atoms/Checkbox/` |
+| Radio     | `src/design-system/components/atoms/Radio/`    |
+| Toggle    | `src/design-system/components/atoms/Toggle/`   |
+| Avatar    | `src/design-system/components/atoms/Avatar/`   |
+| Divider   | `src/design-system/components/atoms/Divider/`  |

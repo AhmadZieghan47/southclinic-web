@@ -8,11 +8,7 @@ import { Link } from 'react-router-dom';
 import { Eye, Edit2, X, Plus, RefreshCw } from 'lucide-react';
 import { useAppointmentsTable } from '../../hooks/useAppointmentsTable';
 import { Button, Card } from '../../design-system';
-import type {
-  ApptStatusT,
-  SessionTypeT,
-  CancelReasonT,
-} from '../../types/patient';
+import type { ApptStatusT, SessionTypeT, CancelReasonT } from '../../types/patient';
 import type { AppointmentWithPatient } from '../../api/appointments';
 import { AppointmentsFilters } from './components/AppointmentsFilters';
 import {
@@ -87,7 +83,9 @@ export const AppointmentsList = () => {
   const [isEditModalOpen, setIsEditModalOpen] = useState<boolean>(false);
   const [appointmentToEdit, setAppointmentToEdit] = useState<AppointmentWithPatient | null>(null);
   const [isCancelModalOpen, setIsCancelModalOpen] = useState<boolean>(false);
-  const [appointmentToCancel, setAppointmentToCancel] = useState<AppointmentWithPatient | null>(null);
+  const [appointmentToCancel, setAppointmentToCancel] = useState<AppointmentWithPatient | null>(
+    null,
+  );
   const [isCancelling, setIsCancelling] = useState<boolean>(false);
 
   // Hook
@@ -227,7 +225,7 @@ export const AppointmentsList = () => {
       />
 
       {/* Error Display */}
-      {error && (
+      {error ? (
         <Card className={styles.errorCard}>
           <div className={styles.errorContent}>
             <p className={styles.errorMessage}>{error.message}</p>
@@ -241,15 +239,15 @@ export const AppointmentsList = () => {
             </div>
           </div>
         </Card>
-      )}
+      ) : null}
 
       {/* Loading State */}
-      {loading && (
+      {loading ? (
         <div className={styles.loadingContainer}>
           <div className={styles.spinner}></div>
           <p>Loading appointments...</p>
         </div>
-      )}
+      ) : null}
 
       {/* Appointments Table */}
       {!loading && !error && (
@@ -279,10 +277,7 @@ export const AppointmentsList = () => {
                   const isCancelled = appointment.status === 'CANCELLED';
 
                   return (
-                    <tr
-                      key={appointment.id}
-                      className={isCancelled ? styles.cancelledRow : ''}
-                    >
+                    <tr key={appointment.id} className={isCancelled ? styles.cancelledRow : ''}>
                       {/* Date & Time */}
                       <td className={styles.dateTimeCell}>
                         <div className={styles.dateText}>{date}</div>
@@ -301,9 +296,7 @@ export const AppointmentsList = () => {
                             >
                               {appointment.patient.fullName}
                             </Link>
-                            <div className={styles.patientPhone}>
-                              {appointment.patient.phone}
-                            </div>
+                            <div className={styles.patientPhone}>{appointment.patient.phone}</div>
                           </>
                         ) : (
                           <span className={styles.patientPhone}>N/A</span>

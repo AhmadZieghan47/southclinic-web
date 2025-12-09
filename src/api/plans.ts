@@ -46,7 +46,7 @@ export interface PlanWithAppointments extends TreatmentPlan {
 // ============================================================================
 
 export async function getPlans(
-  params: GetPlansParams = {}
+  params: GetPlansParams = {},
 ): Promise<PaginatedResponse<TreatmentPlan>> {
   const query: Record<string, unknown> = {};
 

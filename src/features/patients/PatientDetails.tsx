@@ -106,42 +106,38 @@ export const PatientDetails = () => {
       {/* Patient Header */}
       <Card className={`${styles.patientHeader} ${!patient.isActive ? styles.inactive : ''}`}>
         {!patient.isActive && (
-          <div className={styles.inactiveWarning}>
-            ⚠️ This patient is currently inactive
-          </div>
+          <div className={styles.inactiveWarning}>⚠️ This patient is currently inactive</div>
         )}
-        
+
         <div className={styles.headerContent}>
           <div className={styles.patientInfo}>
             <div className={styles.avatar}>
-              <span className={styles.avatarText}>
-                {patient.fullName.charAt(0).toUpperCase()}
-              </span>
+              <span className={styles.avatarText}>{patient.fullName.charAt(0).toUpperCase()}</span>
             </div>
             <div>
               <div className={styles.patientId}>#{patient.id}</div>
               <div className={styles.patientName}>{patient.fullName}</div>
               <div className={styles.badges}>
-                {patient.hasInsurance && (
+                {patient.hasInsurance ? (
                   <span className={styles.badgeInsurance}>Insurance</span>
-                )}
-                {patient.extraCare && (
+                ) : null}
+                {patient.extraCare ? (
                   <span className={styles.badgeExtraCare}>Extra Care</span>
-                )}
-                {!patient.isActive && (
-                  <span className={styles.badgeInactive}>Inactive</span>
-                )}
+                ) : null}
+                {!patient.isActive && <span className={styles.badgeInactive}>Inactive</span>}
               </div>
-              <div className={styles.patientContact}>
-                📞 {patient.phone}
-              </div>
+              <div className={styles.patientContact}>📞 {patient.phone}</div>
             </div>
           </div>
-          
+
           <div className={styles.headerActions}>
             <div className={styles.patientBalance}>
               Balance:{' '}
-              <span className={parseFloat(patient.balance) < 0 ? styles.negativeBalance : styles.positiveBalance}>
+              <span
+                className={
+                  parseFloat(patient.balance) < 0 ? styles.negativeBalance : styles.positiveBalance
+                }
+              >
                 {patient.balance} JD
               </span>
             </div>
@@ -217,7 +213,7 @@ export const PatientDetails = () => {
         </Card>
 
         {/* Active Plan (if exists) */}
-        {patient.isActive && patient.plans && patient.plans.length > 0 && (
+        {patient.isActive && patient.plans && patient.plans.length > 0 ? (
           <Card>
             <h3 className={styles.cardTitle}>Active Treatment Plan</h3>
             <div className={styles.infoFields}>
@@ -241,7 +237,7 @@ export const PatientDetails = () => {
               </div>
             </div>
           </Card>
-        )}
+        ) : null}
       </div>
 
       {/* Tabs Section */}

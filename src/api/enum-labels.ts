@@ -91,7 +91,7 @@ export async function createEnumLabel(data: CreateEnumLabelData): Promise<EnumLa
 
 export async function updateEnumLabel(
   id: BigIntStr,
-  data: UpdateEnumLabelData
+  data: UpdateEnumLabelData,
 ): Promise<EnumLabel> {
   const response = await enumLabelsApi.patch<EnumLabel>(`/enum-labels/${id}`, data, {
     context: { action: 'update_enum_label', additionalData: { enumLabelId: id } },
@@ -128,7 +128,7 @@ export function groupEnumLabels(labels: EnumLabel[]): Partial<EnumLabelsMap> {
 export function getDisplayLabel(
   labels: EnumLabel[],
   value: string,
-  lang: 'en' | 'ar' = 'en'
+  lang: 'en' | 'ar' = 'en',
 ): string {
   const label = labels.find((l) => l.value === value);
   if (!label) return value;

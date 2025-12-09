@@ -53,7 +53,7 @@ export function PatientsTable({
         <ArrowDown size={14} className={styles.sortIconActive} />
       );
     },
-    [sortBy, sortOrder]
+    [sortBy, sortOrder],
   );
 
   // Format date for display
@@ -105,9 +105,7 @@ export function PatientsTable({
               sortDirection={sortBy === 'fullName' ? sortOrder : null}
               onSort={() => onSort('fullName')}
             >
-              <span className={styles.sortableHeader}>
-                Name {getSortIcon('fullName')}
-              </span>
+              <span className={styles.sortableHeader}>Name {getSortIcon('fullName')}</span>
             </TableHead>
             <TableHead>Phone</TableHead>
             <TableHead
@@ -115,9 +113,7 @@ export function PatientsTable({
               sortDirection={sortBy === 'dob' ? sortOrder : null}
               onSort={() => onSort('dob')}
             >
-              <span className={styles.sortableHeader}>
-                Date of Birth {getSortIcon('dob')}
-              </span>
+              <span className={styles.sortableHeader}>Date of Birth {getSortIcon('dob')}</span>
             </TableHead>
             <TableHead>Gender</TableHead>
             <TableHead
@@ -125,9 +121,7 @@ export function PatientsTable({
               sortDirection={sortBy === 'balance' ? sortOrder : null}
               onSort={() => onSort('balance')}
             >
-              <span className={styles.sortableHeader}>
-                Balance {getSortIcon('balance')}
-              </span>
+              <span className={styles.sortableHeader}>Balance {getSortIcon('balance')}</span>
             </TableHead>
             <TableHead>Status</TableHead>
             <TableHead>Insurance</TableHead>
@@ -137,7 +131,7 @@ export function PatientsTable({
         <TableBody>
           {patients.map((patient) => {
             const hasNoPlans = !patient.plans || patient.plans.length === 0;
-            
+
             return (
               <TableRow
                 key={patient.id}
@@ -152,19 +146,17 @@ export function PatientsTable({
                   >
                     {patient.fullName}
                   </Link>
-                  {patient.extraCare && (
+                  {patient.extraCare ? (
                     <Badge variant="warning" size="sm" className={styles.extraCareBadge}>
                       Extra Care
                     </Badge>
-                  )}
+                  ) : null}
                 </TableCell>
                 <TableCell>{patient.phone}</TableCell>
                 <TableCell>{formatDate(patient.dob)}</TableCell>
                 <TableCell>{GENDER_LABELS[patient.gender] || patient.gender}</TableCell>
                 <TableCell>
-                  <Badge
-                    variant={parseFloat(patient.balance) >= 0 ? 'success' : 'danger'}
-                  >
+                  <Badge variant={parseFloat(patient.balance) >= 0 ? 'success' : 'danger'}>
                     {patient.balance} JD
                   </Badge>
                 </TableCell>
@@ -194,7 +186,7 @@ export function PatientsTable({
                       size="sm"
                       onClick={() => onEdit(patient)}
                     />
-                    {onBeginTreatment && !hasActivePlan(patient) && (
+                    {onBeginTreatment && !hasActivePlan(patient) ? (
                       <IconButton
                         icon={<Stethoscope size={16} />}
                         aria-label="Begin treatment"
@@ -202,7 +194,7 @@ export function PatientsTable({
                         size="sm"
                         onClick={() => onBeginTreatment(patient)}
                       />
-                    )}
+                    ) : null}
                     <IconButton
                       icon={<Trash2 size={16} />}
                       aria-label="Delete patient"

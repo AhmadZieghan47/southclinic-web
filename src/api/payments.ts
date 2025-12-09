@@ -71,7 +71,7 @@ export interface PatientBalance {
 // ============================================================================
 
 export async function getPayments(
-  params: GetPaymentsParams = {}
+  params: GetPaymentsParams = {},
 ): Promise<PaginatedResponse<PaymentWithDetails>> {
   const query: Record<string, unknown> = {};
 
@@ -150,7 +150,7 @@ export async function getPatientPayments(patientId: BigIntStr): Promise<Payment[
 
 export async function exportPayments(
   format: 'csv' | 'excel' | 'pdf',
-  params?: GetPaymentsParams
+  params?: GetPaymentsParams,
 ): Promise<Blob> {
   return await paymentsApi.downloadFile('/payments/export', {
     params: { format, ...params },

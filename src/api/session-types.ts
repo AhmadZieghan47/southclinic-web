@@ -74,7 +74,7 @@ export async function createSessionType(data: CreateSessionTypeData): Promise<Se
 
 export async function updateSessionType(
   id: BigIntStr,
-  data: UpdateSessionTypeData
+  data: UpdateSessionTypeData,
 ): Promise<SessionType> {
   const response = await sessionTypesApi.patch<SessionType>(`/session-types/${id}`, data, {
     context: { action: 'update_session_type', additionalData: { sessionTypeId: id } },

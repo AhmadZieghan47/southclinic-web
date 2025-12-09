@@ -16,10 +16,7 @@ interface MedicalInfoStepProps {
   errors?: Record<string, string>;
 }
 
-export function MedicalInfoStep({
-  medicalData,
-  onMedicalChange,
-}: MedicalInfoStepProps) {
+export function MedicalInfoStep({ medicalData, onMedicalChange }: MedicalInfoStepProps) {
   const [customHistoryInput, setCustomHistoryInput] = useState('');
   const [customImplantInput, setCustomImplantInput] = useState('');
 
@@ -32,7 +29,7 @@ export function MedicalInfoStep({
         : [...current, item];
       onMedicalChange({ medicalHistory: updated });
     },
-    [medicalData.medicalHistory, onMedicalChange]
+    [medicalData.medicalHistory, onMedicalChange],
   );
 
   // Add custom medical history
@@ -53,7 +50,7 @@ export function MedicalInfoStep({
         : [...current, item];
       onMedicalChange({ orthopedicImplants: updated });
     },
-    [medicalData.orthopedicImplants, onMedicalChange]
+    [medicalData.orthopedicImplants, onMedicalChange],
   );
 
   // Add custom implant
@@ -70,7 +67,7 @@ export function MedicalInfoStep({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onMedicalChange({ extraCare: e.target.checked });
     },
-    [onMedicalChange]
+    [onMedicalChange],
   );
 
   // Handle notes change
@@ -78,7 +75,7 @@ export function MedicalInfoStep({
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
       onMedicalChange({ notes: e.target.value });
     },
-    [onMedicalChange]
+    [onMedicalChange],
   );
 
   return (
@@ -158,9 +155,7 @@ export function MedicalInfoStep({
           <Heart size={20} className={styles.cardIcon} />
           <h3 className={styles.cardTitle}>Orthopedic Implants</h3>
         </div>
-        <p className={styles.cardDescription}>
-          Select any implants or devices the patient has.
-        </p>
+        <p className={styles.cardDescription}>Select any implants or devices the patient has.</p>
 
         <div className={styles.tagContainer}>
           {ORTHOPEDIC_IMPLANTS_OPTIONS.map((option) => (
@@ -236,10 +231,7 @@ export function MedicalInfoStep({
 
       {/* Additional Notes */}
       <Card className={styles.formCard}>
-        <FormField
-          label="Additional Notes"
-          helperText="Any other relevant medical information"
-        >
+        <FormField label="Additional Notes" helperText="Any other relevant medical information">
           <textarea
             className={styles.textarea}
             placeholder="Enter any additional notes about the patient's medical condition..."

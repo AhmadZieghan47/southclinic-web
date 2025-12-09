@@ -1,7 +1,7 @@
 /**
  * Design System
  * South Physical Clinic
- * 
+ *
  * Main entry point for the design system
  */
 

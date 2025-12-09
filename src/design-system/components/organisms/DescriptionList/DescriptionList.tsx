@@ -4,7 +4,7 @@ import styles from './DescriptionList.module.css';
 
 /**
  * DescriptionList Component
- * 
+ *
  * Key-value pairs display with multiple layout options.
  */
 export const DescriptionList = forwardRef<HTMLDListElement, DescriptionListProps>(
@@ -19,7 +19,7 @@ export const DescriptionList = forwardRef<HTMLDListElement, DescriptionListProps
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const colsClass = `cols${columns}` as keyof typeof styles;
 
@@ -41,7 +41,7 @@ export const DescriptionList = forwardRef<HTMLDListElement, DescriptionListProps
           {items.map((item, index) => (
             <div key={index} className={styles.horizontalItem}>
               <dt className={styles.horizontalTerm}>
-                {item.icon && <span className={styles.icon}>{item.icon}</span>}
+                {item.icon ? <span className={styles.icon}>{item.icon}</span> : null}
                 {item.term}
               </dt>
               <dd className={styles.horizontalDescription}>{item.description}</dd>
@@ -57,7 +57,7 @@ export const DescriptionList = forwardRef<HTMLDListElement, DescriptionListProps
           {items.map((item, index) => (
             <div key={index} className={styles.verticalItem}>
               <dt className={styles.verticalTerm}>
-                {item.icon && <span className={styles.icon}>{item.icon}</span>}
+                {item.icon ? <span className={styles.icon}>{item.icon}</span> : null}
                 {item.term}
               </dt>
               <dd className={styles.verticalDescription}>{item.description}</dd>
@@ -76,7 +76,7 @@ export const DescriptionList = forwardRef<HTMLDListElement, DescriptionListProps
             className={`${styles.gridItem} ${item.fullWidth ? styles.gridItemFull : ''}`}
           >
             <dt className={styles.gridTerm}>
-              {item.icon && <span className={styles.icon}>{item.icon}</span>}
+              {item.icon ? <span className={styles.icon}>{item.icon}</span> : null}
               {item.term}
             </dt>
             <dd className={styles.gridDescription}>{item.description}</dd>
@@ -84,7 +84,7 @@ export const DescriptionList = forwardRef<HTMLDListElement, DescriptionListProps
         ))}
       </dl>
     );
-  }
+  },
 );
 
 DescriptionList.displayName = 'DescriptionList';

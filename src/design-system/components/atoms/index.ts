@@ -1,7 +1,7 @@
 /**
  * Atoms Index
  * Design System - South Physical Clinic
- * 
+ *
  * Export all atomic components
  */
 

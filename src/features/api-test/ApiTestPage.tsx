@@ -49,9 +49,7 @@ export function ApiTestPage() {
   const [isRunning, setIsRunning] = useState(false);
 
   const updateResult = useCallback((name: string, update: Partial<TestResult>) => {
-    setResults((prev) =>
-      prev.map((r) => (r.name === name ? { ...r, ...update } : r))
-    );
+    setResults((prev) => prev.map((r) => (r.name === name ? { ...r, ...update } : r)));
   }, []);
 
   const runTest = useCallback(
@@ -74,14 +72,14 @@ export function ApiTestPage() {
         return false;
       }
     },
-    [updateResult]
+    [updateResult],
   );
 
   const runAllTests = async () => {
     setIsRunning(true);
 
     // Define tests
-    const tests: Array<{ name: string; fn: () => Promise<unknown> }> = [
+    const tests: { name: string; fn: () => Promise<unknown> }[] = [
       // Auth
       { name: 'Check Auth Status', fn: async () => ({ isAuthenticated: isAuthenticated() }) },
       { name: 'Get Current User', fn: getCurrentUser },

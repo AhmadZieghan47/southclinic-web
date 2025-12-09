@@ -13,12 +13,12 @@ import styles from './EditPatient.module.css';
 export const EditPatient = () => {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  
+
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [patient, setPatient] = useState<Patient | null>(null);
-  
+
   // Form state
   const [formData, setFormData] = useState({
     fullName: '',
@@ -35,12 +35,12 @@ export const EditPatient = () => {
   useEffect(() => {
     const fetchPatient = async () => {
       if (!id) return;
-      
+
       try {
         setLoading(true);
         const data = await getPatientById(id);
         setPatient(data);
-        
+
         // Populate form
         setFormData({
           fullName: data.fullName,
@@ -62,26 +62,28 @@ export const EditPatient = () => {
     fetchPatient();
   }, [id]);
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>,
+  ) => {
     const { name, value, type } = e.target;
-    
+
     if (type === 'checkbox') {
       const checked = (e.target as HTMLInputElement).checked;
-      setFormData(prev => ({ ...prev, [name]: checked }));
+      setFormData((prev) => ({ ...prev, [name]: checked }));
     } else {
-      setFormData(prev => ({ ...prev, [name]: value }));
+      setFormData((prev) => ({ ...prev, [name]: value }));
     }
   };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    
+
     if (!id) return;
-    
+
     try {
       setSaving(true);
       setError(null);
-      
+
       const updateData: UpdatePatientData = {
         fullName: formData.fullName,
         dob: formData.dob,
@@ -92,9 +94,9 @@ export const EditPatient = () => {
         extraCare: formData.extraCare,
         notes: formData.notes || null,
       };
-      
+
       await updatePatient(id, updateData);
-      
+
       // Navigate back to patient details
       navigate(`/patients/${id}`);
     } catch (err) {
@@ -140,18 +142,14 @@ export const EditPatient = () => {
 
       <Card>
         <h2 className={styles.title}>Edit Patient</h2>
-        
-        {error && (
-          <div className={styles.errorAlert}>
-            {error}
-          </div>
-        )}
+
+        {error ? <div className={styles.errorAlert}>{error}</div> : null}
 
         <form onSubmit={handleSubmit} className={styles.form}>
           {/* Patient Information */}
           <div className={styles.section}>
             <h3 className={styles.sectionTitle}>Patient Information</h3>
-            
+
             <div className={styles.formGrid}>
               <div className={styles.formGroup}>
                 <label htmlFor="fullName">Full Name *</label>

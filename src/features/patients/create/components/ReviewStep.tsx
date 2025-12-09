@@ -41,24 +41,33 @@ export function ReviewStep({ formData, onEditStep, errors }: ReviewStepProps) {
   const { personal, insurance, medical, attachments } = formData;
 
   // Validation checks
-  const validationChecks = useMemo(() => [
-    {
-      label: 'Personal Details Complete',
-      valid: !!(personal.firstName && personal.lastName && personal.phone && personal.dob && personal.gender),
-    },
-    {
-      label: 'Medical History Recorded',
-      valid: true, // Medical history is optional
-    },
-    {
-      label: insurance.hasInsurance ? 'Insurance Information Complete' : 'Insurance Not Required',
-      valid: !insurance.hasInsurance || !!(insurance.insurerId && insurance.coveragePercent),
-    },
-    {
-      label: attachments.files.length > 0 ? 'Attachments Uploaded' : 'Attachments Optional',
-      valid: true, // Attachments are optional
-    },
-  ], [personal, insurance, medical, attachments]);
+  const validationChecks = useMemo(
+    () => [
+      {
+        label: 'Personal Details Complete',
+        valid: !!(
+          personal.firstName &&
+          personal.lastName &&
+          personal.phone &&
+          personal.dob &&
+          personal.gender
+        ),
+      },
+      {
+        label: 'Medical History Recorded',
+        valid: true, // Medical history is optional
+      },
+      {
+        label: insurance.hasInsurance ? 'Insurance Information Complete' : 'Insurance Not Required',
+        valid: !insurance.hasInsurance || !!(insurance.insurerId && insurance.coveragePercent),
+      },
+      {
+        label: attachments.files.length > 0 ? 'Attachments Uploaded' : 'Attachments Optional',
+        valid: true, // Attachments are optional
+      },
+    ],
+    [personal, insurance, medical, attachments],
+  );
 
   const allValid = validationChecks.every((check) => check.valid);
 
@@ -111,12 +120,12 @@ export function ReviewStep({ formData, onEditStep, errors }: ReviewStepProps) {
               <span className={styles.reviewLabel}>Gender</span>
               <span className={styles.reviewValue}>{getGenderLabel(personal.gender)}</span>
             </div>
-            {personal.nationalId && (
+            {personal.nationalId ? (
               <div className={styles.reviewItem}>
                 <span className={styles.reviewLabel}>National ID</span>
                 <span className={styles.reviewValue}>{personal.nationalId}</span>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 
@@ -159,17 +168,17 @@ export function ReviewStep({ formData, onEditStep, errors }: ReviewStepProps) {
                 {medical.extraCare ? 'Yes' : 'No'}
               </Badge>
             </div>
-            {medical.notes && (
+            {medical.notes ? (
               <div className={styles.reviewItemFull}>
                 <span className={styles.reviewLabel}>Additional Notes</span>
                 <span className={styles.reviewValue}>{medical.notes}</span>
               </div>
-            )}
+            ) : null}
           </div>
         </div>
 
         {/* Insurance Information Section (Conditional) */}
-        {insurance.hasInsurance && (
+        {insurance.hasInsurance ? (
           <div className={styles.reviewSection}>
             <div className={styles.reviewSectionHeader}>
               <div className={styles.reviewSectionTitle}>
@@ -188,9 +197,7 @@ export function ReviewStep({ formData, onEditStep, errors }: ReviewStepProps) {
             <div className={styles.reviewGrid}>
               <div className={styles.reviewItem}>
                 <span className={styles.reviewLabel}>Insurer Company</span>
-                <span className={styles.reviewValue}>
-                  {insurance.insurerId || 'Not selected'}
-                </span>
+                <span className={styles.reviewValue}>{insurance.insurerId || 'Not selected'}</span>
               </div>
               <div className={styles.reviewItem}>
                 <span className={styles.reviewLabel}>Coverage</span>
@@ -200,21 +207,21 @@ export function ReviewStep({ formData, onEditStep, errors }: ReviewStepProps) {
                     : 'Not provided'}
                 </span>
               </div>
-              {insurance.approvalNumber && (
+              {insurance.approvalNumber ? (
                 <div className={styles.reviewItem}>
                   <span className={styles.reviewLabel}>Approval Number</span>
                   <span className={styles.reviewValue}>{insurance.approvalNumber}</span>
                 </div>
-              )}
-              {insurance.expiryDate && (
+              ) : null}
+              {insurance.expiryDate ? (
                 <div className={styles.reviewItem}>
                   <span className={styles.reviewLabel}>Expiry Date</span>
                   <span className={styles.reviewValue}>{formatDate(insurance.expiryDate)}</span>
                 </div>
-              )}
+              ) : null}
             </div>
           </div>
-        )}
+        ) : null}
 
         {/* Attachments Section (Conditional) */}
         {attachments.files.length > 0 && (
@@ -274,7 +281,9 @@ export function ReviewStep({ formData, onEditStep, errors }: ReviewStepProps) {
             <p className={styles.errorListTitle}>Please fix the following errors:</p>
             <ul>
               {Object.entries(errors).map(([key, message]) => (
-                <li key={key} className={styles.errorItem}>{message}</li>
+                <li key={key} className={styles.errorItem}>
+                  {message}
+                </li>
               ))}
             </ul>
           </div>

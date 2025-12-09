@@ -12,7 +12,7 @@ interface SidebarContextType {
   isMobileOpen: boolean;
   // Active submenu IDs
   activeSubmenus: string[];
-  
+
   // Actions
   toggleSidebar: () => void;
   setSidebarExpanded: (expanded: boolean) => void;
@@ -62,10 +62,7 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) =>
 
   // Persist desktop state to localStorage
   useEffect(() => {
-    localStorage.setItem(
-      SIDEBAR_STORAGE_KEY,
-      JSON.stringify({ isExpanded, activeSubmenus })
-    );
+    localStorage.setItem(SIDEBAR_STORAGE_KEY, JSON.stringify({ isExpanded, activeSubmenus }));
   }, [isExpanded, activeSubmenus]);
 
   const toggleSidebar = () => {
@@ -86,9 +83,7 @@ export const SidebarProvider: React.FC<SidebarProviderProps> = ({ children }) =>
 
   const toggleSubmenu = (id: string) => {
     setActiveSubmenusState((prev) =>
-      prev.includes(id)
-        ? prev.filter((menuId) => menuId !== id)
-        : [...prev, id]
+      prev.includes(id) ? prev.filter((menuId) => menuId !== id) : [...prev, id],
     );
   };
 

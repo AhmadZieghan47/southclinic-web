@@ -6,14 +6,7 @@
 import { useState, useCallback } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Plus, Download } from 'lucide-react';
-import {
-  Button,
-  Card,
-  Modal,
-  AlertBanner,
-  Pagination,
-  Select,
-} from '../../../design-system';
+import { Button, Card, Modal, AlertBanner, Pagination, Select } from '../../../design-system';
 import { usePatientsTableV2 } from './hooks/usePatientsTableV2';
 import { PatientsStatsCards, PatientsFilters, PatientsTable } from './components';
 import type { Patient } from '../../../types/patient';
@@ -29,7 +22,7 @@ const PAGE_SIZE_OPTIONS = [
 
 export function PatientsListV2() {
   const navigate = useNavigate();
-  
+
   // Delete modal state
   const [deleteModalOpen, setDeleteModalOpen] = useState(false);
   const [patientToDelete, setPatientToDelete] = useState<Patient | null>(null);
@@ -61,7 +54,7 @@ export function PatientsListV2() {
     (newFilters: Partial<FiltersType>) => {
       setFilters((prev) => ({ ...prev, ...newFilters }));
     },
-    [setFilters]
+    [setFilters],
   );
 
   const handleSort = useCallback(
@@ -72,28 +65,28 @@ export function PatientsListV2() {
         sortOrder: prev.sortBy === field && prev.sortOrder === 'asc' ? 'desc' : 'asc',
       }));
     },
-    [setFilters]
+    [setFilters],
   );
 
   const handleViewPatient = useCallback(
     (patient: Patient) => {
       navigate(`/patients/${patient.id}`);
     },
-    [navigate]
+    [navigate],
   );
 
   const handleEditPatient = useCallback(
     (patient: Patient) => {
       navigate(`/patients/${patient.id}/edit`);
     },
-    [navigate]
+    [navigate],
   );
 
   const handleBeginTreatment = useCallback(
     (patient: Patient) => {
       navigate(`/treatments/begin/${patient.id}`);
     },
-    [navigate]
+    [navigate],
   );
 
   const handleDeleteClick = useCallback((patient: Patient) => {
@@ -123,7 +116,7 @@ export function PatientsListV2() {
     (e: React.ChangeEvent<HTMLSelectElement>) => {
       handlePageSizeChange(parseInt(e.target.value, 10));
     },
-    [handlePageSizeChange]
+    [handlePageSizeChange],
   );
 
   const handleExport = useCallback(() => {
@@ -149,16 +142,10 @@ export function PatientsListV2() {
       <div className={styles.pageHeader}>
         <div className={styles.headerLeft}>
           <h1 className={styles.title}>Patients</h1>
-          <p className={styles.subtitle}>
-            Manage your patient records and information
-          </p>
+          <p className={styles.subtitle}>Manage your patient records and information</p>
         </div>
         <div className={styles.headerActions}>
-          <Button
-            variant="outline"
-            leftIcon={<Download size={16} />}
-            onClick={handleExport}
-          >
+          <Button variant="outline" leftIcon={<Download size={16} />} onClick={handleExport}>
             Export
           </Button>
           <Link to="/patients/create">
@@ -173,7 +160,7 @@ export function PatientsListV2() {
       <PatientsStatsCards stats={stats} loading={statsLoading} />
 
       {/* Error Alert */}
-      {error && (
+      {error ? (
         <div className={styles.errorContainer}>
           <AlertBanner
             variant="error"
@@ -189,7 +176,7 @@ export function PatientsListV2() {
             {error.message}
           </AlertBanner>
         </div>
-      )}
+      ) : null}
 
       {/* Filters */}
       <PatientsFilters
@@ -253,26 +240,20 @@ export function PatientsListV2() {
             <Button variant="outline" onClick={handleDeleteCancel} disabled={isDeleting}>
               Cancel
             </Button>
-            <Button
-              variant="destructive"
-              onClick={handleDeleteConfirm}
-              loading={isDeleting}
-            >
+            <Button variant="destructive" onClick={handleDeleteConfirm} loading={isDeleting}>
               Delete Patient
             </Button>
           </>
         }
       >
         <div className={styles.deleteModalContent}>
-          <p className={styles.deleteWarning}>
-            Are you sure you want to delete this patient?
-          </p>
-          {patientToDelete && (
+          <p className={styles.deleteWarning}>Are you sure you want to delete this patient?</p>
+          {patientToDelete ? (
             <p className={styles.deletePatientName}>{patientToDelete.fullName}</p>
-          )}
+          ) : null}
           <p className={styles.deleteNote}>
-            This action will permanently remove the patient and all associated data.
-            This cannot be undone.
+            This action will permanently remove the patient and all associated data. This cannot be
+            undone.
           </p>
         </div>
       </Modal>

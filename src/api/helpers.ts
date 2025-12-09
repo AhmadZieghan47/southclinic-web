@@ -148,16 +148,16 @@ export function ensureArray<T>(data: unknown): T[] {
 /**
  * Validates API response type
  */
-export function validateResponse<T>(
-  data: unknown,
-  expectedType: 'array' | 'object'
-): T | null {
+export function validateResponse<T>(data: unknown, expectedType: 'array' | 'object'): T | null {
   if (expectedType === 'array' && !Array.isArray(data)) {
     console.error('Expected array but got:', typeof data);
     return null;
   }
 
-  if (expectedType === 'object' && (typeof data !== 'object' || data === null || Array.isArray(data))) {
+  if (
+    expectedType === 'object' &&
+    (typeof data !== 'object' || data === null || Array.isArray(data))
+  ) {
     console.error('Expected object but got:', typeof data);
     return null;
   }
@@ -188,7 +188,7 @@ export function limitArraySize<T>(array: T[], maxSize: number): T[] {
 
 export function logErrorWithContext(
   error: ApiErrorResponse,
-  context: { component?: string; action?: string; additionalData?: Record<string, unknown> }
+  context: { component?: string; action?: string; additionalData?: Record<string, unknown> },
 ): void {
   if (import.meta.env.DEV) {
     console.error(`❌ API Error [${context.component}/${context.action}]`, {

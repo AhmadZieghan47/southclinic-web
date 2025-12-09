@@ -1,7 +1,7 @@
 /**
  * Organisms Index
  * Design System - South Physical Clinic
- * 
+ *
  * Export all organism components
  */
 
@@ -26,11 +26,23 @@ export type {
 
 // Modal
 export { Modal, ModalHeader, ModalBody, ModalFooter } from './Modal';
-export type { ModalProps, ModalHeaderProps, ModalBodyProps, ModalFooterProps, ModalSize } from './Modal';
+export type {
+  ModalProps,
+  ModalHeaderProps,
+  ModalBodyProps,
+  ModalFooterProps,
+  ModalSize,
+} from './Modal';
 
 // Wizard
 export { Wizard, WizardHeader, WizardContent, WizardFooter } from './Wizard';
-export type { WizardProps, WizardStep, WizardHeaderProps, WizardContentProps, WizardFooterProps } from './Wizard';
+export type {
+  WizardProps,
+  WizardStep,
+  WizardHeaderProps,
+  WizardContentProps,
+  WizardFooterProps,
+} from './Wizard';
 
 // ProfileHeader
 export { ProfileHeader } from './ProfileHeader';
@@ -42,4 +54,9 @@ export type { EmptyStateProps, EmptyStateVariant, EmptyStateSize } from './Empty
 
 // DescriptionList
 export { DescriptionList } from './DescriptionList';
-export type { DescriptionListProps, DescriptionItem, DescriptionListLayout, DescriptionListSize } from './DescriptionList';
+export type {
+  DescriptionListProps,
+  DescriptionItem,
+  DescriptionListLayout,
+  DescriptionListSize,
+} from './DescriptionList';

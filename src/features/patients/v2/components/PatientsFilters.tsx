@@ -49,7 +49,7 @@ export function PatientsFilters({
     (e: React.ChangeEvent<HTMLInputElement>) => {
       onFiltersChange({ search: e.target.value });
     },
-    [onFiltersChange]
+    [onFiltersChange],
   );
 
   const handleStatusChange = useCallback(
@@ -59,7 +59,7 @@ export function PatientsFilters({
         isActive: value === '' ? undefined : value === 'true',
       });
     },
-    [onFiltersChange]
+    [onFiltersChange],
   );
 
   const handleInsuranceChange = useCallback(
@@ -69,7 +69,7 @@ export function PatientsFilters({
         hasInsurance: value === '' ? undefined : value === 'true',
       });
     },
-    [onFiltersChange]
+    [onFiltersChange],
   );
 
   const handleGenderChange = useCallback(
@@ -79,7 +79,7 @@ export function PatientsFilters({
         gender: value === '' ? undefined : value,
       });
     },
-    [onFiltersChange]
+    [onFiltersChange],
   );
 
   const handleSortChange = useCallback(
@@ -87,7 +87,7 @@ export function PatientsFilters({
       const value = e.target.value as SortField;
       onFiltersChange({ sortBy: value });
     },
-    [onFiltersChange]
+    [onFiltersChange],
   );
 
   const handleSortOrderToggle = useCallback(() => {
@@ -125,7 +125,7 @@ export function PatientsFilters({
             rightIcon={<ChevronDown size={16} className={showFilters ? styles.rotated : ''} />}
           >
             Filters
-            {hasActiveFilters && <span className={styles.filterBadge} />}
+            {hasActiveFilters ? <span className={styles.filterBadge} /> : null}
           </Button>
 
           <div className={styles.sortWrapper}>
@@ -148,7 +148,7 @@ export function PatientsFilters({
       </div>
 
       {/* Filters Panel */}
-      {showFilters && (
+      {showFilters ? (
         <div className={styles.filtersPanel}>
           <div className={styles.filterGrid}>
             <div className={styles.filterItem}>
@@ -185,20 +185,15 @@ export function PatientsFilters({
             </div>
           </div>
 
-          {hasActiveFilters && (
+          {hasActiveFilters ? (
             <div className={styles.filterActions}>
-              <Button
-                variant="ghost"
-                size="sm"
-                onClick={onReset}
-                leftIcon={<X size={14} />}
-              >
+              <Button variant="ghost" size="sm" onClick={onReset} leftIcon={<X size={14} />}>
                 Clear All Filters
               </Button>
             </div>
-          )}
+          ) : null}
         </div>
-      )}
+      ) : null}
     </div>
   );
 }

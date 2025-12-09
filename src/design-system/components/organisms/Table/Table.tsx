@@ -18,7 +18,7 @@ export const Table = forwardRef<HTMLTableElement, TableProps>(
     <table ref={ref} className={`${styles.table} ${className}`} {...props}>
       {children}
     </table>
-  )
+  ),
 );
 
 Table.displayName = 'Table';
@@ -31,7 +31,7 @@ export const TableHeader = forwardRef<HTMLTableSectionElement, TableHeaderProps>
     <thead ref={ref} className={`${styles.header} ${className}`} {...props}>
       {children}
     </thead>
-  )
+  ),
 );
 
 TableHeader.displayName = 'TableHeader';
@@ -44,7 +44,7 @@ export const TableBody = forwardRef<HTMLTableSectionElement, TableBodyProps>(
     <tbody ref={ref} className={`${styles.body} ${className}`} {...props}>
       {children}
     </tbody>
-  )
+  ),
 );
 
 TableBody.displayName = 'TableBody';
@@ -68,7 +68,7 @@ export const TableRow = forwardRef<HTMLTableRowElement, TableRowProps>(
         {children}
       </tr>
     );
-  }
+  },
 );
 
 TableRow.displayName = 'TableRow';
@@ -78,11 +78,7 @@ TableRow.displayName = 'TableRow';
  */
 export const TableHead = forwardRef<HTMLTableCellElement, TableHeadProps>(
   ({ children, sortable, sortDirection, onSort, className = '', ...props }, ref) => {
-    const headClasses = [
-      styles.head,
-      sortable && styles.headSortable,
-      className,
-    ]
+    const headClasses = [styles.head, sortable && styles.headSortable, className]
       .filter(Boolean)
       .join(' ');
 
@@ -94,21 +90,16 @@ export const TableHead = forwardRef<HTMLTableCellElement, TableHeadProps>(
     };
 
     return (
-      <th
-        ref={ref}
-        className={headClasses}
-        onClick={sortable ? onSort : undefined}
-        {...props}
-      >
+      <th ref={ref} className={headClasses} onClick={sortable ? onSort : undefined} {...props}>
         {children}
-        {sortable && (
+        {sortable ? (
           <span className={styles.sortIcon}>
             <SortIcon />
           </span>
-        )}
+        ) : null}
       </th>
     );
-  }
+  },
 );
 
 TableHead.displayName = 'TableHead';
@@ -121,7 +112,7 @@ export const TableCell = forwardRef<HTMLTableCellElement, TableCellProps>(
     <td ref={ref} className={`${styles.cell} ${className}`} {...props}>
       {children}
     </td>
-  )
+  ),
 );
 
 TableCell.displayName = 'TableCell';
@@ -129,12 +120,13 @@ TableCell.displayName = 'TableCell';
 /**
  * Table Wrapper - Optional bordered container
  */
-export const TableWrapper = forwardRef<HTMLDivElement, { children: React.ReactNode; className?: string }>(
-  ({ children, className = '' }, ref) => (
-    <div ref={ref} className={`${styles.wrapper} ${className}`}>
-      {children}
-    </div>
-  )
-);
+export const TableWrapper = forwardRef<
+  HTMLDivElement,
+  { children: React.ReactNode; className?: string }
+>(({ children, className = '' }, ref) => (
+  <div ref={ref} className={`${styles.wrapper} ${className}`}>
+    {children}
+  </div>
+));
 
 TableWrapper.displayName = 'TableWrapper';

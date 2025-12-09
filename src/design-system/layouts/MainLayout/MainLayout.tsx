@@ -6,7 +6,7 @@ import styles from './MainLayout.module.css';
 
 /**
  * MainLayout Component
- * 
+ *
  * Main application layout with sidebar navigation and header.
  */
 export const MainLayout = ({
@@ -21,9 +21,7 @@ export const MainLayout = ({
 
   const toggleGroup = (groupId: string) => {
     setExpandedGroups((prev) =>
-      prev.includes(groupId)
-        ? prev.filter((id) => id !== groupId)
-        : [...prev, groupId]
+      prev.includes(groupId) ? prev.filter((id) => id !== groupId) : [...prev, groupId],
     );
   };
 
@@ -35,10 +33,7 @@ export const MainLayout = ({
 
       return (
         <div key={item.id} className={styles.navGroup}>
-          <button
-            className={styles.navGroupTitle}
-            onClick={() => toggleGroup(item.id)}
-          >
+          <button className={styles.navGroupTitle} onClick={() => toggleGroup(item.id)}>
             <span className={styles.navGroupTitleContent}>
               {item.icon}
               {item.label}
@@ -48,7 +43,7 @@ export const MainLayout = ({
               className={`${styles.chevron} ${isExpanded ? styles.chevronOpen : ''}`}
             />
           </button>
-          {isExpanded && (
+          {isExpanded ? (
             <div className={styles.navGroupChildren}>
               {item.children.map((child) => (
                 <NavLink
@@ -63,7 +58,7 @@ export const MainLayout = ({
                 </NavLink>
               ))}
             </div>
-          )}
+          ) : null}
         </div>
       );
     }
@@ -72,9 +67,7 @@ export const MainLayout = ({
       <NavLink
         key={item.id}
         to={item.path || '/'}
-        className={({ isActive }) =>
-          `${styles.navItem} ${isActive ? styles.navItemActive : ''}`
-        }
+        className={({ isActive }) => `${styles.navItem} ${isActive ? styles.navItemActive : ''}`}
         onClick={() => setSidebarOpen(false)}
       >
         {item.icon}
@@ -86,21 +79,14 @@ export const MainLayout = ({
   return (
     <div className={styles.layout}>
       {/* Mobile Overlay */}
-      {sidebarOpen && (
-        <div
-          className={styles.overlay}
-          onClick={() => setSidebarOpen(false)}
-        />
-      )}
+      {sidebarOpen ? (
+        <div className={styles.overlay} onClick={() => setSidebarOpen(false)} />
+      ) : null}
 
       {/* Sidebar */}
-      <aside
-        className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}
-      >
+      <aside className={`${styles.sidebar} ${sidebarOpen ? styles.sidebarOpen : ''}`}>
         <div className={styles.logo}>{logoText}</div>
-        <nav className={styles.nav}>
-          {menuItems.map(renderNavItem)}
-        </nav>
+        <nav className={styles.nav}>{menuItems.map(renderNavItem)}</nav>
       </aside>
 
       {/* Main Content */}
@@ -108,10 +94,7 @@ export const MainLayout = ({
         {/* Header */}
         <header className={styles.header}>
           <div className={styles.headerLeft}>
-            <button
-              className={styles.menuToggle}
-              onClick={() => setSidebarOpen(!sidebarOpen)}
-            >
+            <button className={styles.menuToggle} onClick={() => setSidebarOpen(!sidebarOpen)}>
               {sidebarOpen ? <X size={24} /> : <Menu size={24} />}
             </button>
           </div>
@@ -127,17 +110,15 @@ export const MainLayout = ({
             </button>
 
             <div className={styles.userMenu}>
-              <div className={styles.avatar}>
-                {userName.charAt(0).toUpperCase()}
-              </div>
+              <div className={styles.avatar}>{userName.charAt(0).toUpperCase()}</div>
               <span className={styles.userName}>{userName}</span>
             </div>
 
-            {onLogout && (
+            {onLogout ? (
               <button className={styles.logoutBtn} onClick={onLogout} title="Logout">
                 <LogOut size={20} />
               </button>
-            )}
+            ) : null}
           </div>
         </header>
 

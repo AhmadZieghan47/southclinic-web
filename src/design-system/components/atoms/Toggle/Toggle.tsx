@@ -4,21 +4,11 @@ import styles from './Toggle.module.css';
 
 /**
  * Toggle Component
- * 
+ *
  * On/off switch toggle input.
  */
 export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
-  (
-    {
-      label,
-      size = 'md',
-      labelPosition = 'right',
-      className,
-      id,
-      ...props
-    },
-    ref
-  ) => {
+  ({ label, size = 'md', labelPosition = 'right', className, id, ...props }, ref) => {
     const wrapperClasses = [
       styles.wrapper,
       styles[size],
@@ -41,10 +31,10 @@ export const Toggle = forwardRef<HTMLInputElement, ToggleProps>(
         <span className={styles.toggle}>
           <span className={styles.knob} />
         </span>
-        {label && <span className={styles.label}>{label}</span>}
+        {label ? <span className={styles.label}>{label}</span> : null}
       </label>
     );
-  }
+  },
 );
 
 Toggle.displayName = 'Toggle';

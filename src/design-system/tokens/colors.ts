@@ -1,7 +1,7 @@
 /**
  * Color Tokens
  * Design System - South Physical Clinic
- * 
+ *
  * Theme: LIGHT MODE ONLY
  * Primary: Teal-600 (#0D9488)
  * Secondary: Sky-500 (#0EA5E9)
@@ -46,7 +46,7 @@ export const colors = {
   // Neutral Colors
   background: '#F3F4F6',
   surface: '#FFFFFF',
-  
+
   // Text Colors
   heading: '#1F2937',
   body: '#4B5563',

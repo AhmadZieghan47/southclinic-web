@@ -5,14 +5,7 @@
 
 import React from 'react';
 import { Card, Button } from '../../design-system';
-import { 
-  TrendingUp, 
-  Users, 
-  ShoppingCart, 
-  DollarSign,
-  Download,
-  RefreshCw
-} from 'lucide-react';
+import { TrendingUp, Users, ShoppingCart, DollarSign, Download, RefreshCw } from 'lucide-react';
 import styles from './Dashboard.module.css';
 
 // Stat card component
@@ -47,11 +40,41 @@ const StatCard: React.FC<StatCardProps> = ({ title, value, change, isPositive, i
 
 // Sample data
 const recentOrders = [
-  { id: '#ORD-001', customer: 'John Doe', product: 'Premium Plan', amount: '$299', status: 'Completed' },
-  { id: '#ORD-002', customer: 'Jane Smith', product: 'Basic Plan', amount: '$99', status: 'Pending' },
-  { id: '#ORD-003', customer: 'Bob Johnson', product: 'Enterprise Plan', amount: '$999', status: 'Completed' },
-  { id: '#ORD-004', customer: 'Alice Brown', product: 'Premium Plan', amount: '$299', status: 'Processing' },
-  { id: '#ORD-005', customer: 'Charlie Wilson', product: 'Basic Plan', amount: '$99', status: 'Completed' },
+  {
+    id: '#ORD-001',
+    customer: 'John Doe',
+    product: 'Premium Plan',
+    amount: '$299',
+    status: 'Completed',
+  },
+  {
+    id: '#ORD-002',
+    customer: 'Jane Smith',
+    product: 'Basic Plan',
+    amount: '$99',
+    status: 'Pending',
+  },
+  {
+    id: '#ORD-003',
+    customer: 'Bob Johnson',
+    product: 'Enterprise Plan',
+    amount: '$999',
+    status: 'Completed',
+  },
+  {
+    id: '#ORD-004',
+    customer: 'Alice Brown',
+    product: 'Premium Plan',
+    amount: '$299',
+    status: 'Processing',
+  },
+  {
+    id: '#ORD-005',
+    customer: 'Charlie Wilson',
+    product: 'Basic Plan',
+    amount: '$99',
+    status: 'Completed',
+  },
 ];
 
 export const Dashboard: React.FC = () => {
@@ -133,8 +156,8 @@ export const Dashboard: React.FC = () => {
       </div>
 
       {/* Recent Orders Table */}
-      <Card 
-        title="Recent Orders" 
+      <Card
+        title="Recent Orders"
         headerActions={
           <Button variant="outlinePrimary" size="sm">
             View All
@@ -155,15 +178,16 @@ export const Dashboard: React.FC = () => {
           <tbody>
             {recentOrders.map((order) => (
               <tr key={order.id}>
-                <td><strong>{order.id}</strong></td>
+                <td>
+                  <strong>{order.id}</strong>
+                </td>
                 <td>{order.customer}</td>
                 <td>{order.product}</td>
-                <td><strong>{order.amount}</strong></td>
                 <td>
-                  <span 
-                    className={styles.badge} 
-                    data-status={order.status.toLowerCase()}
-                  >
+                  <strong>{order.amount}</strong>
+                </td>
+                <td>
+                  <span className={styles.badge} data-status={order.status.toLowerCase()}>
                     {order.status}
                   </span>
                 </td>

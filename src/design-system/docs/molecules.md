@@ -16,14 +16,14 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/design-system';
 
 ### Card Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `children` | `ReactNode` | - | Yes | Card content |
-| `title` | `string` | - | No | Card title |
-| `description` | `string` | - | No | Card description/subtitle |
-| `headerActions` | `ReactNode` | - | No | Header action buttons |
-| `footer` | `ReactNode` | - | No | Footer content |
-| `noPadding` | `boolean` | `false` | No | Remove content padding |
+| Prop            | Type        | Default | Required | Description               |
+| --------------- | ----------- | ------- | -------- | ------------------------- |
+| `children`      | `ReactNode` | -       | Yes      | Card content              |
+| `title`         | `string`    | -       | No       | Card title                |
+| `description`   | `string`    | -       | No       | Card description/subtitle |
+| `headerActions` | `ReactNode` | -       | No       | Header action buttons     |
+| `footer`        | `ReactNode` | -       | No       | Footer content            |
+| `noPadding`     | `boolean`   | `false` | No       | Remove content padding    |
 
 ### Examples
 
@@ -34,15 +34,15 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/design-system';
 </Card>
 
 // Card with description
-<Card 
-  title="Appointments" 
+<Card
+  title="Appointments"
   description="Today's schedule"
 >
   <p>Appointment list...</p>
 </Card>
 
 // Card with header actions
-<Card 
+<Card
   title="Patients"
   headerActions={
     <Button size="sm" leftIcon={<Plus size={14} />}>
@@ -54,7 +54,7 @@ import { Card, CardHeader, CardContent, CardFooter } from '@/design-system';
 </Card>
 
 // Card with footer
-<Card 
+<Card
   title="Form"
   footer={
     <div className="flex gap-2 justify-end">
@@ -102,15 +102,15 @@ import { FormField } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `label` | `string` | - | No | Field label |
-| `required` | `boolean` | `false` | No | Show required indicator (*) |
-| `error` | `string` | - | No | Error message |
-| `helperText` | `string` | - | No | Helper text below input |
-| `htmlFor` | `string` | - | No | Associated input ID |
-| `children` | `ReactNode` | - | Yes | Form control (Input, Select, etc.) |
-| `className` | `string` | - | No | Additional CSS class |
+| Prop         | Type        | Default | Required | Description                        |
+| ------------ | ----------- | ------- | -------- | ---------------------------------- |
+| `label`      | `string`    | -       | No       | Field label                        |
+| `required`   | `boolean`   | `false` | No       | Show required indicator (\*)       |
+| `error`      | `string`    | -       | No       | Error message                      |
+| `helperText` | `string`    | -       | No       | Helper text below input            |
+| `htmlFor`    | `string`    | -       | No       | Associated input ID                |
+| `children`   | `ReactNode` | -       | Yes      | Form control (Input, Select, etc.) |
+| `className`  | `string`    | -       | No       | Additional CSS class               |
 
 ### Examples
 
@@ -126,8 +126,8 @@ import { FormField } from '@/design-system';
 </FormField>
 
 // With helper text
-<FormField 
-  label="Password" 
+<FormField
+  label="Password"
   helperText="Must be at least 8 characters"
   htmlFor="password"
 >
@@ -135,9 +135,9 @@ import { FormField } from '@/design-system';
 </FormField>
 
 // With error
-<FormField 
-  label="Email" 
-  required 
+<FormField
+  label="Email"
+  required
   error="Please enter a valid email address"
   htmlFor="email"
 >
@@ -146,7 +146,7 @@ import { FormField } from '@/design-system';
 
 // With Select
 <FormField label="Status" htmlFor="status">
-  <Select 
+  <Select
     id="status"
     options={[
       { value: 'active', label: 'Active' },
@@ -160,15 +160,15 @@ import { FormField } from '@/design-system';
   <FormField label="First Name" required error={errors.firstName}>
     <Input {...register('firstName')} error={!!errors.firstName} />
   </FormField>
-  
+
   <FormField label="Last Name" required error={errors.lastName}>
     <Input {...register('lastName')} error={!!errors.lastName} />
   </FormField>
-  
+
   <FormField label="Email" required error={errors.email}>
     <Input type="email" {...register('email')} error={!!errors.email} />
   </FormField>
-  
+
   <Button type="submit" variant="primary">Submit</Button>
 </form>
 ```
@@ -187,15 +187,15 @@ import { StatCard } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `title` | `string` | - | Yes | Stat title/label |
-| `value` | `string \| number` | - | Yes | Stat value |
-| `change` | `string` | - | No | Change indicator (e.g., "+12%") |
-| `isPositive` | `boolean` | `true` | No | Positive/negative change |
-| `icon` | `ReactNode` | - | No | Stat icon |
-| `variant` | `StatCardVariant` | `'default'` | No | Color variant |
-| `description` | `string` | - | No | Additional description |
+| Prop          | Type               | Default     | Required | Description                     |
+| ------------- | ------------------ | ----------- | -------- | ------------------------------- |
+| `title`       | `string`           | -           | Yes      | Stat title/label                |
+| `value`       | `string \| number` | -           | Yes      | Stat value                      |
+| `change`      | `string`           | -           | No       | Change indicator (e.g., "+12%") |
+| `isPositive`  | `boolean`          | `true`      | No       | Positive/negative change        |
+| `icon`        | `ReactNode`        | -           | No       | Stat icon                       |
+| `variant`     | `StatCardVariant`  | `'default'` | No       | Color variant                   |
+| `description` | `string`           | -           | No       | Additional description          |
 
 ### StatCardVariant
 
@@ -209,30 +209,30 @@ type StatCardVariant = 'default' | 'primary' | 'secondary';
 import { Users, Calendar, DollarSign, Clock } from 'lucide-react';
 
 // Basic
-<StatCard 
-  title="Total Patients" 
-  value="1,234" 
+<StatCard
+  title="Total Patients"
+  value="1,234"
 />
 
 // With change indicator
-<StatCard 
-  title="Total Patients" 
+<StatCard
+  title="Total Patients"
   value="1,234"
   change="+12%"
   isPositive={true}
 />
 
 // Negative change
-<StatCard 
-  title="Cancellations" 
+<StatCard
+  title="Cancellations"
   value="23"
   change="-5%"
   isPositive={false}
 />
 
 // With icon
-<StatCard 
-  title="Total Patients" 
+<StatCard
+  title="Total Patients"
   value="1,234"
   change="+12%"
   isPositive
@@ -240,23 +240,23 @@ import { Users, Calendar, DollarSign, Clock } from 'lucide-react';
 />
 
 // Color variants
-<StatCard 
-  title="Active Patients" 
+<StatCard
+  title="Active Patients"
   value="892"
   icon={<Users size={24} />}
   variant="primary"
 />
 
-<StatCard 
-  title="Appointments" 
+<StatCard
+  title="Appointments"
   value="56"
   icon={<Calendar size={24} />}
   variant="secondary"
 />
 
 // With description
-<StatCard 
-  title="Revenue" 
+<StatCard
+  title="Revenue"
   value="$45,678"
   change="+8.2%"
   isPositive
@@ -287,15 +287,15 @@ import { AlertBanner } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `variant` | `AlertVariant` | `'info'` | No | Alert variant |
-| `title` | `string` | - | No | Alert title |
-| `children` | `ReactNode` | - | Yes | Alert message content |
-| `dismissible` | `boolean` | `false` | No | Show dismiss button |
-| `onDismiss` | `() => void` | - | No | Dismiss handler |
-| `icon` | `ReactNode` | - | No | Custom icon |
-| `action` | `ReactNode` | - | No | Action button |
+| Prop          | Type           | Default  | Required | Description           |
+| ------------- | -------------- | -------- | -------- | --------------------- |
+| `variant`     | `AlertVariant` | `'info'` | No       | Alert variant         |
+| `title`       | `string`       | -        | No       | Alert title           |
+| `children`    | `ReactNode`    | -        | Yes      | Alert message content |
+| `dismissible` | `boolean`      | `false`  | No       | Show dismiss button   |
+| `onDismiss`   | `() => void`   | -        | No       | Dismiss handler       |
+| `icon`        | `ReactNode`    | -        | No       | Custom icon           |
+| `action`      | `ReactNode`    | -        | No       | Action button         |
 
 ### AlertVariant
 
@@ -330,7 +330,7 @@ type AlertVariant = 'info' | 'success' | 'warning' | 'error';
 const [show, setShow] = useState(true);
 
 {show && (
-  <AlertBanner 
+  <AlertBanner
     variant="info"
     title="New Feature"
     dismissible
@@ -341,7 +341,7 @@ const [show, setShow] = useState(true);
 )}
 
 // With action button
-<AlertBanner 
+<AlertBanner
   variant="warning"
   title="Outstanding Balance"
   action={<Button size="sm" variant="outline">Pay Now</Button>}
@@ -352,7 +352,7 @@ const [show, setShow] = useState(true);
 // Custom icon
 import { Bell } from 'lucide-react';
 
-<AlertBanner 
+<AlertBanner
   variant="info"
   icon={<Bell size={20} />}
   title="Reminder"
@@ -376,14 +376,14 @@ import type { TabItem } from '@/design-system';
 
 ### Tabs Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `items` | `TabItem[]` | - | Yes | Tab items configuration |
-| `activeId` | `string` | - | Yes | Active tab ID |
-| `onChange` | `(id: string) => void` | - | Yes | Tab change handler |
-| `variant` | `TabVariant` | `'underline'` | No | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `fullWidth` | `boolean` | `false` | No | Full width tabs |
+| Prop        | Type                   | Default       | Required | Description             |
+| ----------- | ---------------------- | ------------- | -------- | ----------------------- |
+| `items`     | `TabItem[]`            | -             | Yes      | Tab items configuration |
+| `activeId`  | `string`               | -             | Yes      | Active tab ID           |
+| `onChange`  | `(id: string) => void` | -             | Yes      | Tab change handler      |
+| `variant`   | `TabVariant`           | `'underline'` | No       | Visual variant          |
+| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`        | No       | Size variant            |
+| `fullWidth` | `boolean`              | `false`       | No       | Full width tabs         |
 
 ### TabItem Interface
 
@@ -405,11 +405,11 @@ type TabVariant = 'underline' | 'pills' | 'boxed';
 
 ### TabPanel Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `id` | `string` | - | Yes | Panel ID (must match tab ID) |
-| `activeId` | `string` | - | Yes | Currently active tab ID |
-| `children` | `ReactNode` | - | Yes | Panel content |
+| Prop       | Type        | Default | Required | Description                  |
+| ---------- | ----------- | ------- | -------- | ---------------------------- |
+| `id`       | `string`    | -       | Yes      | Panel ID (must match tab ID) |
+| `activeId` | `string`    | -       | Yes      | Currently active tab ID      |
+| `children` | `ReactNode` | -       | Yes      | Panel content                |
 
 ### Examples
 
@@ -424,10 +424,10 @@ const tabs: TabItem[] = [
 ];
 
 // Basic tabs
-<Tabs 
-  items={tabs} 
-  activeId={activeTab} 
-  onChange={setActiveTab} 
+<Tabs
+  items={tabs}
+  activeId={activeTab}
+  onChange={setActiveTab}
 />
 
 <TabPanel id="overview" activeId={activeTab}>
@@ -478,15 +478,15 @@ import { SearchInput } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `clearable` | `boolean` | `true` | No | Show clear button when has value |
-| `onClear` | `() => void` | - | No | Clear button handler |
-| `loading` | `boolean` | `false` | No | Loading state |
-| `fullWidth` | `boolean` | `false` | No | Full width |
+| Prop        | Type                   | Default | Required | Description                      |
+| ----------- | ---------------------- | ------- | -------- | -------------------------------- |
+| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`  | No       | Size variant                     |
+| `clearable` | `boolean`              | `true`  | No       | Show clear button when has value |
+| `onClear`   | `() => void`           | -       | No       | Clear button handler             |
+| `loading`   | `boolean`              | `false` | No       | Loading state                    |
+| `fullWidth` | `boolean`              | `false` | No       | Full width                       |
 
-*Extends all native `<input>` HTML attributes.*
+_Extends all native `<input>` HTML attributes._
 
 ### Examples
 
@@ -497,7 +497,7 @@ import { SearchInput } from '@/design-system';
 // Controlled with clear
 const [query, setQuery] = useState('');
 
-<SearchInput 
+<SearchInput
   placeholder="Search..."
   value={query}
   onChange={(e) => setQuery(e.target.value)}
@@ -505,7 +505,7 @@ const [query, setQuery] = useState('');
 />
 
 // Loading state
-<SearchInput 
+<SearchInput
   placeholder="Searching..."
   loading
 />
@@ -530,7 +530,7 @@ const debouncedSearch = useMemo(
   []
 );
 
-<SearchInput 
+<SearchInput
   placeholder="Search patients..."
   value={query}
   onChange={(e) => {
@@ -559,26 +559,26 @@ import { NavItem, NavGroup } from '@/design-system';
 
 ### NavItem Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `label` | `string` | - | Yes | Item label |
-| `icon` | `ReactNode` | - | No | Item icon |
-| `href` | `string` | - | No | Link URL (renders as `<a>`) |
-| `active` | `boolean` | `false` | No | Active state |
-| `badge` | `ReactNode` | - | No | Badge content |
-| `collapsed` | `boolean` | `false` | No | Collapsed mode (icon only) |
-| `disabled` | `boolean` | `false` | No | Disabled state |
-| `onClick` | `() => void` | - | No | Click handler |
+| Prop        | Type         | Default | Required | Description                 |
+| ----------- | ------------ | ------- | -------- | --------------------------- |
+| `label`     | `string`     | -       | Yes      | Item label                  |
+| `icon`      | `ReactNode`  | -       | No       | Item icon                   |
+| `href`      | `string`     | -       | No       | Link URL (renders as `<a>`) |
+| `active`    | `boolean`    | `false` | No       | Active state                |
+| `badge`     | `ReactNode`  | -       | No       | Badge content               |
+| `collapsed` | `boolean`    | `false` | No       | Collapsed mode (icon only)  |
+| `disabled`  | `boolean`    | `false` | No       | Disabled state              |
+| `onClick`   | `() => void` | -       | No       | Click handler               |
 
 ### NavGroup Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `label` | `string` | - | Yes | Group label |
-| `icon` | `ReactNode` | - | No | Group icon |
-| `children` | `ReactNode` | - | Yes | Child NavItems |
-| `defaultOpen` | `boolean` | `false` | No | Initially open |
-| `collapsed` | `boolean` | `false` | No | Collapsed mode |
+| Prop          | Type        | Default | Required | Description    |
+| ------------- | ----------- | ------- | -------- | -------------- |
+| `label`       | `string`    | -       | Yes      | Group label    |
+| `icon`        | `ReactNode` | -       | No       | Group icon     |
+| `children`    | `ReactNode` | -       | Yes      | Child NavItems |
+| `defaultOpen` | `boolean`   | `false` | No       | Initially open |
+| `collapsed`   | `boolean`   | `false` | No       | Collapsed mode |
 
 ### Examples
 
@@ -591,24 +591,24 @@ import { Home, Users, Calendar, Settings, FileText } from 'lucide-react';
 <NavItem icon={<Calendar size={20} />} label="Appointments" href="/appointments" />
 
 // With badge
-<NavItem 
-  icon={<Calendar size={20} />} 
-  label="Appointments" 
+<NavItem
+  icon={<Calendar size={20} />}
+  label="Appointments"
   href="/appointments"
   badge="5"
 />
 
 // Disabled
-<NavItem 
-  icon={<FileText size={20} />} 
-  label="Reports" 
+<NavItem
+  icon={<FileText size={20} />}
+  label="Reports"
   href="/reports"
   disabled
 />
 
 // Grouped items
-<NavGroup 
-  icon={<Settings size={20} />} 
+<NavGroup
+  icon={<Settings size={20} />}
   label="Settings"
   defaultOpen
 >
@@ -622,9 +622,9 @@ import { Home, Users, Calendar, Settings, FileText } from 'lucide-react';
 <NavItem icon={<Users size={20} />} label="Patients" href="/patients" collapsed />
 
 // Button (no href)
-<NavItem 
-  icon={<LogOut size={20} />} 
-  label="Logout" 
+<NavItem
+  icon={<LogOut size={20} />}
+  label="Logout"
   onClick={handleLogout}
 />
 ```
@@ -643,15 +643,15 @@ import { Pagination } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `currentPage` | `number` | - | Yes | Current page (1-indexed) |
-| `totalPages` | `number` | - | Yes | Total number of pages |
-| `onChange` | `(page: number) => void` | - | Yes | Page change handler |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `showFirstLast` | `boolean` | `true` | No | Show first/last page buttons |
-| `siblingCount` | `number` | `1` | No | Pages to show on each side of current |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop            | Type                     | Default | Required | Description                           |
+| --------------- | ------------------------ | ------- | -------- | ------------------------------------- |
+| `currentPage`   | `number`                 | -       | Yes      | Current page (1-indexed)              |
+| `totalPages`    | `number`                 | -       | Yes      | Total number of pages                 |
+| `onChange`      | `(page: number) => void` | -       | Yes      | Page change handler                   |
+| `size`          | `'sm' \| 'md' \| 'lg'`   | `'md'`  | No       | Size variant                          |
+| `showFirstLast` | `boolean`                | `true`  | No       | Show first/last page buttons          |
+| `siblingCount`  | `number`                 | `1`     | No       | Pages to show on each side of current |
+| `disabled`      | `boolean`                | `false` | No       | Disabled state                        |
 
 ### Examples
 
@@ -660,14 +660,14 @@ const [page, setPage] = useState(1);
 const totalPages = 10;
 
 // Basic
-<Pagination 
+<Pagination
   currentPage={page}
   totalPages={totalPages}
   onChange={setPage}
 />
 
 // Without first/last buttons
-<Pagination 
+<Pagination
   currentPage={page}
   totalPages={totalPages}
   onChange={setPage}
@@ -675,7 +675,7 @@ const totalPages = 10;
 />
 
 // More sibling pages
-<Pagination 
+<Pagination
   currentPage={page}
   totalPages={20}
   onChange={setPage}
@@ -688,7 +688,7 @@ const totalPages = 10;
 <Pagination size="lg" currentPage={page} totalPages={totalPages} onChange={setPage} />
 
 // Disabled
-<Pagination 
+<Pagination
   currentPage={page}
   totalPages={totalPages}
   onChange={setPage}
@@ -700,7 +700,7 @@ const totalPages = 10;
   <Table>...</Table>
   <div className="p-4 border-t flex justify-between items-center">
     <span className="text-sm text-muted">Showing 1-10 of 100</span>
-    <Pagination 
+    <Pagination
       currentPage={page}
       totalPages={10}
       onChange={setPage}
@@ -724,25 +724,25 @@ import { ProgressBar, StepProgress } from '@/design-system';
 
 ### ProgressBar Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `value` | `number` | - | Yes | Current value |
-| `max` | `number` | `100` | No | Maximum value |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `variant` | `ProgressBarVariant` | `'primary'` | No | Color variant |
-| `showLabel` | `boolean` | `false` | No | Show percentage label |
-| `label` | `string` | - | No | Custom label text |
-| `striped` | `boolean` | `false` | No | Striped style |
-| `animated` | `boolean` | `false` | No | Animated stripes |
+| Prop        | Type                   | Default     | Required | Description           |
+| ----------- | ---------------------- | ----------- | -------- | --------------------- |
+| `value`     | `number`               | -           | Yes      | Current value         |
+| `max`       | `number`               | `100`       | No       | Maximum value         |
+| `size`      | `'sm' \| 'md' \| 'lg'` | `'md'`      | No       | Size variant          |
+| `variant`   | `ProgressBarVariant`   | `'primary'` | No       | Color variant         |
+| `showLabel` | `boolean`              | `false`     | No       | Show percentage label |
+| `label`     | `string`               | -           | No       | Custom label text     |
+| `striped`   | `boolean`              | `false`     | No       | Striped style         |
+| `animated`  | `boolean`              | `false`     | No       | Animated stripes      |
 
 ### StepProgress Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `currentStep` | `number` | - | Yes | Current step (0-indexed) |
-| `totalSteps` | `number` | - | Yes | Total number of steps |
-| `labels` | `string[]` | - | No | Step labels |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
+| Prop          | Type                   | Default | Required | Description              |
+| ------------- | ---------------------- | ------- | -------- | ------------------------ |
+| `currentStep` | `number`               | -       | Yes      | Current step (0-indexed) |
+| `totalSteps`  | `number`               | -       | Yes      | Total number of steps    |
+| `labels`      | `string[]`             | -       | No       | Step labels              |
+| `size`        | `'sm' \| 'md' \| 'lg'` | `'md'`  | No       | Size variant             |
 
 ### ProgressBarVariant
 
@@ -779,13 +779,13 @@ type ProgressBarVariant = 'default' | 'primary' | 'success' | 'warning' | 'dange
 <ProgressBar value={3} max={10} showLabel /> // Shows 30%
 
 // Step progress
-<StepProgress 
+<StepProgress
   currentStep={1}
   totalSteps={4}
 />
 
 // Step progress with labels
-<StepProgress 
+<StepProgress
   currentStep={2}
   totalSteps={4}
   labels={['Info', 'Details', 'Review', 'Complete']}
@@ -794,7 +794,7 @@ type ProgressBarVariant = 'default' | 'primary' | 'success' | 'warning' | 'dange
 // Upload progress example
 const [progress, setProgress] = useState(0);
 
-<ProgressBar 
+<ProgressBar
   value={progress}
   label="Uploading document..."
   showLabel
@@ -816,15 +816,15 @@ import { IconButton } from '@/design-system';
 
 ### Props
 
-| Prop | Type | Default | Required | Description |
-|------|------|---------|----------|-------------|
-| `icon` | `ReactNode` | - | Yes | Icon element |
-| `aria-label` | `string` | - | Yes | Accessibility label (required) |
-| `variant` | `IconButtonVariant` | `'default'` | No | Visual variant |
-| `size` | `'sm' \| 'md' \| 'lg'` | `'md'` | No | Size variant |
-| `rounded` | `boolean` | `false` | No | Circular shape |
-| `loading` | `boolean` | `false` | No | Loading state |
-| `disabled` | `boolean` | `false` | No | Disabled state |
+| Prop         | Type                   | Default     | Required | Description                    |
+| ------------ | ---------------------- | ----------- | -------- | ------------------------------ |
+| `icon`       | `ReactNode`            | -           | Yes      | Icon element                   |
+| `aria-label` | `string`               | -           | Yes      | Accessibility label (required) |
+| `variant`    | `IconButtonVariant`    | `'default'` | No       | Visual variant                 |
+| `size`       | `'sm' \| 'md' \| 'lg'` | `'md'`      | No       | Size variant                   |
+| `rounded`    | `boolean`              | `false`     | No       | Circular shape                 |
+| `loading`    | `boolean`              | `false`     | No       | Loading state                  |
+| `disabled`   | `boolean`              | `false`     | No       | Disabled state                 |
 
 ### IconButtonVariant
 
@@ -882,15 +882,15 @@ import { Edit, Trash, MoreHorizontal, Plus, X, Settings } from 'lucide-react';
 
 ## File Locations
 
-| Component | Path |
-|-----------|------|
-| Card | `src/design-system/components/molecules/Card/` |
-| FormField | `src/design-system/components/molecules/FormField/` |
-| StatCard | `src/design-system/components/molecules/StatCard/` |
+| Component   | Path                                                  |
+| ----------- | ----------------------------------------------------- |
+| Card        | `src/design-system/components/molecules/Card/`        |
+| FormField   | `src/design-system/components/molecules/FormField/`   |
+| StatCard    | `src/design-system/components/molecules/StatCard/`    |
 | AlertBanner | `src/design-system/components/molecules/AlertBanner/` |
-| Tabs | `src/design-system/components/molecules/Tab/` |
+| Tabs        | `src/design-system/components/molecules/Tab/`         |
 | SearchInput | `src/design-system/components/molecules/SearchInput/` |
-| NavItem | `src/design-system/components/molecules/NavItem/` |
-| Pagination | `src/design-system/components/molecules/Pagination/` |
+| NavItem     | `src/design-system/components/molecules/NavItem/`     |
+| Pagination  | `src/design-system/components/molecules/Pagination/`  |
 | ProgressBar | `src/design-system/components/molecules/ProgressBar/` |
-| IconButton | `src/design-system/components/molecules/IconButton/` |
+| IconButton  | `src/design-system/components/molecules/IconButton/`  |

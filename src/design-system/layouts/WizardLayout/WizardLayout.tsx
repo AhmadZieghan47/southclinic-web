@@ -5,7 +5,7 @@ import styles from './WizardLayout.module.css';
 
 /**
  * WizardLayout Component
- * 
+ *
  * Page layout for multi-step wizards/forms with progress indicator.
  */
 export const WizardLayout = ({
@@ -23,7 +23,7 @@ export const WizardLayout = ({
 
   return (
     <div className={classes}>
-      {backLink && <div className={styles.backLink}>{backLink}</div>}
+      {backLink ? <div className={styles.backLink}>{backLink}</div> : null}
 
       <div className={styles.header}>
         <h1 className={styles.title}>{title}</h1>
@@ -48,11 +48,9 @@ export const WizardLayout = ({
                 </span>
                 <div className={styles.stepInfo}>
                   <span className={styles.stepTitle}>{step.title}</span>
-                  {step.description && (
-                    <span className={styles.stepDescription}>
-                      {step.description}
-                    </span>
-                  )}
+                  {step.description ? (
+                    <span className={styles.stepDescription}>{step.description}</span>
+                  ) : null}
                 </div>
                 <div className={styles.stepConnector} />
               </div>
@@ -61,7 +59,7 @@ export const WizardLayout = ({
         </div>
       </div>
 
-      {error && showError && (
+      {error && showError ? (
         <div className={styles.error}>
           <AlertCircle size={20} className={styles.errorIcon} />
           <div className={styles.errorContent}>
@@ -76,7 +74,7 @@ export const WizardLayout = ({
             <X size={16} />
           </button>
         </div>
-      )}
+      ) : null}
 
       <div className={styles.content}>{children}</div>
     </div>

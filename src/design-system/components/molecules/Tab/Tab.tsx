@@ -4,7 +4,7 @@ import styles from './Tab.module.css';
 
 /**
  * Tabs Component
- * 
+ *
  * Tab navigation with multiple style variants.
  */
 export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
@@ -19,7 +19,7 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const classes = [
       styles.tabs,
@@ -45,29 +45,25 @@ export const Tabs = forwardRef<HTMLDivElement, TabsProps>(
           >
             {item.icon}
             {item.label}
-            {item.badge && <span className={styles.badge}>{item.badge}</span>}
+            {item.badge ? <span className={styles.badge}>{item.badge}</span> : null}
           </button>
         ))}
       </div>
     );
-  }
+  },
 );
 
 Tabs.displayName = 'Tabs';
 
 /**
  * TabPanel Component
- * 
+ *
  * Content panel for a tab.
  */
 export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
   ({ id, activeId, children, className, ...props }, ref) => {
     const isActive = id === activeId;
-    const classes = [
-      styles.panel,
-      !isActive && styles.panelHidden,
-      className,
-    ]
+    const classes = [styles.panel, !isActive && styles.panelHidden, className]
       .filter(Boolean)
       .join(' ');
 
@@ -84,7 +80,7 @@ export const TabPanel = forwardRef<HTMLDivElement, TabPanelProps>(
         {children}
       </div>
     );
-  }
+  },
 );
 
 TabPanel.displayName = 'TabPanel';

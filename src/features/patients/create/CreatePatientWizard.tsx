@@ -9,12 +9,7 @@ import { ArrowLeft } from 'lucide-react';
 import { Wizard, Button, AlertBanner, Card } from '../../../design-system';
 import type { WizardStep } from '../../../design-system/components/organisms/Wizard/Wizard.types';
 import { useCreatePatient } from './hooks/useCreatePatient';
-import {
-  PersonalInfoStep,
-  MedicalInfoStep,
-  AttachmentsStep,
-  ReviewStep,
-} from './components';
+import { PersonalInfoStep, MedicalInfoStep, AttachmentsStep, ReviewStep } from './components';
 import styles from './CreatePatientWizard.module.css';
 
 export function CreatePatientWizard() {
@@ -41,77 +36,74 @@ export function CreatePatientWizard() {
   });
 
   // Handle edit step from review
-  const handleEditStep = useCallback((step: number) => {
-    setCurrentStep(step);
-  }, [setCurrentStep]);
+  const handleEditStep = useCallback(
+    (step: number) => {
+      setCurrentStep(step);
+    },
+    [setCurrentStep],
+  );
 
   // Build wizard steps with content
-  const wizardSteps: WizardStep[] = useMemo(() => [
-    {
-      id: 'personal',
-      title: 'Personal Info',
-      description: 'Basic details & insurance',
-      content: (
-        <PersonalInfoStep
-          personalData={formData.personal}
-          insuranceData={formData.insurance}
-          onPersonalChange={updatePersonalInfo}
-          onInsuranceChange={updateInsurance}
-          errors={errors}
-        />
-      ),
-      validate: () => validateStep(0),
-    },
-    {
-      id: 'medical',
-      title: 'Medical Info',
-      description: 'Health history',
-      content: (
-        <MedicalInfoStep
-          medicalData={formData.medical}
-          onMedicalChange={updateMedicalInfo}
-        />
-      ),
-      validate: () => validateStep(1),
-    },
-    {
-      id: 'attachments',
-      title: 'Attachments',
-      description: 'Upload documents',
-      optional: true,
-      content: (
-        <AttachmentsStep
-          attachmentsData={formData.attachments}
-          onAddFile={addAttachment}
-          onRemoveFile={removeAttachment}
-        />
-      ),
-      validate: () => validateStep(2),
-    },
-    {
-      id: 'review',
-      title: 'Review',
-      description: 'Confirm & submit',
-      content: (
-        <ReviewStep
-          formData={formData}
-          onEditStep={handleEditStep}
-          errors={errors}
-        />
-      ),
-      validate: () => validateStep(3),
-    },
-  ], [
-    formData,
-    errors,
-    validateStep,
-    updatePersonalInfo,
-    updateInsurance,
-    updateMedicalInfo,
-    addAttachment,
-    removeAttachment,
-    handleEditStep,
-  ]);
+  const wizardSteps: WizardStep[] = useMemo(
+    () => [
+      {
+        id: 'personal',
+        title: 'Personal Info',
+        description: 'Basic details & insurance',
+        content: (
+          <PersonalInfoStep
+            personalData={formData.personal}
+            insuranceData={formData.insurance}
+            onPersonalChange={updatePersonalInfo}
+            onInsuranceChange={updateInsurance}
+            errors={errors}
+          />
+        ),
+        validate: () => validateStep(0),
+      },
+      {
+        id: 'medical',
+        title: 'Medical Info',
+        description: 'Health history',
+        content: (
+          <MedicalInfoStep medicalData={formData.medical} onMedicalChange={updateMedicalInfo} />
+        ),
+        validate: () => validateStep(1),
+      },
+      {
+        id: 'attachments',
+        title: 'Attachments',
+        description: 'Upload documents',
+        optional: true,
+        content: (
+          <AttachmentsStep
+            attachmentsData={formData.attachments}
+            onAddFile={addAttachment}
+            onRemoveFile={removeAttachment}
+          />
+        ),
+        validate: () => validateStep(2),
+      },
+      {
+        id: 'review',
+        title: 'Review',
+        description: 'Confirm & submit',
+        content: <ReviewStep formData={formData} onEditStep={handleEditStep} errors={errors} />,
+        validate: () => validateStep(3),
+      },
+    ],
+    [
+      formData,
+      errors,
+      validateStep,
+      updatePersonalInfo,
+      updateInsurance,
+      updateMedicalInfo,
+      addAttachment,
+      removeAttachment,
+      handleEditStep,
+    ],
+  );
 
   return (
     <div className={styles.pageContainer}>
@@ -134,17 +126,13 @@ export function CreatePatientWizard() {
       </div>
 
       {/* Submit Error */}
-      {submitError && (
+      {submitError ? (
         <div className={styles.errorContainer}>
-          <AlertBanner
-            variant="error"
-            title="Error creating patient"
-            dismissible
-          >
+          <AlertBanner variant="error" title="Error creating patient" dismissible>
             {submitError.message}
           </AlertBanner>
         </div>
-      )}
+      ) : null}
 
       {/* Wizard */}
       <Card className={styles.wizardCard}>

@@ -36,15 +36,27 @@ export class EnhancedApiClient {
     return this.request<T>({ ...config, method: 'GET', url });
   }
 
-  async post<T = unknown>(url: string, data?: unknown, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
+  async post<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: ApiRequestConfig,
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({ ...config, method: 'POST', url, data });
   }
 
-  async put<T = unknown>(url: string, data?: unknown, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
+  async put<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: ApiRequestConfig,
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({ ...config, method: 'PUT', url, data });
   }
 
-  async patch<T = unknown>(url: string, data?: unknown, config?: ApiRequestConfig): Promise<ApiResponse<T>> {
+  async patch<T = unknown>(
+    url: string,
+    data?: unknown,
+    config?: ApiRequestConfig,
+  ): Promise<ApiResponse<T>> {
     return this.request<T>({ ...config, method: 'PATCH', url, data });
   }
 
@@ -161,7 +173,7 @@ export class EnhancedApiClient {
     config?: ApiRequestConfig & {
       onUploadProgress?: (progressEvent: ProgressEvent) => void;
       fieldName?: string;
-    }
+    },
   ): Promise<ApiResponse<T>> {
     const formData = new FormData();
     formData.append(config?.fieldName ?? 'file', file);
@@ -202,14 +214,14 @@ export class EnhancedApiClient {
 
 export function createEnhancedApi(
   baseApi?: AxiosInstance,
-  defaultConfig?: Partial<ApiRequestConfig>
+  defaultConfig?: Partial<ApiRequestConfig>,
 ): EnhancedApiClient {
   return new EnhancedApiClient(baseApi, defaultConfig);
 }
 
 export function createModuleApi(
   moduleName: string,
-  defaultConfig?: Partial<ApiRequestConfig>
+  defaultConfig?: Partial<ApiRequestConfig>,
 ): EnhancedApiClient {
   return new EnhancedApiClient(api, {
     context: { component: moduleName },

@@ -75,7 +75,6 @@ export const AppointmentDetailsModal = ({
   isOpen,
   onClose,
   appointmentId,
-  onAppointmentUpdated,
 }: AppointmentDetailsModalProps) => {
   const [appointment, setAppointment] = useState<AppointmentWithPatient | null>(null);
   const [loading, setLoading] = useState(false);
@@ -111,10 +110,7 @@ export const AppointmentDetailsModal = ({
 
   return (
     <div className={styles.modalOverlay} onClick={onClose}>
-      <div
-        className={`${styles.modal} ${styles.modalLarge}`}
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className={`${styles.modal} ${styles.modalLarge}`} onClick={(e) => e.stopPropagation()}>
         {/* Header */}
         <div className={styles.modalHeader}>
           <h2 className={styles.modalTitle}>Appointment Details</h2>
@@ -125,21 +121,21 @@ export const AppointmentDetailsModal = ({
 
         {/* Body */}
         <div className={styles.modalBody}>
-          {loading && (
+          {loading ? (
             <div className={styles.loadingContainer}>
               <div className={styles.spinner}></div>
               <p>Loading appointment details...</p>
             </div>
-          )}
+          ) : null}
 
-          {error && (
+          {error ? (
             <div className={styles.warningBanner}>
               <div className={styles.warningIcon}>!</div>
               <p className={styles.warningText}>{error}</p>
             </div>
-          )}
+          ) : null}
 
-          {appointment && !loading && (
+          {appointment && !loading ? (
             <>
               {/* Description List */}
               <div className={styles.descriptionGrid}>
@@ -204,16 +200,14 @@ export const AppointmentDetailsModal = ({
                 {/* Status */}
                 <div className={styles.descriptionItem}>
                   <span className={styles.descriptionLabel}>Status</span>
-                  <span
-                    className={`${styles.statusBadge} ${getStatusClass(appointment.status)}`}
-                  >
+                  <span className={`${styles.statusBadge} ${getStatusClass(appointment.status)}`}>
                     {getStatusLabel(appointment.status)}
                   </span>
                 </div>
               </div>
 
               {/* Notes Section */}
-              {(appointment.noteEn || appointment.noteAr) && (
+              {appointment.noteEn || appointment.noteAr ? (
                 <>
                   <h3 className={styles.sectionHeader}>Notes</h3>
                   <div className={styles.notesBox}>
@@ -222,9 +216,9 @@ export const AppointmentDetailsModal = ({
                     </p>
                   </div>
                 </>
-              )}
+              ) : null}
             </>
-          )}
+          ) : null}
         </div>
 
         {/* Footer */}
@@ -232,9 +226,7 @@ export const AppointmentDetailsModal = ({
           <Button variant="outline" onClick={onClose}>
             Close
           </Button>
-          {appointment && appointment.status === 'BOOKED' && (
-            <Button variant="primary">Mark as Completed</Button>
-          )}
+          {appointment?.status === 'BOOKED' && <Button variant="primary">Mark as Completed</Button>}
         </div>
       </div>
     </div>

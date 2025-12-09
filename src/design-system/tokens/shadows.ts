@@ -1,7 +1,7 @@
 /**
  * Shadow Tokens
  * Design System - South Physical Clinic
- * 
+ *
  * Soft shadows as per designer spec
  */
 

@@ -82,20 +82,20 @@ export interface UsePatientsTableV2Return {
   // Data
   patients: Patient[];
   stats: PatientStats | null;
-  
+
   // Pagination
   pagination: PaginationState;
-  
+
   // Filters
   filters: PatientsFilters;
   setFilters: React.Dispatch<React.SetStateAction<PatientsFilters>>;
   resetFilters: () => void;
-  
+
   // Loading & Error states
   loading: boolean;
   statsLoading: boolean;
   error: Error | null;
-  
+
   // Actions
   handlePageChange: (page: number) => void;
   handlePageSizeChange: (pageSize: number) => void;

@@ -4,7 +4,7 @@ import styles from './Divider.module.css';
 
 /**
  * Divider Component
- * 
+ *
  * Horizontal or vertical separator with optional label.
  */
 export const Divider = forwardRef<HTMLDivElement, DividerProps>(
@@ -18,10 +18,12 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
-    const spacingClass = `spacing${spacing.charAt(0).toUpperCase()}${spacing.slice(1)}` as keyof typeof styles;
-    const labelPosClass = `label${labelPosition.charAt(0).toUpperCase()}${labelPosition.slice(1)}` as keyof typeof styles;
+    const spacingClass =
+      `spacing${spacing.charAt(0).toUpperCase()}${spacing.slice(1)}` as keyof typeof styles;
+    const labelPosClass =
+      `label${labelPosition.charAt(0).toUpperCase()}${labelPosition.slice(1)}` as keyof typeof styles;
 
     const classes = [
       styles.divider,
@@ -35,17 +37,11 @@ export const Divider = forwardRef<HTMLDivElement, DividerProps>(
       .join(' ');
 
     return (
-      <div
-        ref={ref}
-        className={classes}
-        role="separator"
-        aria-orientation={orientation}
-        {...props}
-      >
-        {label && <span className={styles.label}>{label}</span>}
+      <div ref={ref} className={classes} role="separator" aria-orientation={orientation} {...props}>
+        {label ? <span className={styles.label}>{label}</span> : null}
       </div>
     );
-  }
+  },
 );
 
 Divider.displayName = 'Divider';

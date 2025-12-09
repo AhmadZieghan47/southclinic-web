@@ -6,7 +6,12 @@
 import type { AxiosRequestConfig } from 'axios';
 
 // Re-export error types
-export type { ApiError, ApiErrorCode, ApiErrorResponse, ValidationErrorDetail } from '../types/errors';
+export type {
+  ApiError,
+  ApiErrorCode,
+  ApiErrorResponse,
+  ValidationErrorDetail,
+} from '../types/errors';
 
 // ============================================================================
 // REQUEST CONFIG

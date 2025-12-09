@@ -22,9 +22,7 @@ export const personalInfoSchema = z.object({
     .string()
     .min(4, 'Phone number must be at least 4 characters')
     .max(50, 'Phone number must be at most 50 characters'),
-  dob: z
-    .string()
-    .regex(/^\d{4}-\d{2}-\d{2}$/, 'Please enter a valid date (YYYY-MM-DD)'),
+  dob: z.string().regex(/^\d{4}-\d{2}-\d{2}$/, 'Please enter a valid date (YYYY-MM-DD)'),
   gender: z.enum(['M', 'F', 'O'], { message: 'Please select a gender' }),
   nationalId: z
     .string()

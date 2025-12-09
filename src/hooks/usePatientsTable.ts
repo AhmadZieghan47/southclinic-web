@@ -3,9 +3,9 @@
  * Handles data fetching, pagination, search, and delete functionality
  */
 
-import { useState, useEffect, useCallback } from "react";
-import { getPatients, deletePatient } from "../services/patientApi";
-import type { Patient } from "../types/patient";
+import { useState, useEffect, useCallback } from 'react';
+import { getPatients, deletePatient } from '../services/patientApi';
+import type { Patient } from '../types/patient';
 
 export interface UsePatientsTableOptions {
   page?: number;
@@ -14,7 +14,7 @@ export interface UsePatientsTableOptions {
 }
 
 export function usePatientsTable(options: UsePatientsTableOptions = {}) {
-  const { page = 1, pageSize = 10, search = "" } = options;
+  const { page = 1, pageSize = 10, search = '' } = options;
 
   // State management
   const [patients, setPatients] = useState<Patient[]>([]);
@@ -39,10 +39,8 @@ export function usePatientsTable(options: UsePatientsTableOptions = {}) {
       setPatients(response.data);
       setTotalCount(response.total);
     } catch (err) {
-      setError(
-        err instanceof Error ? err : new Error("Failed to fetch patients")
-      );
-      console.error("Error fetching patients:", err);
+      setError(err instanceof Error ? err : new Error('Failed to fetch patients'));
+      console.error('Error fetching patients:', err);
     } finally {
       setLoading(false);
     }
@@ -77,14 +75,12 @@ export function usePatientsTable(options: UsePatientsTableOptions = {}) {
         await fetchPatients();
         return true;
       } catch (err) {
-        console.error("Error deleting patient:", err);
-        setError(
-          err instanceof Error ? err : new Error("Failed to delete patient")
-        );
+        console.error('Error deleting patient:', err);
+        setError(err instanceof Error ? err : new Error('Failed to delete patient'));
         return false;
       }
     },
-    [fetchPatients]
+    [fetchPatients],
   );
 
   // Retry on error

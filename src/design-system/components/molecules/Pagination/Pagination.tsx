@@ -9,7 +9,7 @@ import styles from './Pagination.module.css';
 const getPageNumbers = (
   currentPage: number,
   totalPages: number,
-  siblingCount: number
+  siblingCount: number,
 ): (number | 'ellipsis')[] => {
   const totalNumbers = siblingCount * 2 + 3; // siblings + current + first + last
   const totalBlocks = totalNumbers + 2; // + 2 ellipsis
@@ -32,13 +32,13 @@ const getPageNumbers = (
   } else if (showLeftEllipsis && !showRightEllipsis) {
     const rightRange = Array.from(
       { length: 3 + 2 * siblingCount },
-      (_, i) => totalPages - (3 + 2 * siblingCount) + i + 1
+      (_, i) => totalPages - (3 + 2 * siblingCount) + i + 1,
     );
     pages.push(1, 'ellipsis', ...rightRange);
   } else {
     const middleRange = Array.from(
       { length: rightSiblingIndex - leftSiblingIndex + 1 },
-      (_, i) => leftSiblingIndex + i
+      (_, i) => leftSiblingIndex + i,
     );
     pages.push(1, 'ellipsis', ...middleRange, 'ellipsis', totalPages);
   }
@@ -48,7 +48,7 @@ const getPageNumbers = (
 
 /**
  * Pagination Component
- * 
+ *
  * Page navigation with configurable display options.
  */
 export const Pagination = forwardRef<HTMLElement, PaginationProps>(
@@ -64,22 +64,20 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
       className,
       ...props
     },
-    ref
+    ref,
   ) => {
     const pages = useMemo(
       () => getPageNumbers(currentPage, totalPages, siblingCount),
-      [currentPage, totalPages, siblingCount]
+      [currentPage, totalPages, siblingCount],
     );
 
-    const classes = [styles.pagination, styles[size], className]
-      .filter(Boolean)
-      .join(' ');
+    const classes = [styles.pagination, styles[size], className].filter(Boolean).join(' ');
 
     const iconSize = size === 'sm' ? 14 : size === 'lg' ? 20 : 16;
 
     return (
       <nav ref={ref} className={classes} aria-label="Pagination" {...props}>
-        {showFirstLast && (
+        {showFirstLast ? (
           <button
             className={styles.btn}
             onClick={() => onChange(1)}
@@ -88,7 +86,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           >
             <ChevronsLeft size={iconSize} />
           </button>
-        )}
+        ) : null}
 
         <button
           className={styles.btn}
@@ -114,7 +112,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
             >
               {page}
             </button>
-          )
+          ),
         )}
 
         <button
@@ -126,7 +124,7 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           <ChevronRight size={iconSize} />
         </button>
 
-        {showFirstLast && (
+        {showFirstLast ? (
           <button
             className={styles.btn}
             onClick={() => onChange(totalPages)}
@@ -135,10 +133,10 @@ export const Pagination = forwardRef<HTMLElement, PaginationProps>(
           >
             <ChevronsRight size={iconSize} />
           </button>
-        )}
+        ) : null}
       </nav>
     );
-  }
+  },
 );
 
 Pagination.displayName = 'Pagination';
